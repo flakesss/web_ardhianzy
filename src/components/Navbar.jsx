@@ -8,7 +8,6 @@ function Navbar() {
         <img src={"src/assets/Ardhianzy_Logo 1.svg"} alt="Logo" className="logo-image" />
         <span className="brand-name">ARDHIANZY</span>
       </div>
-    
     </nav>
   );
 }

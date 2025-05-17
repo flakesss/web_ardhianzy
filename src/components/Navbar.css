@@ -3,52 +3,35 @@
 .navbar {
   position: fixed;
   top: 0;
-  left: 0;
-  width: 100%;
+  left: 0;            /* mulai dari kiri layar */
+  width: 100%;        /* full width */
+  height: 72px;       /* sesuai permintaan */
   background-color: #000;
   color: #fff;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 2rem;
+  justify-content: center;  /* pusatkan isi (logo+brand) */
+  align-items: center;      /* jaga semua item selalu tegak di tengah */
+  padding: 0 1rem;   /* beri ruang kiri-kanan agar tidak nempel ekstrem */
   z-index: 1000;
   border-bottom: 1px solid #222;
 }
 
-.navbar-logo {
+/* optional: grupkan logo+brand supaya lebih terstruktur */
+.navbar .navbar-content {
   display: flex;
   align-items: center;
 }
 
 .logo-image {
-  height: 30px; /* Sesuaikan dengan ukuran logo Anda */
+  width: 39px;        /* tetap 39×50 */
+  height: 50px;
   margin-right: 0.5rem;
+  /* align-self: center;  sudah di-handle oleh parent align-items */
 }
 
 .brand-name {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 1.8rem;
+  font-size: 48px;
   letter-spacing: 1px;
-}
-
-.navbar-links {
-  display: flex;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.navbar-links li {
-  margin-left: 1.5rem;
-}
-
-.navbar-links a {
-  color: #fff;
-  text-decoration: none;
-  transition: color 0.3s ease;
-  font-weight: 500;
-}
-
-.navbar-links a:hover {
-  color: #ccc;
+  /* line-height: 1;  sudah cukup karena flex align-items */
 }
