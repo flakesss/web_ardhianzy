@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Estonia&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
 #root {
   width: 100%;
@@ -171,147 +172,234 @@ html {
     margin-left: -40rem;
   }
 }
-
-
-/* ===== Magazine Section ===== */
+/* ===== Magazine Section (Final Redesign) ===== */
 .magazine-container {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
+  padding: 2rem 4rem;
+  background-color: transparent;
 }
 
 .magazine-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
 }
 
 .magazine-header h2 {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 2.5rem;
+  font-size: 3rem;
+  color: #fff;
   margin: 0;
+  text-align: left;
 }
 
-.magazine-button {
+.magazine-more-button {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.6rem 1.5rem;
+  padding: 0.7rem 1.5rem;
   background: transparent;
   border: 1px solid #fff;
-  border-radius: 999px;
+  border-radius: 50px;
+  color: #fff;
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 0.9rem;
+  font-size: 1rem;
   cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
 }
 
-.magazine-button .arrow {
-  font-size: 1.2rem;
+.magazine-more-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.magazine-more-button .arrow {
+  margin-left: 0.5rem;
 }
 
 .magazine-content {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-columns: 1.8fr 1fr 1fr;
   gap: 1.5rem;
+  align-items: start;
 }
 
-/* Large card */
+/* Large card (left) */
 .magazine-card-large {
   display: flex;
-  background-color: #111111;
+  background-color: transparent;
   border-radius: 1rem;
   overflow: hidden;
 }
 
-.magazine-card-large img {
-  height: 80%;
-  object-fit: cover;
+.magazine-card-large-img {
+  width: 50%;
+  aspect-ratio: 1/1.4;
+  border-radius: 1rem;
+  overflow: hidden;
 }
 
-.magazine-card-text {
-  flex: 1;
-  padding: 1.5rem;
+.magazine-card-large-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.magazine-card-large-content {
+  width: 50%;
+  padding: 0 0 0 1.5rem;
   text-align: left;
 }
 
-.magazine-card-text h3 {
+.magazine-card-large-content h3 {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 1.8rem;
-  margin: 0 0 0.5rem;
+  font-size: 2.5rem;
+  margin: 0 0 0.5rem 0;
+  line-height: 1;
+  color: #fff;
 }
 
-.magazine-card-text .author {
+.magazine-card-large-content .author {
   font-size: 0.9rem;
-  font-style: 'roboto';
-  margin: 0 0 1rem;
-  
+  margin-bottom: 1.5rem;
+  color: #fff;
 }
 
-.magazine-card-text .excerpt {
-  font-size: 0.9rem;
-  line-height: 1.4;
+.magazine-card-large-content .excerpt {
+  font-family: 'roboto';
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #fff;
+  opacity: 0.85;
   margin-bottom: 1rem;
 }
 
-.magazine-card-text .read-more {
-  color: #1e90ff;
+.magazine-card-large-content .read-more {
+  color: #007bff;
   text-decoration: none;
-  font-weight: bold;
+  font-weight: 500;
 }
 
-/* Small cards */
+/* Small cards (right) */
 .magazine-card-small {
   display: flex;
   flex-direction: column;
-  background-color: #111111;
-  border-radius: 1rem;
   overflow: hidden;
 }
 
-.magazine-card-small img {
-  width: 78%;
+.magazine-card-small-img {
+  aspect-ratio: 1/1.4;
+  overflow: hidden;
+  width: 70%;
+  margin-bottom: 1rem;
+}
+
+.magazine-card-small-img img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
+  object-position: center;
 }
 
-.magazine-card-small h3 {
+.magazine-card-small-content {
+  text-align: center;
+  padding: 0 0.5rem;
+}
+
+.magazine-card-small-content h3 {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 1.5rem;
-  margin: 1rem 0 0.5rem;
-  text-align: center;
+  font-size: 1.8rem;
+  margin: 0 0 0.5rem;
+  line-height: 1.1;
+  color: #fff;
 }
 
-.magazine-card-small .excerpt {
+.magazine-card-small-content .excerpt {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: #fff;
+  opacity: 0.85;
+  margin-bottom: 0.5rem;
+}
+
+.magazine-card-small-content .author {
   font-size: 0.85rem;
-  line-height: 1.4;
-  padding: 0 1rem;
-  text-align: center;
+  color: #fff;
+  opacity: 0.7;
 }
 
-.magazine-card-small .author {
-  font-size: 0.85rem;
-  font-style: italic;
-  margin: auto 0 1rem;
-  text-align: center;
-}
-
-
-
-
-
-@media (resolution: 1.25dppx) {
-  /* Laptop Windows 125% scaling */
-  .magazine-container {
-    transform: scale(0.80);          /* 1 / 1.25 */
-    transform-origin: top center;    /* tetap centered */
+/* Fix for scaling issues */
+@media screen and (min-resolution: 1.25dppx) {
+  /* For 125% scaling */
+  .magazine-content {
+    grid-template-columns: 1.8fr 1fr 1fr;
+    transform: scale(0.95);
+    transform-origin: top left;
+    width: 105%;
   }
 }
 
-@media (resolution: 1.50dppx) {
-  /* Contoh: 150% scaling */
-  .magazine-container {
-    transform: scale(0.67);          /* 1 / 1.5 */
-    transform-origin: top center;
+@media screen and (min-resolution: 1.5dppx) {
+  /* For 150% scaling */
+  .magazine-content {
+    transform: scale(0.9);
+    width: 110%;
   }
 }
 
+/* Responsive styles */
+@media (max-width: 1200px) {
+  .magazine-container {
+    padding: 2rem;
+  }
+  
+  .magazine-content {
+    gap: 1rem;
+  }
+  
+  .magazine-card-large-content h3 {
+    font-size: 2.2rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .magazine-content {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  .magazine-card-large {
+    grid-column: 1 / -1;
+    margin-bottom: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .magazine-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .magazine-header h2 {
+    margin-bottom: 1rem;
+  }
+  
+  .magazine-content {
+    grid-template-columns: 1fr;
+  }
+  
+  .magazine-card-large {
+    flex-direction: column;
+  }
+  
+  .magazine-card-large-img,
+  .magazine-card-large-content {
+    width: 100%;
+  }
+  
+  .magazine-card-large-content {
+    padding: 1.5rem 0 0 0;
+  }
+}
