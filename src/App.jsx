@@ -122,9 +122,6 @@ function App() {
         <h2>RESEARCH</h2>
       </section>
 
-      <section id="research" className="section section3">
-        <h2>RESEARCH</h2>
-      </section>
 
       <section id="course" className="section section4">
         <h2>COURSE</h2>
