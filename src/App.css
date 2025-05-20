@@ -230,14 +230,12 @@ html {
 .magazine-card-large {
   display: flex;
   background-color: transparent;
-  border-radius: 1rem;
   overflow: hidden;
 }
 
 .magazine-card-large-img {
   width: 50%;
   aspect-ratio: 1/1.4;
-  border-radius: 1rem;
   overflow: hidden;
 }
 
@@ -401,5 +399,58 @@ html {
   
   .magazine-card-large-content {
     padding: 1.5rem 0 0 0;
+  }
+}
+
+
+.magazine-section {
+  position: relative; /* Untuk mengakomodasi efek blur absolute */
+}
+
+/* DIV khusus untuk efek blur */
+.magazine-blur-effect {
+  position: absolute;
+  width: 682px;
+  height: 446px;
+  left: 58px;  /* Sesuai spec dari Figma */
+  top: 130px;  /* Sesuaikan posisi vertikal relatif terhadap container */
+  background: linear-gradient(0deg, rgba(77, 77, 77, 0.51) 34.63%, rgba(179, 179, 179, 0) 96.97%);
+  border-radius: 20px;
+  box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.3); /* Shadow untuk efek blur */
+  opacity: 0.8;
+  z-index: 0; /* Di bawah konten namun di atas background */
+}
+
+/* Tambahan untuk card dan content agar tetap di atas efek blur */
+.magazine-content {
+  position: relative;
+  z-index: 1; /* Di atas efek blur */
+}
+
+@media (max-width: 1440px) {
+  .magazine-blur-effect {
+    width: 620px;
+    left: 50px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .magazine-blur-effect {
+    width: 580px;
+    left: 40px;
+  }
+}
+
+@media (max-width: 992px) {
+  .magazine-blur-effect {
+    width: 90%;
+    max-width: 580px;
+    left: 5%;
+  }
+}
+
+@media (max-width: 768px) {
+  .magazine-blur-effect {
+    display: none; /* Sembunyikan pada tampilan mobile */
   }
 }
