@@ -1,0 +1,171 @@
+/* Container & Header */
+.monologues-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem 4rem;
+}
+
+.monologues-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2.5rem;
+}
+
+.monologues-header h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 3rem;
+  color: #fff;
+  margin: 0;
+}
+
+.monologues-more-button {
+  display: flex;
+  align-items: center;
+  padding: 0.7rem 1.5rem;
+  border: 1px solid #fff;
+  border-radius: 50px;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1rem;
+  color: #fff;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+
+.monologues-more-button:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+/* Grid Layout */
+.monologues-content {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-content: center;
+  gap: 2rem;
+}
+
+/* Kartu Umum */
+.monologue-card {
+  text-align: center;
+}
+
+.monologue-img {
+  width: 249px;
+  height: 350px;
+  overflow: hidden;
+  margin: 0 auto 1rem;
+}
+
+.monologue-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.monologue-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2.4rem;
+  color: #fff;
+  margin: 0 0 0.5rem;
+}
+
+.monologue-excerpt {
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: #fff;
+  opacity: 0.85;
+  margin: 0 0 0.5rem;
+  padding: 0 0.5rem;
+}
+
+.monologue-author {
+  font-size: 0.9rem;
+  font-style: italic;
+  color: #fff;
+  opacity: 0.8;
+}
+
+/* Featured Card Spesial */
+
+/* Aksen di kiri */
+
+
+/* Judul Featured */
+.featured-title {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+/* Gambar Featured */
+.featured-img {
+  width: 249px;
+  height: 249px;
+  margin: 0 auto 1rem;
+}
+
+.featured-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Teks & Harga Featured */
+.featured-excerpt {
+  margin: 0 0 0.5rem;
+  padding: 0 1rem;
+}
+
+.featured-author {
+  margin: 0 0 1rem;
+}
+
+.monologue-price {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.25rem;
+  color: #fff;
+  margin: 0;
+}
+
+.monologue-card.featured {
+  /* Pastikan background sudah di‐set via inline style atau CSS */
+  background-repeat: no-repeat;
+  background-position: center center;
+
+  /* Default: tutup seluruh elemen */
+  background-size: cover;
+
+  /* —–– Kalau mau adjust nanti —–– */
+  /* Kamu bisa override background-size di sini, 
+     atau via CSS variable seperti contoh di bawah */
+}
+
+/* Contoh menggunakan CSS variable supaya tinggal utak-atik nilainya di inline style atau stylesheet lain: */
+.monologue-card.featured {
+  /* gunakan var(--bg-size, cover) sebagai default */
+  background-size: var(--bg-size, cover);
+}
+
+/* Jika kamu ingin set ukuran tertentu langsung pada elemen featured, 
+   cukup tulis di inline style: 
+   style={{
+     '--bg-size': '300px 400px',
+     backgroundImage: "url('/src/assets/monologues/featured-bg.svg')"
+   }}
+*/
+
+
+/* Responsif */
+@media (max-width: 1200px) {
+  .monologues-content {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .monologues-content {
+    grid-template-columns: 1fr;
+  }
+  .monologue-card.featured::before {
+    display: none;
+  }
+}

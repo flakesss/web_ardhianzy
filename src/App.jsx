@@ -2,6 +2,11 @@ import { useState, useEffect } from 'react';
 import './App.css';
 import Navbar from './components/Navbar';
 import NavbarLinks from './components/NavbarLinks';
+import Magazine from './components/Magazine';
+import Research from './components/Research';
+import Course from './components/Course';
+import Monologues from './components/Monologues';
+
 
 function App() {
   const [navbarPosition, setNavbarPosition] = useState(0);
@@ -45,92 +50,14 @@ function App() {
         </div>
       </section>
 
-    
-       <section id="magazine" className="section section2">
-        <div className="magazine-section">
-          {/* Div khusus untuk efek blur */}
-          <div className="magazine-blur-effect"></div>
-          
-          <div className="magazine-container">
-            <div className="magazine-header">
-              <h2>Check Our Magazine</h2>
-              <a href="#" className="magazine-more-button">
-                MORE MEGAZINE <span className="arrow">→</span>
-              </a>
-            </div>
-
-            <div className="magazine-content">
-              {/* Large Card */}
-              <div className="magazine-card-large">
-                <div className="magazine-card-large-img">
-                  <img
-                    src="src/assets/magazine/Rectangle 4558.png"
-                    alt="Man standing in front of a painting"
-                  />
-                </div>
-                <div className="magazine-card-large-content">
-                  <h3>LOREM IPSUM DOLOR SIT</h3>
-                  <p className="author">By Lorem</p>
-                  <p className="excerpt">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                  </p>
-                  <a href="#" className="read-more">Continue Read &gt;&gt;</a>
-                </div>
-              </div>
-              
-              {/* Small Cards - tetap sama */}
-              <div className="magazine-card-small">
-                <div className="magazine-card-small-img">
-                  <img
-                    src="src/assets/magazine/Rectangle 4528.png"
-                    alt="Apple on a stand"
-                  />
-                </div>
-                <div className="magazine-card-small-content">
-                  <h3>LOREM IPSUM DOLOR SIT</h3>
-                  <p className="excerpt">
-                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna
-                  </p>
-                  <p className="author">By bla bla bla</p>
-                </div>
-              </div>
-
-              <div className="magazine-card-small">
-                <div className="magazine-card-small-img">
-                  <img
-                    src="src/assets/magazine/Rectangle 4529.png"
-                    alt="People in a painting"
-                  />
-                </div>
-                <div className="magazine-card-small-content">
-                  <h3>LOREM IPSUM DOLOR SIT</h3>
-                  <p className="excerpt">
-                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna
-                  </p>
-                  <p className="author">By bla bla bla</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <Magazine />
+       
+      <Research />
 
 
-      {/* Section Research */}
-      <section id="research" className="section section3">
-        <h2>RESEARCH</h2>
-      </section>
+      <Course />
 
-
-      <section id="course" className="section section4">
-        <h2>COURSE</h2>
-      </section>
-
-      <section id="monologues" className="section section5">
-        <h2>MONOLOGUES</h2>
-      </section>
-
+      <Monologues />
       <section id="reading-guide" className="section section6">
         <h2>READING GUIDE</h2>
       </section>

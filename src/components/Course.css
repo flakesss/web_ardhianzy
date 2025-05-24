@@ -1,0 +1,187 @@
+/* src/components/Course.css */
+
+.course-container {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 2rem 4rem;
+}
+
+.course-header {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+/* pusatkan judul */
+.course-header h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 3rem;
+  color: #fff;
+  text-align: center;
+  margin: 0;
+}
+
+/* tetap di pojok kanan */
+.course-more-button {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  padding: 0.7rem 1.5rem;
+  border: 1px solid #fff;
+  border-radius: 50px;
+  text-decoration: none;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1rem;
+  color: #fff;
+  transition: background 0.3s;
+}
+
+.course-more-button:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.course-subtext {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.1rem;
+  color: #fff;
+  text-align: center;
+  margin: 0 auto 2rem;
+}
+
+.course-subtext .membership-link {
+  color: #00aaff;
+  text-decoration: underline;
+}
+
+.course-content {
+  display: grid;
+  grid-template-columns: repeat(4, 390px);
+  justify-content: center;  /* pusatkan grid */
+  gap: 2rem;
+}
+
+.course-card {
+  text-align: left;
+  max-width: 350px;
+  padding-left: 0;
+  border-left: none;
+}
+
+.course-card + .course-card {
+  border-left: 1px solid #fff;
+  padding-left: 2rem;
+ 
+}
+
+.course-card-img {
+  width: 350px;
+  height: 200px;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+
+
+/* ===== Play icon overlay ===== */
+.course-card-img .play-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50px;                /* diameter lingkaran */
+  height: 50px;
+  background: #fff;           /* putih */
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2); /* opsional: sedikit bayangan */
+}
+
+.course-card-img .play-icon::before {
+  content: '';
+  display: inline-block;
+  /* ukuran segitiga: tinggi 20px, lebar 12px */
+  border-style: solid;
+  border-width: 10px 0 10px 16px;
+  border-color: transparent transparent transparent #000;  /* hitam */
+  margin-left: 2px;         /* posisikan sedikit ke kanan */
+}
+
+.course-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.course-card-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.5rem;
+  color: #fff;
+  margin: 0 0 0.3rem;
+}
+
+.course-card-subtitle {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 0.9rem;
+  color: #fff;
+  opacity: 0.8;
+  margin: 0 0 0.8rem;
+}
+
+.course-card-date {
+  font-size: 0.85rem;
+  color: #fff;
+  opacity: 0.8;
+  margin: 0 0 1rem;
+}
+
+.course-card-excerpt {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: #fff;
+  margin-bottom: 1rem;
+  opacity: 0.85;
+}
+
+
+/* truncate/title-expand */
+.course-card-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.5rem;
+  color: #fff;
+  margin: 0 0 0.3rem;
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+/* tombol “…” untuk expand */
+.expand-title-btn {
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 1.5rem;
+  line-height: 1;
+  margin-left: 0.2rem;
+  cursor: pointer;
+  padding: 0;
+}
+.expand-title-btn:hover {
+  color: #00aaff;
+}
+/* responsive */
+@media (max-width: 1200px) {
+  .course-content {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .course-content {
+    grid-template-columns: 1fr;
+  }
+}
