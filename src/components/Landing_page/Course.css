@@ -3,12 +3,12 @@
 .course-container {
   max-width: 1600px;
   margin: 0 auto;
-  padding: 2rem 4rem;
+  padding: 1.5rem 2rem;
 }
 
 .course-header {
   position: relative;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 /* pusatkan judul */
@@ -59,7 +59,7 @@
   display: grid;
   grid-template-columns: repeat(4, 390px);
   justify-content: center;  /* pusatkan grid */
-  gap: 2rem;
+  gap: 1rem;
 }
 
 .course-card {

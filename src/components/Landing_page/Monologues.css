@@ -76,7 +76,7 @@
   opacity: 0.85;
   margin: 0 0 0.5rem;
   padding: 0 0.5rem;
-}
+}  
 
 .monologue-author {
   font-size: 0.9rem;
@@ -85,18 +85,12 @@
   opacity: 0.8;
 }
 
-/* Featured Card Spesial */
 
-/* Aksen di kiri */
-
-
-/* Judul Featured */
 .featured-title {
   margin-top: 0;
   margin-bottom: 1rem;
 }
 
-/* Gambar Featured */
 .featured-img {
   width: 249px;
   height: 249px;

@@ -1,37 +1,53 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
+/* Variabel untuk ukuran logo */
+:root {
+  --logo-width: 40px;
+  --logo-height: auto;
+}
+
 .navbar {
   position: fixed;
   top: 0;
-  left: 0;            /* mulai dari kiri layar */
-  width: 100%;        /* full width */
-  height: 72px;       /* sesuai permintaan */
+  left: 0;
+  width: 100%;
+  height: 72px;
   background-color: #000;
   color: #fff;
   display: flex;
-  justify-content: center;  /* pusatkan isi (logo+brand) */
-  align-items: center;      /* jaga semua item selalu tegak di tengah */
-  padding: 0 1rem;   /* beri ruang kiri-kanan agar tidak nempel ekstrem */
+  justify-content: center;
+  align-items: center;
+  padding: 0 1rem;
   z-index: 1000;
   border-bottom: 1px solid #222;
 }
 
-/* optional: grupkan logo+brand supaya lebih terstruktur */
-.navbar .navbar-content {
+/* Logo + brand sebagai Link */
+.navbar .navbar-logo {
   display: flex;
   align-items: center;
+  /* pastikan teks link berwarna putih */
+  color: #fff;
+  text-decoration: none;
 }
 
+/* Gambar logo */
 .logo-image {
-  width: 39px;        /* tetap 39×50 */
-  height: 50px;
+  width: var(--logo-width);
+  height: var(--logo-height);
   margin-right: 0.5rem;
-  /* align-self: center;  sudah di-handle oleh parent align-items */
 }
 
+/* Nama brand */
 .brand-name {
   font-family: 'Bebas Neue', sans-serif;
   font-size: 48px;
   letter-spacing: 1px;
-  /* line-height: 1;  sudah cukup karena flex align-items */
+  /* override default link color */
+  color: #fff;
+}
+
+/* Optional: hilangkan garis bawah saat hover */
+.navbar .navbar-logo:hover {
+  text-decoration: none;
 }

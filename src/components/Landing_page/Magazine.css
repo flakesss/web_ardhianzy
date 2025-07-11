@@ -1,0 +1,248 @@
+/* ────────────────────────────────────────────────
+   MAGAZINE  SECTION
+   ──────────────────────────────────────────────── */
+.section-magazine {
+  position: relative;
+  width: 100%;
+  padding: 80px 0;
+  background: #000;
+  overflow: hidden;
+}
+
+/* Radial blur dekoratif di tengah halaman */
+.magazine-blur-bg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  height: 80%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(74, 158, 255, 0.10) 0%,
+    rgba(74, 158, 255, 0.05) 40%,
+    transparent 70%
+  );
+  filter: blur(100px);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* ────────────────────────────────────────────────
+   CONTAINER & HEADER
+   ──────────────────────────────────────────────── */
+.magazine-container {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 80px;
+  position: relative;
+  z-index: 2;
+}
+.magazine-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2.5rem;
+}
+
+.magazine-header h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 3rem;
+  color: #fff;
+  margin: 0;
+}
+
+.magazine-more-button {
+  display: flex;
+  align-items: center;
+  padding: 0.7rem 1.5rem;
+  border: 1px solid #fff;
+  border-radius: 50px;
+  text-decoration: none;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1rem;
+  color: #fff;
+
+  /* hover gaya baru atau gaya Research? */
+  transition: background 0.3s ease;
+}
+
+.magazine-more-button:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.magazine-more-button .arrow {
+  margin-left: 0.3rem;
+}
+
+/* ────────────────────────────────────────────────
+   GRID  LAYOUT  (1 kartu besar + 2 kartu kecil)
+   ──────────────────────────────────────────────── */
+.magazine-content {
+  display: grid;
+  grid-template-columns: 3fr 1fr 1fr;
+  gap: 1.5rem;
+  align-items: start;
+  position: relative;
+  z-index: 2;
+}
+
+/* ────────────────────────────────────────────────
+   1)  LARGE  CARD
+   ──────────────────────────────────────────────── */
+.magazine-card-large {
+  display: flex;
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  background: transparent;
+
+  /* ➜ geser seluruh isi ±40 px ke kanan */
+  padding-left: 40px;          /* atur 20-60 px sesuai selera */
+}
+
+
+/* Papan gradien  ➜  melebar ke kiri */
+.magazine-card-large::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;               /* jangkar di kanan  */
+  width: 180%;            /* ➜  meningkat lebar; 80 % ekstra hanya ke kiri */
+  height: 100%;
+
+  background: linear-gradient(
+    180deg,
+    #000 0%,
+    #0d0d0d 25%,
+    #151515 60%,
+    #1a1a1a 100%
+  );
+  /* Jika ingin PNG, ganti baris di atas dengan :
+  background: url('src/assets/magazine/Rectangle 98298.png')
+              center/cover no-repeat;  */
+
+  border-radius: inherit; /* ikut sudut kartu */
+  z-index: -1;            /* di belakang gambar & teks */
+  pointer-events: none;
+}
+
+/* — Gambar (kiri) — */
+.magazine-card-large-img {
+  width: 48%;                  /* sedikit lebih kecil (50%→48%) */
+  min-height: 450px;
+  margin-right: 2rem;          /* jarak antar-kolom */
+}
+
+.magazine-card-large-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* konten teks kanan tetap 50 % → otomatis bergeser oleh padding */
+.magazine-card-large-content {
+  width: 50%;
+  padding: 40px 40px 40px 0;   /* tambah padding-right biar rata */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #fff;
+}
+.magazine-card-large-content h3 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+.magazine-card-large-content .author {
+  font-size: 0.9rem;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 25px;
+}
+.magazine-card-large-content .excerpt {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 25px;
+}
+.magazine-card-large-content .read-more {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #4a9eff;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.magazine-card-large-content .read-more:hover { color: #fff; }
+
+/* ────────────────────────────────────────────────
+   2)  SMALL  CARDS
+   ──────────────────────────────────────────────── */
+.magazine-card-small {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: transparent;
+}
+
+.magazine-card-small-img {
+  width: 100%;
+  aspect-ratio: 1 / 1.4;
+  margin-bottom: 1rem;
+}
+.magazine-card-small-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.magazine-card-small-content {
+  padding: 0 0.5rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+.magazine-card-small-content h3 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+}
+.magazine-card-small-content .excerpt {
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 0.5rem;
+}
+.magazine-card-small-content .author {
+  font-size: 0.75rem;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* ────────────────────────────────────────────────
+   RESPONSIVE  BREAKPOINTS
+   ──────────────────────────────────────────────── */
+@media (max-width: 1200px) {
+  .magazine-container { padding: 0 40px; }
+  .magazine-content   { gap: 1rem; }
+}
+
+@media (max-width: 992px) {
+  .magazine-content    { grid-template-columns: 1fr 1fr; }
+  .magazine-card-large { grid-column: 1 / -1; margin-bottom: 2rem; }
+}
+
+@media (max-width: 768px) {
+  .magazine-header     { flex-direction: column; align-items: flex-start; gap: 20px; }
+  .magazine-content    { grid-template-columns: 1fr; gap: 1.5rem; }
+
+  .magazine-card-large {
+    flex-direction: column;
+    border-radius: 0 0 24px 24px;
+  }
+  .magazine-card-large-img,
+  .magazine-card-large-content { width: 100%; }
+  .magazine-card-large-img     { min-height: 320px; }
+  .magazine-card-large-content { padding: 32px 24px; }
+}

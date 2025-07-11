@@ -1,0 +1,20 @@
+/* layout dasar */
+.shop-page {
+  background-color: #000;
+  min-height: 100vh;
+  color: #fff;
+}
+
+.page-content-wrapper {
+  padding-top: 6rem;   /* jarak dari navbar fixed */
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+/* grid untuk daftar item */
+.shop-items-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-top: 2rem;     /* beri spasi bawah judul */
+}

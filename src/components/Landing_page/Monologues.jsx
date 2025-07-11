@@ -22,11 +22,10 @@ const monoData = [
   }
 ];
 
-export default function Monologues() {
+export default function Monologues () {
   return (
     <section id="monologues" className="section section-monologues">
       <div className="monologues-container">
-        {/* Header */}
         <div className="monologues-header">
           <h2>Collected Monologues</h2>
           <a href="#" className="monologues-more-button">
@@ -34,9 +33,7 @@ export default function Monologues() {
           </a>
         </div>
 
-        {/* Grid */}
         <div className="monologues-content">
-          {/* 3 kartu normal */}
           {monoData.map((item, i) => (
             <div key={i} className="monologue-card">
               <div className="monologue-img">
@@ -48,7 +45,6 @@ export default function Monologues() {
             </div>
           ))}
 
-          {/* Featured Card ke-4 */}
           <div className="monologue-card featured"
                 style={{
                     backgroundImage: "url('src/assets/monologues/Group 5020.svg')",

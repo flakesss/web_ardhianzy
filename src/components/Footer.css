@@ -1,0 +1,163 @@
+/* src/components/Footer.css */
+.site-footer {
+  background-color: #000;
+  color: #fff;
+  padding: 3rem 0 2rem 0;
+}
+
+.footer-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between; /* Keeps columns in their original positions */
+}
+
+/* Logo Section */
+.footer-logo {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top:    var(--logo-mt, 120px);
+  margin-right:  var(--logo-mr, 0);
+  margin-bottom: var(--logo-mb, 0);
+  margin-left:   var(--logo-ml, 150px); 
+}
+
+.footer-logo img {
+  width: 150px; /* Adjust logo size */
+  height: auto;
+  object-fit: contain;
+  margin-bottom: 1rem;
+}
+
+/* Optional: Add tagline or description under logo */
+.footer-logo p {
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.85rem;
+  color: #ccc;
+  margin: 0;
+  max-width: 200px;
+  line-height: 1.4;
+}
+
+/* Links Section */
+.footer-links {
+  display: flex;
+  gap: 6rem; /* Maintain spacing between columns */
+  flex: 1;
+  justify-content: flex-end; /* Push links to the right side */
+  padding-left: 4rem; /* Space from logo */
+}
+
+.footer-column {
+  text-align: left; /* Ensure all text is left-aligned */
+}
+
+.footer-column h4 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+  text-align: left; /* Title left-aligned */
+  color: #fff;
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-column li {
+  margin-bottom: 0.75rem;
+  text-align: left; /* List items left-aligned */
+}
+
+.footer-column a {
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.9rem;
+  color: #ccc;
+  text-decoration: none;
+  transition: color 0.2s;
+  display: inline-block; /* Better click area */
+}
+
+.footer-column a:hover {
+  color: #00aaff;
+}
+
+/* Social Media Icons */
+.footer-socials {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap; /* Allow wrapping on smaller spaces */
+}
+
+.footer-socials a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  transition: background 0.2s;
+}
+
+.footer-socials a:hover {
+  background: rgba(0, 170, 255, 0.2);
+}
+
+.footer-socials img {
+  width: 18px;
+  height: 18px;
+  filter: brightness(0) invert(1); /* Make icons white */
+}
+
+/* Copyright Section */
+.footer-bottom {
+  max-width: 1400px;
+  margin: 3rem auto 0;
+  padding: 2rem 2rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: left;
+}
+
+.footer-bottom p {
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.85rem;
+  color: #888;
+  margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .footer-container {
+    flex-direction: column;
+    gap: 3rem;
+  }
+  
+  .footer-links {
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .footer-logo {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer-links {
+    flex-direction: column;
+    gap: 2rem;
+  }
+  
+  .footer-column {
+    width: 100%;
+  }
+}

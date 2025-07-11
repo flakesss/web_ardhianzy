@@ -1,13 +1,20 @@
+// src/components/Navbar.jsx
 import React from 'react';
+import { Link } from 'react-router-dom';  // ← import Link
 import './Navbar.css';
 
 function Navbar() {
   return (
     <nav className="navbar">
-      <div className="navbar-logo">
-        <img src={"src/assets/Ardhianzy_Logo 1.svg"} alt="Logo" className="logo-image" />
+      {/* wrap logo + brand-name dengan Link ke "/" */}
+      <Link to="/" className="navbar-logo">
+        <img
+          src="src/assets/icon/Ardhianzy_Logo 2.png"
+          alt="Logo"
+          className="logo-image"
+        />
         <span className="brand-name">ARDHIANZY</span>
-      </div>
+      </Link>
     </nav>
   );
 }

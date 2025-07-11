@@ -1,0 +1,73 @@
+.community-section {
+  background-color: #000;    
+  background-image: url('src/assets/Community/Intro.png');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 75%;
+  padding: 4rem 2rem;
+}
+
+
+.community-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: flex-start;    /* kartu di kiri */
+}
+
+.community-card {
+  background-color: #1a1a1a;       /* gelap sedikit dari hitam */
+  border-radius: 30px;
+  padding: 2rem;
+  max-width: 400px;
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+}
+
+.community-card h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2.4rem;
+  margin: 0 0 1.5rem;
+}
+
+.community-list {
+  list-style: disc inside;
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin: 0 0 2rem;
+  padding: 0;
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+.community-list li {
+  margin-bottom: 0.75rem;
+  opacity: 0.85;
+  text-align: justify;
+}
+
+.community-button {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.7rem 1.5rem;
+  border: 1px solid #fff;
+  border-radius: 50px;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1rem;
+  color: #fff;
+  background: transparent;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.community-button:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+.discord-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-left: 0.5rem;
+}
