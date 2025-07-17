@@ -1,0 +1,13 @@
+.research-page {
+  background-color: #000;
+  color: #fff;
+  min-height: 100vh;
+  padding-top: 6rem; /* Jika navbar fixed */
+}
+
+.page-content-wrapper {
+  padding: 0 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}

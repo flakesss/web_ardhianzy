@@ -1,6 +1,4 @@
-/* ────────────────────────────────────────────────
-   MAGAZINE  SECTION
-   ──────────────────────────────────────────────── */
+
 .section-magazine {
   position: relative;
   width: 100%;
@@ -28,9 +26,7 @@
   pointer-events: none;
 }
 
-/* ────────────────────────────────────────────────
-   CONTAINER & HEADER
-   ──────────────────────────────────────────────── */
+
 .magazine-container {
   width: 100%;
   max-width: 1400px;
@@ -76,9 +72,7 @@
   margin-left: 0.3rem;
 }
 
-/* ────────────────────────────────────────────────
-   GRID  LAYOUT  (1 kartu besar + 2 kartu kecil)
-   ──────────────────────────────────────────────── */
+
 .magazine-content {
   display: grid;
   grid-template-columns: 3fr 1fr 1fr;

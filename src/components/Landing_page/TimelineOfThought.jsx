@@ -1,84 +1,84 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
+import { MapContainer, TileLayer, useMap } from 'react-leaflet';
+import 'leaflet/dist/leaflet.css';
 import './TimelineOfThought.css';
 
+/*tombol zoom*/
+function ZoomButtons() {
+  const map = useMap();
+  return (
+    <div className="zoom-controls">
+      <button onClick={() => map.zoomIn()}  className="zoom-button" title="Zoom In">+</button>
+      <button onClick={() => map.zoomOut()} className="zoom-button" title="Zoom Out">−</button>
+      <button
+        onClick={() => map.setView([20, 0], 1.5)}
+        className="zoom-button"
+        title="Reset"
+      >⟳</button>
+    </div>
+  );
+}
+
+
+
 export default function TimelineOfThought() {
-  const [currentYear, setCurrentYear] = useState(1800);
-  const [zoomLevel, setZoomLevel] = useState(1);
-  const mapRef = useRef(null);
+  const [year, setYear] = useState(1800);
+  const trackRef        = useRef(null);
+  const wrapperRef      = useRef(null);
 
   const startYear = 200;
-  const endYear = 2025;
-  const yearMarks = [];
-  for (let y = startYear; y <= endYear; y += 100) yearMarks.push(y);
+  const endYear   = 2020;
+  const marks     = Array.from({ length: (endYear - startYear) / 50 + 1 }, (_, i) => startYear + i * 50);
 
-  const handleZoomIn = () => setZoomLevel(z => Math.min(z + 0.2, 3));
-  const handleZoomOut = () => setZoomLevel(z => Math.max(z - 0.2, 0.5));
-  const handleReset = () => { setZoomLevel(1); setCurrentYear(1800); };
+  /* ----------  Handler slider  ---------- */
+  const handleYear = e => {
+    const y = Number(e.target.value);
+    setYear(y);
 
-  const handleTimelineChange = e => setCurrentYear(Number(e.target.value));
-
-  const timelinePosition = ((currentYear - startYear) / (endYear - startYear)) * 100;
+    // auto‑scroll track agar slider tetap terlihat
+    if (trackRef.current && wrapperRef.current) {
+      const wTrack = trackRef.current.scrollWidth;
+      const wWrap  = wrapperRef.current.clientWidth;
+      const pos    = ((y - startYear) / (endYear - startYear)) * wTrack - wWrap / 2;
+      wrapperRef.current.scrollTo({ left: Math.max(0, Math.min(pos, wTrack - wWrap)), behavior: 'smooth' });
+    }
+  };
 
   return (
     <div className="timeline-container">
-      <div className="timeline-header">
-        <h1 className="timeline-title">Timeline of Thought</h1>
-        <p className="timeline-subtitle">Explore the Evolution of Philosophical Ideas Through Time</p>
-      </div>
-
       <div className="timeline-main-content">
-        <div className="zoom-controls">
-          <button className="zoom-button" onClick={handleZoomIn}>+</button>
-          <button className="zoom-button" onClick={handleZoomOut}>−</button>
-          <button className="zoom-button" onClick={handleReset}>⟳</button>
-        </div>
-
+        {/* ---- PETA ---- */}
         <div className="map-container">
-          <div
-            className="map-content"
-            ref={mapRef}
-            style={{ transform: `scale(${zoomLevel})` }}
-          >
-            <div className="map-placeholder">
-              <div className="map-placeholder-text">
-                <p>Map Area</p>
-                <p style={{ fontSize: '14px', opacity: 0.7 }}>
-                  Peta akan ditampilkan di sini
-                </p>
-              </div>
-            </div>
-            {/* Philosopher markers go here */}
-          </div>
-          <div className="year-display">{currentYear}</div>
+          <MapContainer center={[20, 0]} zoom={1.5} minZoom={1}
+                        style={{ width: '100%', height: '100%' }}
+                        attributionControl={false}>
+            {/* Basemap bebas ganti provider lain */}
+            <TileLayer
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+              attribution="&copy; OpenStreetMap contributors"
+            />
+            <ZoomButtons />
+            
+          </MapContainer>
+          <div className="year-display">{year}</div>
         </div>
 
+        {/* ---- TIMELINE SLIDER ---- */}
         <div className="timeline-container-bottom">
-          <div className="timeline-track">
-            {yearMarks.map(year => (
-              <div
-                key={year}
-                className={`year-mark${year % 500 === 0 ? ' major' : ''}`}
-                style={{ left: `${((year - startYear) / (endYear - startYear)) * 100}%` }}
-              >
-                <div className="year-mark-line"></div>
-                <div className="year-mark-label">{year}</div>
-              </div>
-            ))}
+          <div className="timeline-scroll-wrapper" ref={wrapperRef}>
+            <div className="timeline-track" ref={trackRef}>
+              <div className="timeline-track-line"></div>
 
-            <input
-              type="range"
-              min={startYear}
-              max={endYear}
-              value={currentYear}
-              onChange={handleTimelineChange}
-              className="timeline-slider"
-            />
+              {marks.map(m => (
+                <div key={m} className={`year-mark${m % 100 === 0 ? ' major' : ''}`}
+                     style={{ left: `${((m - startYear)/(endYear-startYear))*100}%` }}>
+                  <div className="year-mark-line"></div>
+                  {m % 100 === 0 && <div className="year-mark-label">{m}</div>}
+                </div>
+              ))}
 
-            <div
-              className="current-indicator"
-              style={{ left: `${timelinePosition}%` }}
-            >
-              <div className="indicator-dot"></div>
+              <input type="range" min={startYear} max={endYear} step="1"
+                     value={year} onChange={handleYear} className="timeline-slider" />
             </div>
           </div>
         </div>

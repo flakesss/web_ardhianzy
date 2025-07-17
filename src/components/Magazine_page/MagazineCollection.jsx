@@ -8,91 +8,91 @@ const MagazineCollection = () => {
       title: 'LOREM IPSUM DOLOR SIT',
       author: 'Lorem',
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-      image: 'src/assets/magazine/Rectangle 4558.png'
+      image: '/assets/magazine/Rectangle 4558.png'
     },
     {
       id: 2,
       title: 'LOREM IPSUM DOLOR SIT',
       author: 'Lorem',
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-      image: 'src/assets/magazine/Rectangle 4528.png'
+      image: '/assets/magazine/Rectangle 4528.png'
     },
     {
       id: 3,
       title: 'LOREM IPSUM DOLOR SIT',
       author: 'Lorem',
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-      image: 'src/assets/magazine/Rectangle 4558.png'
+      image: '/assets/magazine/Rectangle 4558.png'
     },
     {
       id: 4,
       title: 'LOREM IPSUM DOLOR SIT',
       author: 'Lorem',
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-      image: 'src/assets/magazine/Rectangle 4528.png'
+      image: '/assets/magazine/Rectangle 4528.png'
     },
     {
       id: 5,
       title: 'LOREM IPSUM DOLOR SIT',
       author: 'Lorem',
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-      image: 'src/assets/magazine/Rectangle 4558.png'
+      image: '/assets/magazine/Rectangle 4558.png'
     },
     {
       id: 6,
       title: 'LOREM IPSUM DOLOR SIT',
       author: 'Lorem',
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-      image: 'src/assets/magazine/Rectangle 4528.png'
+      image: '/assets/magazine/Rectangle 4528.png'
     },
     {
       id: 7,
       title: 'LOREM IPSUM DOLOR SIT',
       author: 'Lorem',
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-      image: 'src/assets/magazine/Rectangle 4558.png'
+      image: '/assets/magazine/Rectangle 4558.png'
     },
     {
       id: 8,
       title: 'LOREM IPSUM DOLOR SIT',
       author: 'Lorem',
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-      image: 'src/assets/magazine/Rectangle 4528.png'
+      image: '/assets/magazine/Rectangle 4528.png'
     },
     {
       id: 9,
       title: 'LOREM IPSUM DOLOR SIT',
       author: 'Lorem',
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-      image: 'src/assets/magazine/Rectangle 4558.png'
+      image: '/assets/magazine/Rectangle 4558.png'
     },
     {
       id: 10,
       title: 'LOREM IPSUM DOLOR SIT',
       author: 'Lorem',
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-      image: 'src/assets/magazine/Rectangle 4528.png'
+      image: '/assets/magazine/Rectangle 4528.png'
     },
     {
       id: 11,
       title: 'LOREM IPSUM DOLOR SIT',
       author: 'Lorem',
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-      image: 'src/assets/magazine/Rectangle 4558.png'
+      image: '/assets/magazine/Rectangle 4558.png'
     },
     {
       id: 12,
       title: 'LOREM IPSUM DOLOR SIT',
       author: 'Lorem',
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-      image: 'src/assets/magazine/Rectangle 4528.png'
+      image: '/assets/magazine/Rectangle 4528.png'
     },
     {
       id: 13,
       title: 'LOREM IPSUM DOLOR SIT',
       author: 'Lorem',
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-      image: 'src/assets/magazine/Rectangle 4558.png'
+      image: '/assets/magazine/Rectangle 4558.png'
     }
   ]);
 

@@ -4,26 +4,26 @@ import './Course.css';
 
 const courseData = [
   {
-    img: 'src/assets/course/09.png',
+    img: '/assets/course/09.png',
     mainTitle: 'Kebenaran Sudah Mati, Inilah Dunia Postmodern! Dari Nietzsche Hingga Foucault',
     subTitle: 'PHILOSOPHY 101',
     date: '08 Feb 2024',
     excerpt: 'Season 2 anime Vinland Saga menjadi anime terbaik tahun lalu…',
   },
   {
-    img: 'src/assets/course/08.png',
+    img: '/assets/course/08.png',
     mainTitle: 'Dari Kesadaran Hingga Revolusi, Dari Idealisme Hegel Hingga Materialisme Marx ',
     subTitle: 'PHILOSOPHY 101',
     date: '08 Feb 2024',
     excerpt: '“Tuhan telah mati. Tuhan tetap mati. Dan kita telah membunuhnya.”…',
   },{
-    img: 'src/assets/course/07.png',
+    img: '/assets/course/07.png',
     mainTitle: 'Bagaimana Kita Tahu Apa Yang Kita Tahu? | Epistemologi Descartes, Hume dan Kant ',
     subTitle: 'PHILOSOPHY 101',
     date: '08 Feb 2024',
     excerpt: '“Tuhan telah mati. Tuhan tetap mati. Dan kita telah membunuhnya.”…',
   },{
-    img: 'src/assets/course/06.png',
+    img: '/assets/course/06.png',
     mainTitle: 'Filsafat Politik Yang Mengubah Sejarah! Machiavelli, Hobbes, Locke, dan Rousseau',
     subTitle: 'PHILOSOPHY 101',
     date: '08 Feb 2024',

@@ -9,7 +9,7 @@ export default function PageHeader() {
       <header className="page-header">
         <Link to="/" className="page-header__logo">
           <img
-            src="src/assets/icon/Ardhianzy_Logo 2.png"
+            src="/assets/icon/Ardhianzy_Logo 2.png"
             alt="Logo"
             className="page-header__logo-img"
           />

@@ -4,25 +4,25 @@ import './IdeasTradition.css';
 
 const ideas = [
   {
-    img: 'src/assets/research/Desain tanpa judul.png',
+    img: '/assets/research/Desain tanpa judul.png',
     title: 'LOREM IPSUM DOLOR SIT',
     excerpt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.',
     link: '#',
   },
   {
-    img: 'src/assets/research/Desain tanpa judul.png',
+    img: '/assets/research/Desain tanpa judul.png',
     title: 'LOREM IPSUM DOLOR SIT',
     excerpt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.',
     link: '#',
   },
   {
-    img: 'src/assets/research/Desain tanpa judul.png',
+    img: '/assets/research/Desain tanpa judul.png',
     title: 'LOREM IPSUM DOLOR SIT',
     excerpt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.',
     link: '#',
   },
   {
-    img: 'src/assets/research/Desain tanpa judul.png',
+    img: '/assets/research/Desain tanpa judul.png',
     title: 'LOREM IPSUM DOLOR SIT',
     excerpt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.',
     link: '#',
@@ -30,7 +30,7 @@ const ideas = [
 ];
 
 const featured = {
-  img: 'src/assets/research/Desain tanpa judul.png',
+  img: '/assets/research/Desain tanpa judul.png',
   title: 'LOREM IPSUM DOLOR SIT',
   excerpt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.',
   link: '#',

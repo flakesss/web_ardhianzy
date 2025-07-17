@@ -7,7 +7,7 @@ export default function Footer() {
       <div className="footer-container">
         {/* Logo */}
         <div className="footer-logo">
-          <img src="src/assets/icon/Ardhianzy_Logo 2.png" alt="Ardhianzy Logo" />
+          <img src="/assets/icon/Ardhianzy_Logo 2.png" alt="Ardhianzy Logo" />
         </div>
 
         {/* Links */}

@@ -1,6 +1,6 @@
 .community-section {
   background-color: #000;    
-  background-image: url('src/assets/Community/Intro.png');
+  background-image: url('/assets/Community/Intro.png');
   background-repeat: no-repeat;
   background-position: center center;
   background-size: 75%;

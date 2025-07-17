@@ -4,7 +4,7 @@ import './PopCultureReview.css';
 
 const reviews = [
   {
-    img: 'src/assets/pop/pop1.jpg',
+    img: '/assets/pop/pop1.jpg',
     title: 'LOREM IPSUM DOLOR SIT',
     excerpt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.',
     link: '#',

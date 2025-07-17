@@ -1,0 +1,86 @@
+
+.artikel-section {
+  width: 100%;
+  padding: 3rem 0;
+  background-color: #000;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+.slider-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.slide {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.slide.active {
+  opacity: 1;
+}
+
+.slide-inner {
+  display: flex;
+  width: 90%;
+  max-width: 1100px;
+}
+
+.slide-inner img {
+  width: 65%;
+  object-fit: cover;
+  filter: grayscale(100%);
+}
+
+.caption {
+  width: 35%;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.caption h3 {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 2.2rem;
+  line-height: 1.1;
+}
+
+.caption p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #d1d5db;
+}
+
+.nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.6);
+  border: none;
+  padding: 0.6rem 1rem;
+  color: #fff;
+  font-size: 2rem;
+  cursor: pointer;
+  z-index: 5;
+  transition: background 0.3s ease;
+}
+
+.nav-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.nav-left {
+  left: 1rem;
+}
+
+.nav-right {
+  right: 1rem;
+}

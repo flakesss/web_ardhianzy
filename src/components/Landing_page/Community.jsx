@@ -16,7 +16,7 @@ export default function Community() {
           <button className="community-button">
             JOIN OUR DISCORD
             <img
-              src="src/assets/icon/discord.svg"
+              src="/assets/icon/discord.svg"
               alt="Discord"
               className="discord-icon"
             />

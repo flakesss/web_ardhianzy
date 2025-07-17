@@ -9,7 +9,7 @@ function Navbar() {
       {/* wrap logo + brand-name dengan Link ke "/" */}
       <Link to="/" className="navbar-logo">
         <img
-          src="src/assets/icon/Ardhianzy_Logo 2.png"
+          src="/assets/icon/Ardhianzy_Logo 2.png"
           alt="Logo"
           className="logo-image"
         />

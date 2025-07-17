@@ -24,7 +24,10 @@ function NavbarLinks() {
             MAGAZINE
           </NavLink>
         </li>
-        <li><a href="#research">RESEARCH</a></li>
+        <li><NavLink to="/research" className={({ isActive }) => isActive ? 'active' : ''}>
+            RESEARCH
+          </NavLink>
+        </li>
         <li><a href="#course">COURSE</a></li>
         <li><a href="#monologues">MONOLOGUES</a></li>
         <li><a href="#reading-guide">READING GUIDE</a></li>

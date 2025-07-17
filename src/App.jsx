@@ -26,6 +26,8 @@ import Footer from './components/Footer';
 
 import MagazinePage from './pages/MagazinePage';
 import ShopPage from './pages/ShopPage';
+import ResearchPage from './pages/ResearchPage';
+import TimelineOfThought from './components/Landing_page/TimelineOfThought';
 
 function AppContent() {
   const location = useLocation();
@@ -65,6 +67,7 @@ function AppContent() {
             path="/"
             element={
               <>
+
                 <Highlight />
                 <MagazinePreview />
                 <Research />
@@ -81,6 +84,7 @@ function AppContent() {
           />
           <Route path="/magazine" element={<MagazinePage />} />
           <Route path="/shop" element={<ShopPage />} />
+          <Route path="/research" element={<ResearchPage />} />
         </Routes>
       </div>
 

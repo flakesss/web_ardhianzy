@@ -4,28 +4,28 @@ import './Research.css';
 
 const researchData = [
   {
-    img: 'src/assets/research/Desain tanpa judul.png',
+    img: '/assets/research/Desain tanpa judul.png',
     title: 'LOREM IPSUM DOLOR SIT',
     date: '22 May, 2025',
     excerpt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna',
     link: '#',
   },
   {
-    img: 'src/assets/research/Research (3).png',
+    img: '/assets/research/Research (3).png',
     title: 'LOREM IPSUM DOLOR SIT',
     date: '22 May, 2025',
     excerpt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna',
     link: '#',
   },
   {
-    img: 'src/assets/research/Research (1).png',
+    img: '/assets/research/Research (1).png',
     title: 'LOREM IPSUM DOLOR SIT',
     date: '22 May, 2025',
     excerpt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna',
     link: '#',
   },
   {
-    img: 'src/assets/research/Research (2).png',
+    img: '/assets/research/Research (2).png',
     title: 'LOREM IPSUM DOLOR SIT',
     date: '22 May, 2025',
     excerpt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna',

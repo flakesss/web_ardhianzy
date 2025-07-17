@@ -5,7 +5,7 @@ import './LatestVideos.css';
 const videos = [
   {
     id: 1,
-    thumb: 'src/assets/course/01.png',
+    thumb: '/assets/course/01.png',
     date: '08 Feb 2024',
     title: 'Pemilu dan Demokrasi itu Salah! Menurut Para Filsuf',
     description: 'Sebuah pengantar singkat tentang pemikiran para filsuf mengenai demokrasi dan pemilu.',
@@ -13,7 +13,7 @@ const videos = [
   },
   {
     id: 2,
-    thumb: 'src/assets/course/02.png',
+    thumb: '/assets/course/02.png',
     date: '08 Feb 2024',
     title: 'Kebangkitan Penghancur Dunia',
     description: 'Biografi singkat Adolf Hitler dan dampak historisnya.',
@@ -21,7 +21,7 @@ const videos = [
   },
   {
     id: 3,
-    thumb: 'src/assets/course/03.png',
+    thumb: '/assets/course/03.png',
     date: '08 Feb 2024',
     title: 'Anime Terbaik 2023: Vinland Saga Season 2',
     description: 'Ulasan tentang anime Vinland Saga musim kedua yang sangat dinantikan.',
@@ -29,7 +29,7 @@ const videos = [
   },
   {
     id: 4,
-    thumb: 'src/assets/course/04.png',
+    thumb: '/assets/course/04.png',
     date: '08 Feb 2024',
     title: '“Tuhan Telah Mati” – Nietzsche',
     description: 'Penjelasan konteks dari kutipan terkenal Friedrich Nietzsche.',
@@ -37,7 +37,7 @@ const videos = [
   },
   {
     id: 5,
-    thumb: 'src/assets/course/05.png',
+    thumb: '/assets/course/05.png',
     date: '08 Feb 2024',
     title: 'Bagaimana Kekaisaran Mongol Hancur?',
     description: 'Membedah faktor-faktor yang menyebabkan runtuhnya Kekaisaran Mongol.',

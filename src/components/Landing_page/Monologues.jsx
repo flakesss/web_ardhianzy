@@ -3,19 +3,19 @@ import './Monologues.css';
 
 const monoData = [
   {
-    img: 'src/assets/monologues/Desain tanpa judul.png',
+    img: '/assets/monologues/Desain tanpa judul.png',
     title: 'LOREM IPSUM DOLOR SIT',
     excerpt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna',
     author: 'By bla bla bla',
   },
   {
-    img: 'src/assets/monologues/mono1.png',
+    img: '/assets/monologues/mono1.png',
     title: 'LOREM IPSUM DOLOR SIT',
     excerpt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna',
     author: 'By bla bla bla',
   },
   {
-    img: 'src/assets/monologues/mono2.png',
+    img: '/assets/monologues/mono2.png',
     title: 'LOREM IPSUM DOLOR SIT',
     excerpt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna',
     author: 'By bla bla bla',
@@ -47,7 +47,7 @@ export default function Monologues () {
 
           <div className="monologue-card featured"
                 style={{
-                    backgroundImage: "url('src/assets/monologues/Group 5020.svg')",
+                    backgroundImage: "url('/assets/monologues/Group 5020.svg')",
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
                         }}>
@@ -55,7 +55,7 @@ export default function Monologues () {
               LOREM IPSUM DOLOR SIT
             </h3>
             <div className="monologue-img featured-img">
-              <img src="src/assets/monologues/mono3.png " alt="Featured" />
+              <img src="/assets/monologues/mono3.png " alt="Featured" />
             </div>
             <p className="monologue-excerpt featured-excerpt">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna

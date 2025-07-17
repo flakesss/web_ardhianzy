@@ -4,25 +4,25 @@ import './ReadingGuide.css';
 
 const books = [
   {
-    img: 'src/assets/reading guide/Ecce Homo.jpeg',
+    img: '/assets/reading guide/Ecce Homo.jpeg',
     title: 'ECCE HOMO',
     author: 'By Friedrich Nietzsche',
     excerpt: 'Ecce Homo adalah otobiografi intelektual Friedrich Nietzsche...',
   },
   {
-    img: 'src/assets/reading guide/Thus Spoke Zarathustra.jpeg',
+    img: '/assets/reading guide/Thus Spoke Zarathustra.jpeg',
     title: 'THUS SPOKE ZARATHUSTRA',
     author: 'By Friedrich Nietzsche',
     excerpt: 'Thus Spoke Zarathustra adalah karya filsafat-sastra Friedrich Nietzsche...',
   },
   {
-    img: 'src/assets/reading guide/cc68a255-f8b0-4d15-9798-e0e5ac96320f.jpeg',
+    img: '/assets/reading guide/cc68a255-f8b0-4d15-9798-e0e5ac96320f.jpeg',
     title: 'BEYOND GOOD AND EVIL',
     author: 'By Friedrich Nietzsche',
     excerpt: 'Beyond Good and Evil (1886) adalah karya kunci Friedrich Nietzsche...',
   },
   {
-    img: 'src/assets/reading guide/buku zoom.png',
+    img: '/assets/reading guide/buku zoom.png',
     title: 'LOREM IPSUM DOLOR SIT',
     author: 'By bla bla bla',
     excerpt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit...',

@@ -19,7 +19,7 @@ const Magazine = () => (
         <div className="magazine-card-large">
           <div className="magazine-card-large-img">
             <img
-              src="src/assets/magazine/Rectangle 4558.png"
+              src="/assets/magazine/Rectangle 4558.png"
               alt="Man standing in front of a painting"
             />
           </div>
@@ -44,7 +44,7 @@ const Magazine = () => (
         <div className="magazine-card-small">
           <div className="magazine-card-small-img">
             <img
-              src="src/assets/magazine/Rectangle 4528.png"
+              src="/assets/magazine/Rectangle 4528.png"
               alt="Apple on a stand"
             />
           </div>
@@ -62,7 +62,7 @@ const Magazine = () => (
         <div className="magazine-card-small">
           <div className="magazine-card-small-img">
             <img
-              src="src/assets/magazine/Rectangle 4529.png"
+              src="/assets/magazine/Rectangle 4529.png"
               alt="People in a painting"
             />
           </div>
