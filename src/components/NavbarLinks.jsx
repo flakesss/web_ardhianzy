@@ -29,10 +29,19 @@ function NavbarLinks() {
           </NavLink>
         </li>
         <li><a href="#course">COURSE</a></li>
-        <li><a href="#monologues">MONOLOGUES</a></li>
+        <li><NavLink to="/monologues" className={({ isActive }) => isActive ? 'active' : ''}>
+            MONOLOGUES
+          </NavLink>
+        </li>
         <li><a href="#reading-guide">READING GUIDE</a></li>
-        <li><a href="#ideas-tradition">IDEAS & TRADITION</a></li>
-        <li><a href="#pop-culture">POP-CULTURE REVIEW</a></li>
+        <li><NavLink to="/IdeasTradition" className={({ isActive }) => isActive ? 'active' : ''}>
+            IDEAS & TRADITION
+          </NavLink>
+        </li>
+        <li><NavLink to="/PopCultureReview" className={({ isActive }) => isActive ? 'active' : ''}>
+            POP-CULTURE REVIEW
+          </NavLink>
+        </li>
         <li>
           <NavLink to="/shop" className={({ isActive }) => isActive ? 'active' : ''}>
             SHOPS

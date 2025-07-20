@@ -2,74 +2,88 @@
 import React, { useState } from 'react';
 import './ArtikelSection.css';
 
-// Dummy data – ganti dengan data dari backend/API nanti
+// Dummy data
 const articles = [
   {
     id: 1,
+    date: 'May 5, 2025',
     title: 'Lorem Ipsum Dolor Sit',
-    desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.',
-    image: '/assets/magazine/Rectangle 4558.png',
+    desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+    image: '/assets/research/Research (2).png',
   },
   {
     id: 2,
-    title: 'Sed Ut Perspiciatis',
-    desc: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.',
-    image: '/assets/article2.jpg',
+    date: 'May 5, 2025',
+    title: 'Lorem Ipsum Dolor Sit',
+    desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+    image: '/assets/research/Husk.jpg',
   },
   {
     id: 3,
-    title: 'Nemo Enim Ipsam',
-    desc: 'Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.',
-    image: '/assets/article3.jpg',
+    date: 'May 5, 2025',
+    title: 'Lorem Ipsum Dolor Sit',
+    desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+    image: '/assets/research/Research (2).png',
   },
   {
     id: 4,
-    title: 'Ut Enim Ad Minima',
-    desc: 'Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam.',
-    image: '/assets/article4.jpg',
+    date: 'May 5, 2025',
+    title: 'Artikel Keempat',
+    desc: 'Ini adalah artikel keempat yang awalnya sebagian tersembunyi.',
+    image: '/assets/research/Husk.jpg',
   },
   {
     id: 5,
-    title: 'Quis Nostrum Exercitationem',
-    desc: 'Quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur.',
-    image: '/assets/article5.jpg',
+    date: 'May 5, 2025',
+    title: 'Artikel Kelima',
+    desc: 'Ini adalah artikel kelima yang akan muncul setelah load more.',
+    image: '/assets/research/Research (2).png',
   },
 ];
 
 export default function ArtikelSection() {
-  const [current, setCurrent] = useState(0);
-  const length = articles.length;
+  const [isExpanded, setIsExpanded] = useState(false);
 
-  const nextSlide = () => setCurrent((current + 1) % length);
-  const prevSlide = () => setCurrent((current - 1 + length) % length);
-
-  if (!Array.isArray(articles) || length === 0) return null;
+  const handleLoadMore = () => {
+    setIsExpanded(true);
+  };
 
   return (
     <section className="artikel-section">
-      <div className="slider-wrapper">
-        {/* Arrow kiri */}
-        <button className="nav-btn nav-left" onClick={prevSlide} aria-label="Sebelumnya">&#10094;</button>
-
-        {articles.map((art, index) => (
-          <div
-            className={index === current ? 'slide active' : 'slide'}
-            key={art.id}
-          >
-            {index === current && (
-              <div className="slide-inner">
-                <img src={art.image} alt={art.title} />
-                <div className="caption">
-                  <h3>{art.title}</h3>
-                  <p>{art.desc}</p>
+      <div className="container">
+        <h2 className="section-title">LATEST RESEARCH</h2>
+        
+        {/* Wrapper untuk daftar artikel dan tombol "Load More" */}
+        <div className="artikel-list-container">
+          {/* Tambahkan kelas 'is-expanded' saat state true */}
+          <div className={`artikel-list ${isExpanded ? 'is-expanded' : ''}`}>
+            {articles.map((article) => (
+              <article className="artikel-item" key={article.id}>
+                <div className="artikel-gambar-wrapper">
+                  <img 
+                    src={article.image} 
+                    alt={article.title} 
+                    className="artikel-gambar" 
+                  />
                 </div>
-              </div>
-            )}
+                <div className="artikel-konten">
+                  <p className="artikel-tanggal">{article.date}</p>
+                  <h3 className="artikel-judul">{article.title}</h3>
+                  <p className="artikel-deskripsi">{article.desc}</p>
+                </div>
+              </article>
+            ))}
           </div>
-        ))}
 
-        {/* Arrow kanan */}
-        <button className="nav-btn nav-right" onClick={nextSlide} aria-label="Berikutnya">&#10095;</button>
+          {/* Tampilkan tombol HANYA jika daftar belum diperluas */}
+          {!isExpanded && (
+            <div className="load-more-container">
+              <button className="load-more-button" onClick={handleLoadMore}>
+                LOAD MORE...
+              </button>
+            </div>
+          )}
+        </div>
       </div>
     </section>
   );

@@ -3,11 +3,16 @@
 /* HIGHLIGHT SECTION STYLES */
 .highlight-section {
   position: relative;
-  width: 100%;
+  width: 100vw; /* Paksa lebar menjadi 100% dari lebar viewport/layar */
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw; /* Trik untuk memusatkan elemen yang lebarnya 100vw */
+  
   height: 60vh;
-  background-image: url('src/assets/Group 4981.svg');
+  background-image: url('/assets/Group 4981.svg');
   background-size: cover;
   background-position: center;
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -34,7 +39,7 @@
 .article-slider-container {
   position: relative;
   width: 100%;
-  padding: 80px 0;
+  padding: 20px 0;
   background-color: #000;
   overflow: hidden; /* Tetap hidden untuk memotong ujung terluar */
 }
@@ -137,7 +142,7 @@
   position: absolute;
   inset: 0;
   background: linear-gradient(135deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.6) 50%, transparent 100%);
-  padding: 40px 50px;
+  padding: 30px 40px;
   color: white;
   display: flex;
   flex-direction: column;
@@ -148,7 +153,7 @@
 .article-title {
   font-family: 'Bebas Neue', cursive;
   font-size: 3.5rem;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   text-transform: uppercase;
   line-height: 1;
   letter-spacing: 2px;
@@ -161,6 +166,7 @@
   line-height: 1.6;
   opacity: 0.9;
   max-width: 450px;
+  text-align: left;
 }
 
 /* NAVIGATION BUTTONS */
@@ -172,15 +178,19 @@
   height: 60px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: 2px solid rgba(255, 255, 255, 0.3);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 2rem;
+  font-size: 1.5rem;
   color: #fff;
   cursor: pointer;
-  transition: background 0.3s ease, transform 0.3s ease;
+  transition: all 0.3s ease;
   z-index: 10;
+  /* Pastikan bulat sempurna */
+  aspect-ratio: 1 / 1;
+  line-height: 1;
+  padding: 0;
 }
 
 .slider-nav:hover {
@@ -219,13 +229,13 @@
     height: 300px;
   }
   .slider-nav {
-    width: 40px;
-    height: 40px;
-    font-size: 1.5rem;
+    width: 45px;
+    height: 45px;
+    font-size: 1.2rem;
   }
   .slider-nav.prev { left: 10px; }
   .slider-nav.next { right: 10px; }
-  .article-overlay { padding: 25px 30px; }
-  .article-title { font-size: 2.5rem; }
+  .article-overlay { padding: 20px 25px; }
+  .article-title { font-size: 2.5rem; margin-bottom: 8px; }
   .article-description { font-size: 0.9rem; }
 }

@@ -1,0 +1,248 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap');
+
+/* HIGHLIGHT SECTION STYLES */
+.pop-culture-highlight-wrapper .highlight-section {
+  position: relative;
+  width: 100vw;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  height: 60vh;
+  background-image: url('/assets/PopCulture/dadasdfe.png'); /* Ganti dengan gambar yang sesuai */
+  background-color: #000;
+  background-blend-mode: luminosity;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pop-culture-highlight-wrapper .highlight-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.85) 30%, transparent 100%);
+  z-index: 1;
+}
+
+.pop-culture-highlight-wrapper .highlight-title {
+  position: relative;
+  z-index: 2;
+  color: #fff;
+  font-family: 'Bebas Neue', cursive;
+  font-size: 5rem;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+/* ARTICLE SLIDER STYLES */
+.pop-culture-highlight-wrapper .article-slider-container {
+  position: relative;
+  width: 100%;
+  padding: 20px 0;
+  background-color: #000;
+  overflow: hidden; 
+}
+
+.pop-culture-highlight-wrapper .article-slider-container::before,
+.pop-culture-highlight-wrapper .article-slider-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 15%; 
+  max-width: 200px;
+  z-index: 3; 
+  pointer-events: none;
+}
+
+.pop-culture-highlight-wrapper .article-slider-container::before {
+  left: 0;
+  background: linear-gradient(to right, #000 30%, transparent 100%);
+}
+
+.pop-culture-highlight-wrapper .article-slider-container::after {
+  right: 0;
+  background: linear-gradient(to left, #000 30%, transparent 100%);
+}
+
+.pop-culture-highlight-wrapper .article-slider-wrapper {
+  position: relative;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 100%;
+  width: 100%;
+}
+
+.pop-culture-highlight-wrapper .article-slider-viewport {
+  width: 100%;
+  height: 417px;
+  overflow: visible;
+  position: relative;
+}
+
+.pop-culture-highlight-wrapper .article-slider {
+  display: flex;
+  align-items: center;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  gap: 30px;
+  height: 100%;
+  position: relative;
+  transform: translateX(calc(50% - (1029px / 2) - (var(--current-index) * (1029px + 30px))));
+}
+
+.pop-culture-highlight-wrapper .article-card {
+  flex-shrink: 0;
+  width: 1029px;
+  height: 417px;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  background-color: #111;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+  transform: scale(0.85);
+  opacity: 0.5;
+}
+
+.pop-culture-highlight-wrapper .article-card.is-active {
+   transform: scale(1);
+   opacity: 1;
+}
+
+.pop-culture-highlight-wrapper .article-card:hover {
+  transform: scale(1.02);
+  opacity: 1;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+.pop-culture-highlight-wrapper .article-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(100%);
+  transition: filter 0.3s ease;
+}
+
+.pop-culture-highlight-wrapper .article-card:hover img {
+  filter: grayscale(0%);
+}
+
+.pop-culture-highlight-wrapper .article-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.6) 50%, transparent 100%);
+  padding: 30px 40px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  max-width: none;
+}
+
+.pop-culture-highlight-wrapper .article-title {
+  font-family: 'Bebas Neue', cursive;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 3.5rem;
+  line-height: 1;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  max-width: 500px;
+}
+
+.pop-culture-highlight-wrapper .article-description {
+  font-family: Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.6;
+  opacity: 0.9;
+  max-width: 450px;
+  text-align: left;
+}
+
+
+/* NAVIGATION BUTTONS */
+.pop-culture-highlight-wrapper .slider-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  box-sizing: border-box;
+  background-color: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 2.2rem;
+  line-height: 0;
+  padding-bottom: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.pop-culture-highlight-wrapper .slider-nav:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+  transform: translateY(-50%) scale(1.05);
+}
+
+.pop-culture-highlight-wrapper .slider-nav.prev {
+  left: 40px;
+}
+
+.pop-culture-highlight-wrapper .slider-nav.next {
+  right: 40px;
+}
+
+/* RESPONSIVE STYLES */
+@media (max-width: 1200px) {
+  .pop-culture-highlight-wrapper .article-slider {
+    transform: translateX(calc(50% - (90vw / 2) - (var(--current-index) * (90vw + 20px))));
+    gap: 20px;
+  }
+  .pop-culture-highlight-wrapper .article-card {
+    width: 90vw;
+    height: 350px;
+  }
+}
+
+@media (max-width: 768px) {
+  .pop-culture-highlight-wrapper .article-slider-container {
+    padding: 40px 0;
+  }
+  .pop-culture-highlight-wrapper .article-slider {
+    transform: translateX(calc(50% - (95vw / 2) - (var(--current-index) * (95vw + 15px))));
+    gap: 15px;
+  }
+  .pop-culture-highlight-wrapper .article-card {
+    width: 95vw;
+    height: 300px;
+  }
+  .pop-culture-highlight-wrapper .slider-nav {
+    width: 45px;
+    height: 45px;
+    font-size: 1.5rem;
+  }
+  .pop-culture-highlight-wrapper .slider-nav.prev { left: 10px; }
+  .pop-culture-highlight-wrapper .slider-nav.next { right: 10px; }
+  
+  .pop-culture-highlight-wrapper .article-overlay { 
+    padding: 20px 25px; 
+  }
+  .pop-culture-highlight-wrapper .article-title { 
+    font-size: 2.5rem; 
+    margin-bottom: 8px; 
+  }
+  .pop-culture-highlight-wrapper .article-description { 
+    font-size: 0.9rem; 
+  }
+}

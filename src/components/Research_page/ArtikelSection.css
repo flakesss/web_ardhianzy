@@ -1,86 +1,183 @@
+/* Impor font yang digunakan dari Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:ital,wght@0,400;1,200&display=swap');
 
 .artikel-section {
   width: 100%;
-  padding: 3rem 0;
+  padding: 80px 0;
   background-color: #000;
-  color: #fff;
-  position: relative;
-  overflow: hidden;
+  color: #FFFFFF;
 }
 
-.slider-wrapper {
-  position: relative;
-  display: flex;
-  align-items: center;
+.artikel-section .container {
+  max-width: 1331px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
-.slide {
-  opacity: 0;
-  transition: opacity 0.5s ease;
-  width: 100%;
-  display: flex;
-  justify-content: center;
+.section-title {
+  font-family: 'Bebas Neue', cursive;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 48px;
+  line-height: 58px;
+  color: #FFFFFF;
+  margin-bottom: 40px; 
+  border-top: 1px solid #FFFFFF; 
+  padding-top: 20px; 
+  text-align: left; 
 }
 
-.slide.active {
-  opacity: 1;
+.artikel-list-container {
+  position: relative; /* Penting untuk positioning tombol load more */
 }
 
-.slide-inner {
-  display: flex;
-  width: 90%;
-  max-width: 1100px;
-}
-
-.slide-inner img {
-  width: 65%;
-  object-fit: cover;
-  filter: grayscale(100%);
-}
-
-.caption {
-  width: 35%;
-  padding: 1.5rem;
+.artikel-list {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  gap: 1rem;
+  gap: 60px;
+  
+  /* KUNCI: Batasi tinggi container untuk menampilkan 3.25 artikel */
+  max-height: 1350px; /* (Tinggi 3 item + 2 gap + sedikit item ke-4) */
+  overflow: hidden; /* Sembunyikan sisa artikel */
+  transition: max-height 0.7s ease-in-out; /* Animasi saat diperluas */
 }
 
-.caption h3 {
+.artikel-list.is-expanded {
+  /* Saat diperluas, atur max-height ke nilai yang sangat besar */
+  max-height: 5000px; /* Cukup besar untuk semua artikel */
+}
+
+.artikel-item {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.artikel-item {
+  display: flex;
+  align-items: center;
+  gap: 30px; 
+}
+
+.artikel-gambar-wrapper {
+  flex-shrink: 0; 
+}
+
+.artikel-gambar {
+  width: 599px;
+  height: 365px;
+  object-fit: cover;
+  filter: grayscale(100%);
+  display: block;
+}
+.artikel-konten {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 552px;
+}
+
+
+.artikel-tanggal {
+  font-family: 'Roboto', sans-serif;
+  font-style: italic;
+  font-weight: 200;
+  font-size: 26px;
+  color: #FFFFFF;
+  
+  line-height: 1; 
+  margin-bottom: -40px; 
+}
+
+.artikel-judul {
   font-family: 'Bebas Neue', cursive;
-  font-size: 2.2rem;
-  line-height: 1.1;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 64px;
+  color: #FFFFFF;
+  text-shadow: 0px 4px 50px rgba(0, 0, 0, 0.25);
+
+  line-height: 1; 
+  margin-bottom: -10px; 
 }
 
-.caption p {
-  font-size: 0.95rem;
-  line-height: 1.6;
-  color: #d1d5db;
+
+.artikel-deskripsi {
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 1.5;
+  text-align: justify;
+  color: #FFFFFF;
 }
 
-.nav-btn {
+.load-more-container {
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(0, 0, 0, 0.6);
-  border: none;
-  padding: 0.6rem 1rem;
-  color: #fff;
-  font-size: 2rem;
-  cursor: pointer;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 80px; /* Tinggi area gradasi */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(0deg, #000000 16.35%, rgba(0, 0, 0, 0) 100%);
   z-index: 5;
-  transition: background 0.3s ease;
 }
 
-.nav-btn:hover {
-  background: rgba(255, 255, 255, 0.2);
+/* Tombol "Load More" */
+.load-more-button {
+  font-family: 'Bebas Neue', cursive;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 42px;
+  line-height: 48px;
+  letter-spacing: 0.05em;
+  color: #FFFFFF;
+  
+  /* Hapus style default tombol */
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
 }
 
-.nav-left {
-  left: 1rem;
+.load-more-button:hover {
+  opacity: 0.8;
+}
+/* --- Media Queries untuk Responsif --- */
+
+@media (max-width: 1200px) {
+  .artikel-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .artikel-gambar {
+    width: 100%;
+    height: auto;
+  }
+  
+  .artikel-konten {
+    max-width: 100%;
+    padding-top: 20px;
+  }
 }
 
-.nav-right {
-  right: 1rem;
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 36px;
+  }
+  
+  .artikel-judul {
+    font-size: 48px;
+  }
+
+  .artikel-deskripsi {
+    font-size: 18px;
+  }
+
+  .artikel-tanggal {
+    font-size: 20px;
+  }
 }

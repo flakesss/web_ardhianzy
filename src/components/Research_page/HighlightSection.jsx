@@ -3,14 +3,24 @@ import React, { useState } from 'react';
 import './HighlightSection.css';
 
 export default function HighlightSection() {
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(2);
 
   const articles = [
-    { id: 1, title: "LOREM IPSUM DOLOR SIT", description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna", image: "/assets/article1.jpg" },
-    { id: 2, title: "CONSECTETUR ADIPISCING", description: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam rem aperiam", image: "/assets/article2.jpg" },
-    { id: 3, title: "EIUSMOD TEMPOR INCIDIDUNT", description: "Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam nisi ut aliquid ex ea", image: "/assets/article3.jpg" },
-    { id: 4, title: "LABORE ET DOLORE MAGNA", description: "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque", image: "/assets/article4.jpg" },
-    { id: 5, "title": "ALIQUA UT ENIM AD MINIM", "description": "Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat", "image": "/assets/article5.jpg" }
+    { id: 1, title: "LOREM IPSUM DOLOR SIT", 
+      description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna", 
+      image: "/assets/research/Research (2).png" },
+    { id: 2, title: "CONSECTETUR ADIPISCING", 
+      description: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam rem aperiam", 
+      image: "/assets/research/Husk.jpg" },
+    { id: 3, title: "EIUSMOD TEMPOR INCIDIDUNT",
+       description: "Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam nisi ut aliquid ex ea", 
+       image: "/assets/research/Husk.jpg" },
+    { id: 4, title: "LABORE ET DOLORE MAGNA", 
+      description: "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque", 
+      image: "/assets/article4.jpg" },
+    { id: 5, title: "ALIQUA UT ENIM AD MINIM", 
+      description: "Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat", 
+      image: "/assets/article5.jpg" }
   ];
 
   const handlePrev = () => {

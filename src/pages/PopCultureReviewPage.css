@@ -1,0 +1,14 @@
+/* src/pages/PopCultureReviewPage.css */
+.pop-culture-review-page {
+  background-color: #000;
+  color: #fff;
+  min-height: 100vh;
+  padding-top: 6rem; 
+
+}
+
+.page-content-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}

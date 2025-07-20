@@ -27,6 +27,9 @@ import Footer from './components/Footer';
 import MagazinePage from './pages/MagazinePage';
 import ShopPage from './pages/ShopPage';
 import ResearchPage from './pages/ResearchPage';
+import MonologuesPage from './pages/MonologuesPage';
+import IdeasTraditionPage from './pages/IdeasTraditionPage';
+import PopCultureReviewPage from './pages/PopCultureReviewPage';
 import TimelineOfThought from './components/Landing_page/TimelineOfThought';
 
 function AppContent() {
@@ -85,6 +88,11 @@ function AppContent() {
           <Route path="/magazine" element={<MagazinePage />} />
           <Route path="/shop" element={<ShopPage />} />
           <Route path="/research" element={<ResearchPage />} />
+          <Route path="/monologues" element={<MonologuesPage/>}/>
+          <Route path="/IdeasTradition" element={<IdeasTraditionPage />}/>
+          <Route path="/PopCultureReview" element={<PopCultureReviewPage />}/>
+
+
         </Routes>
       </div>
 
