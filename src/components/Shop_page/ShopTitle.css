@@ -1,51 +1,52 @@
-/* src/components/ShopPage/ShopTitle.css */
+/* src/components/shop_page/ShopTitle.css */
+
+/* --- Impor Google Fonts --- */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@400&display=swap');
 
 .shop-title {
   position: relative;
   width: 100%;
-  height: 300px;               /* sesuaikan tinggi banner */
+  height: 280px; /* Tinggi disesuaikan agar proporsional */
   background-size: cover;
   background-position: center;
   display: flex;
-  align-items: flex-start;
-  text-align: left;
-  overflow: hidden;            /* pastikan pseudo-element tidak keluar */
+  align-items: center; /* Teks di tengah secara vertikal */
+  overflow: hidden;
 }
 
-/* Gradient overlay: gelap di bawah → transparan di atas */
+/* Gradient overlay dari Figma: transparan di atas -> hitam di bawah */
 .shop-title::before {
   content: '';
   position: absolute;
-  inset: 0;                    /* full-width & full-height */
-  background: linear-gradient(
-    to top,
-    rgba(0, 0, 0, 0.85) 0%,    /* paling gelap di bawah */
-    rgba(0, 0, 0, 0.60) 30%,
-    rgba(0, 0, 0, 0.20) 60%,
-    rgba(0, 0, 0, 0.00) 100%
-  );
-  z-index: 0;                  /* di bawah konten teks */
+  inset: 0;
+  /* Menggunakan gradient dari kode Figma */
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 12.5%, #000000 100%);
+  z-index: 1; /* Di atas background, di bawah teks */
 }
 
 .shop-title__content {
-  position: relative;          /* supaya berada di atas gradient */
-  z-index: 1;
-  margin: 4rem 0 0 6rem;       /* atur posisi teks */
+  position: relative;
+  z-index: 2; /* Pastikan teks di atas gradient overlay */
+  padding: 0 4rem; /* Memberi jarak dari tepi kiri */
+  color: #FFFFFF;
 }
 
 .shop-title__title {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 4rem;
-  color: #fff;
-  letter-spacing: 2px;
-  margin: 0 0 1rem 0;
+  font-weight: 400;
+  /* 72px dari Figma, diubah ke rem untuk responsivitas */
+  font-size: 4.5rem; 
+  line-height: 1;
   text-transform: uppercase;
+  margin: 0 0 0.5rem 0;
+  color: #F5F5F5; /* Warna dari Figma */
 }
 
 .shop-title__subtitle {
   font-family: 'Roboto', sans-serif;
-  font-size: 1.125rem;         /* 18 px */
-  color: #fff;
-  margin: 0;
+  font-weight: 400;
+  /* 18px dari Figma, diubah ke rem */
+  font-size: 1.125rem;
   line-height: 1.4;
+  margin: 0;
 }

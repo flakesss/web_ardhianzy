@@ -25,7 +25,7 @@ export default function PageHeader() {
             <li><NavLink to="/research">RESEARCH</NavLink></li>
             <li><NavLink to="/course">COURSE</NavLink></li>
             <li><NavLink to="/monologues">MONOLOGUES</NavLink></li>
-            <li><NavLink to="/reading-guide">READING GUIDE</NavLink></li>
+            <li><NavLink to="/ReadingGuide">READING GUIDE</NavLink></li>
             <li><NavLink to="/ideastradition">IDEAS & TRADITION</NavLink></li>
             <li><NavLink to="/PopCultureReview">POP-CULTURE REVIEW</NavLink></li>
             <li><NavLink to="/shop">SHOPS</NavLink></li>

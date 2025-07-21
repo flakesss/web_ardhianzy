@@ -30,6 +30,7 @@ import ResearchPage from './pages/ResearchPage';
 import MonologuesPage from './pages/MonologuesPage';
 import IdeasTraditionPage from './pages/IdeasTraditionPage';
 import PopCultureReviewPage from './pages/PopCultureReviewPage';
+import ReadingGuidePage from './pages/ReadingGuidePage';
 import TimelineOfThought from './components/Landing_page/TimelineOfThought';
 
 function AppContent() {
@@ -91,6 +92,8 @@ function AppContent() {
           <Route path="/monologues" element={<MonologuesPage/>}/>
           <Route path="/IdeasTradition" element={<IdeasTraditionPage />}/>
           <Route path="/PopCultureReview" element={<PopCultureReviewPage />}/>
+          <Route path="/ReadingGuide" element={<ReadingGuidePage />} />
+
 
 
         </Routes>

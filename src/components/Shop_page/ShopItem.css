@@ -1,56 +1,156 @@
-/* src/components/ShopPage/ShopItem.css */
+/* src/components/shop_page/ShopItem.css */
 
-.shop-item {
+/* --- Layout Utama: Filter + Etalase --- */
+.shop-section-wrapper {
+  display: grid;
+  grid-template-columns: 250px 1fr; /* Kolom filter 250px, etalase mengisi sisa ruang */
+  gap: 3rem;
+  padding: 0 2rem; /* Padding untuk keseluruhan section */
+}
+
+/* --- Styling untuk Sidebar Filter --- */
+.filter-sidebar__main-title {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 600;
+  font-size: 24px;
+  color: #E1E1E1;
+  margin-bottom: 2rem;
+}
+
+.filter-sidebar__sub-title {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  color: #E1E1E1;
+  margin-bottom: 1rem;
+}
+
+.filter-sidebar__sort-section {
+  margin-bottom: 1.5rem;
+}
+
+.filter-group {
+  margin-bottom: 2rem;
+}
+
+.filter-options-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  background: transparent;
-  margin: 1rem;
-  width: calc(33.333% - 2rem); /* 3 kolom layout dengan gap */
+  gap: 1rem; /* Jarak antar opsi filter */
 }
 
-.shop-item__image-wrapper {
-  width: 100%;
-  overflow: hidden;
-}
-
-.shop-item__image {
-  width: 100%;
-  height: auto;
-  display: block;
-  object-fit: cover;
-}
-
-.shop-item__info {
-  text-align: center;
-  color: #ffffff;
-  margin-top: 1rem;
-}
-
-.shop-item__title {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 1.5rem;
-  margin: 0 0 0.5rem 0;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.shop-item__category {
+.filter-option {
   font-family: 'Roboto', sans-serif;
-  font-size: 0.875rem;
+  font-size: 14px;
+  color: #B1B1B1;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem; /* Jarak antara radio button dan teks */
+  cursor: pointer;
+}
+
+/* Menyembunyikan radio button asli */
+.filter-option input[type="radio"] {
+  display: none;
+}
+
+/* Membuat radio button kustom */
+.custom-radio {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background-color: #444; /* Warna default saat tidak aktif */
+  border: 2px solid #E1E1E1;
+  transition: background-color 0.2s ease;
+}
+
+/* Style saat radio button dipilih */
+.filter-option input[type="radio"]:checked + .custom-radio {
+  background-color: #E1E1E1;
+}
+
+/* --- Styling untuk Etalase Barang --- */
+.etalase-wrapper {
+  width: 100%;
+}
+
+.etalase-title {
+  text-align: center;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2.5rem; /* 40px */
+  margin-bottom: 2rem;
+  color: #F5F5F5;
+}
+
+/* --- Grid Container untuk semua item --- */
+.shop-items-grid {
+  display: grid;
+  /* Membuat kolom yang responsif: minimal 240px, dan akan mengisi ruang yang tersedia */
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 2.5rem 1.5rem; /* Jarak vertikal dan horizontal antar kartu */
+}
+
+/* --- Styling untuk setiap kartu produk --- */
+.product-card {
+  text-align: center;
+}
+
+.product-card__image {
+  width: 100%;
+  aspect-ratio: 190 / 261; /* Rasio aspek dari desain figma (lebar/tinggi) */
+  object-fit: cover;
+  margin-bottom: 1rem;
+}
+
+.product-card__info {
+  padding: 0 0.5rem; /* Sedikit padding agar teks tidak menempel jika terlalu panjang */
+}
+
+.product-card__title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 32px;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  color: #F5F5F5;
+  margin: 0 0 0.25rem 0;
+}
+
+.product-card__category {
+  font-family: 'Roboto', sans-serif;
   font-style: italic;
+  font-size: 12px;
+  font-weight: 400;
+  color: #B1B1B1;
+  margin: 0 0 0.5rem 0;
+}
+
+.product-card__author {
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #E1E1E1;
+  margin: 0 0 1rem 0;
+}
+
+.product-card__price {
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  color: #F5F5F5;
   margin: 0;
 }
 
-.shop-item__author {
-  font-family: 'Roboto', sans-serif;
-  font-size: 0.875rem;
-  margin: 0.25rem 0;
-}
+/* --- Media Query untuk Tampilan Mobile --- */
+@media (max-width: 820px) {
+  .shop-section-wrapper {
+    grid-template-columns: 1fr; /* Ubah jadi 1 kolom */
+  }
 
-.shop-item__price {
-  font-family: 'Roboto', sans-serif;
-  font-size: 1rem;
-  font-weight: bold;
-  margin: 0.5rem 0 0;
+  .etalase-title {
+    margin-top: 2rem; /* Beri jarak dari filter di atasnya */
+  }
 }

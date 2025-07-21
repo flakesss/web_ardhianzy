@@ -33,7 +33,10 @@ function NavbarLinks() {
             MONOLOGUES
           </NavLink>
         </li>
-        <li><a href="#reading-guide">READING GUIDE</a></li>
+        <li><NavLink to="/ReadingGuide" className={({ isActive }) => isActive ? 'active' : ''}>
+            READING GUIDE
+          </NavLink>
+        </li>
         <li><NavLink to="/IdeasTradition" className={({ isActive }) => isActive ? 'active' : ''}>
             IDEAS & TRADITION
           </NavLink>
