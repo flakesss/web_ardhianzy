@@ -1,0 +1,150 @@
+/* src/pages/ReadPage.css */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@300;400;500;600;700&family=Petit+Formal+Script&display=swap');
+
+.read-page {
+  background-color: #000;
+  color: #FFFFFF;
+  padding-bottom: 60px;
+  position: relative;
+  padding-top: 164px;
+}
+
+.article-container {
+  max-width: 1203px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.back-button {
+  position: absolute;
+  top: 150px;
+  left: 27px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: none;
+  border: none;
+  color: #FFFFFF;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  text-decoration: underline;
+  cursor: pointer;
+  margin-bottom: 0;
+}
+.back-button .arrow {
+  font-size: 24px;
+}
+
+/* Header Artikel */
+.article-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+.article-main-title {
+  font-family: 'Bebas Neue', cursive;
+  font-weight: 400;
+  font-size: 96px;
+  line-height: 1.1;
+  margin: 0 0 20px 0;
+}
+.article-meta {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  font-size: 20px;
+}
+.meta-separator {
+  width: 7px;
+  height: 7px;
+  background-color: #FFFFFF;
+  border-radius: 50%;
+}
+
+/* Gambar Hero */
+.article-hero-image {
+  width: 100%;
+  height: 502px;
+  object-fit: cover;
+  background-blend-mode: luminosity;
+  margin-bottom: 60px;
+}
+
+/* Konten Artikel */
+.article-content {
+  max-width: 1036px;
+  margin: 0 auto;
+  font-family: 'Roboto', sans-serif;
+  font-size: 32px;
+  line-height: 1.5;
+  text-align: justify;
+}
+.article-content p, 
+.article-content blockquote {
+  margin-bottom: 2em;
+}
+.subheading {
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 1.4;
+  margin-bottom: 0.5em;
+}
+blockquote {
+  font-style: italic;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 1.6;
+  padding: 0 60px;
+  position: relative;
+  border: none;
+}
+blockquote::before, blockquote::after {
+  font-family: 'Petit Formal Script', cursive;
+  font-size: 96px;
+  position: absolute;
+  color: #FFFFFF;
+}
+blockquote::before {
+  content: '“';
+  left: 0;
+  top: 0;
+}
+blockquote::after {
+  content: '”';
+  right: 0;
+  bottom: -40px;
+}
+
+.read-load-more-container {
+  position: relative;
+  height: 150px;
+  margin-top: -100px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  background: linear-gradient(to bottom, transparent 0%, #000 80%);
+  pointer-events: none;
+}
+
+.read-load-more-button {
+  font-family: 'Bebas Neue', cursive;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 42px;
+  line-height: 48px;
+  letter-spacing: 0.05em;
+  color: #FFFFFF;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+  pointer-events: all;
+  padding-bottom: 20px;
+}
+
+.read-load-more-button:hover {
+  opacity: 0.8;
+}

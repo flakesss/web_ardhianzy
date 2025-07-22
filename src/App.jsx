@@ -31,6 +31,8 @@ import MonologuesPage from './pages/MonologuesPage';
 import IdeasTraditionPage from './pages/IdeasTraditionPage';
 import PopCultureReviewPage from './pages/PopCultureReviewPage';
 import ReadingGuidePage from './pages/ReadingGuidePage';
+import ReadPage from './pages/ReadPage';
+import GuidePage from './pages/GuidePage';
 import TimelineOfThought from './components/Landing_page/TimelineOfThought';
 
 function AppContent() {
@@ -73,6 +75,7 @@ function AppContent() {
               <>
 
                 <Highlight />
+                <TimelineOfThought/>
                 <MagazinePreview />
                 <Research />
                 <Course />
@@ -93,9 +96,8 @@ function AppContent() {
           <Route path="/IdeasTradition" element={<IdeasTraditionPage />}/>
           <Route path="/PopCultureReview" element={<PopCultureReviewPage />}/>
           <Route path="/ReadingGuide" element={<ReadingGuidePage />} />
-
-
-
+          <Route path="/read/:articleId" element={<ReadPage />} />
+          <Route path="/guide/:guideId" element={<GuidePage />} /> 
         </Routes>
       </div>
 

@@ -2,7 +2,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@300;400;600&display=swap');
 
 /* --- GAYA UNTUK JUDUL HALAMAN (TITLE PAGE) --- */
-
 .reading-guide-highlight-wrapper .highlight-section {
   position: relative;
   width: 100vw;
@@ -19,14 +18,12 @@
   align-items: center;
   justify-content: center;
 }
-
 .reading-guide-highlight-wrapper .highlight-overlay {
   position: absolute;
   inset: 0;
   background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.85) 30%, transparent 100%);
   z-index: 1;
 }
-
 .reading-guide-highlight-wrapper .highlight-title {
   position: relative;
   z-index: 2;
@@ -37,17 +34,14 @@
   text-transform: uppercase;
 }
 
-
 /* --- GAYA UNTUK SLIDER BUKU --- */
-
 .book-slider-area {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 60px 0; /* Memberi jarak dari judul di atas */
-  background-color: #000; /* Latar belakang hitam agar menyatu */
+  padding: 60px 0;
+  background-color: #000;
 }
-
 .book-slider-section {
   position: relative;
   width: 100%;
@@ -57,18 +51,15 @@
   justify-content: center;
   margin-bottom: 30px;
 }
-
 .book-slider-viewport {
   width: 100%;
   max-width: 890px;
   overflow: hidden;
 }
-
 .book-slider-track {
   display: flex;
   transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
-
 .book-slide {
   flex: 0 0 100%;
   box-sizing: border-box;
@@ -80,7 +71,6 @@
   align-items: center;
   backdrop-filter: blur(10px);
 }
-
 .book-cover {
   width: 276px;
   height: 387px;
@@ -89,54 +79,42 @@
   border-radius: 5px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.3);
 }
-
 .book-details {
   display: flex;
   flex-direction: column;
   color: #FFFFFF;
+  text-align: left;
 }
-
-.book-details {
-  display: flex;
-  flex-direction: column;
-  color: #FFFFFF;
-  text-align: left; /* Atur perataan default untuk semua teks di dalamnya */
-}
-
 .book-title {
   font-family: 'Bebas Neue', cursive;
   font-weight: 400;
   font-size: 48px;
   line-height: 1.1;
   margin: 0;
-  text-align: left; /* Pastikan rata kiri */
+  text-align: left;
 }
-
 .book-author {
   font-family: 'Roboto', sans-serif;
   font-weight: 600;
   font-size: 12px;
   line-height: 14px;
   margin: 5px 0 0 0;
-  text-align: left; /* Pastikan rata kiri */
+  text-align: left;
 }
-
 .separator {
   width: 100%;
   border: none;
   border-top: 1px solid rgba(255, 255, 255, 0.5);
   margin: 20px 0;
 }
-
 .book-description {
   font-family: 'Roboto', sans-serif;
   font-weight: 300;
   font-size: 20px;
   line-height: 1.4;
   margin: 0 0 30px 0;
-  text-align: left; /* Pastikan rata kiri */
+  text-align: left;
 }
-
 .explore-button {
   display: inline-flex;
   align-items: center;
@@ -155,21 +133,16 @@
   transition: background-color 0.3s, color 0.3s;
   align-self: flex-start;
 }
-
 .explore-button:hover {
   background-color: #F5F5F5;
   color: #000;
 }
-
 .explore-button .arrow {
   transition: transform 0.3s;
 }
-
 .explore-button:hover .arrow {
   transform: translateX(5px);
 }
-
-/* Navigasi */
 .book-slider-nav {
   width: 61px;
   height: 61px;
@@ -182,38 +155,30 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  z-index: 10;
+  z-index: 10; /* Pastikan tombol di atas aset */
   display: flex;
   align-items: center;
   justify-content: center;
   backdrop-filter: blur(5px);
   transition: background-color 0.3s;
-  
-  /* Tambahan untuk memastikan bentuk tidak berubah */
   box-sizing: border-box;
   padding: 0;
   line-height: 0;
 }
-
 .book-slider-nav:hover {
   background: rgba(177, 177, 177, 0.3);
 }
-
 .book-slider-nav.prev {
   left: 0;
 }
-
 .book-slider-nav.next {
   right: 0;
 }
-
-/* Indikator Slide */
 .slide-indicators {
   display: flex;
   justify-content: center;
   gap: 10px;
 }
-
 .indicator-dot {
   width: 15px;
   height: 15px;
@@ -222,7 +187,24 @@
   cursor: pointer;
   transition: background-color 0.3s;
 }
-
 .indicator-dot.is-active {
   background: #D9D9D9;
+}
+
+/* --- TAMBAHAN DI SINI: Gaya untuk aset dekoratif --- */
+.decorative-asset {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 700px; /* Sesuaikan tinggi aset Anda */
+  width: auto;
+  z-index: 5; /* Di bawah tombol navigasi */
+  pointer-events: none; /* Agar tidak bisa diklik */
+  opacity: 0.5; /* Dibuat sedikit transparan */
+}
+.decorative-asset.left {
+  left: -420px; /* Posisikan di kiri */
+}
+.decorative-asset.right {
+  right: -499px; /* Posisikan di kanan */
 }

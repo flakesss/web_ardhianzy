@@ -1,4 +1,217 @@
 /* src/components/Reading_guide_page/ReadingGuideCollection.css */
-.reading-guide-collection {
-    width: relative;
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@400;600&display=swap');
+
+.rg-collection-section {
+  width: 100%;
+  padding: 60px 0;
+  background-color: #000;
+  color: #FFFFFF;
+}
+
+.rg-collection-section .container {
+  max-width: 1241px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Header */
+.collection-header {
+  border-top: 1px solid #FFFFFF;
+  padding-top: 20px;
+  margin-bottom: 30px;
+}
+
+.collection-header h2 {
+  font-family: 'Bebas Neue', cursive;
+  font-weight: 400;
+  font-size: 48px;
+  line-height: 58px;
+  text-align: left;
+  margin: 0;
+}
+
+/* Search Bar */
+.search-bar {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  max-width: 423px;
+  height: 46px;
+  margin: 0 auto 50px auto;
+  padding: 0 15px;
+  background: #000000;
+  border: 1px solid #FFFFFF;
+  border-radius: 20px;
+}
+
+.search-icon {
+  width: 18px;
+  height: 18px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.search-icon::after {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 2px;
+  background: #fff;
+  bottom: -4px;
+  right: -4px;
+  transform: rotate(45deg);
+}
+
+.search-bar input {
+  width: 100%;
+  background: none;
+  border: none;
+  outline: none;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  color: #FFFFFF;
+}
+
+.search-bar input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* Book Grid */
+.rgc-book-grid-container {
+  position: relative;
+}
+
+.rgc-book-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 40px 30px;
+  max-height: 1050px; 
+  overflow: hidden;
+  transition: max-height 0.8s ease-in-out;
+}
+
+.rgc-book-grid.is-expanded {
+  max-height: 5000px; 
+}
+
+.rgc-book-card {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.rgc-book-cover-image {
+  width: 100%;
+  aspect-ratio: 157 / 220;
+  background-size: cover;
+  background-position: center;
+  margin-bottom: 15px;
+}
+
+.rgc-book-link {
+  text-decoration: none;
+  color: inherit;
+  display: block; /* Ganti dari flex menjadi block */
+}
+.rgc-book-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.rgc-book-title {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 28px;
+  line-height: 1.1;
+  color: #FFFFFF;
+  margin: 0;
+}
+
+.rgc-book-author {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 14px;
+  color: #FFFFFF;
+}
+
+.rgc-reading-guide-button {
+  box-sizing: border-box;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 28px;
+  margin-top: 5px;
+  border: 1px solid #F5F5F5;
+  border-radius: 30px;
+  background: none;
+  color: #F5F5F5;
+  font-family: 'Bebas Neue', cursive;
+  font-size: 18px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.rgc-reading-guide-button:hover {
+  background-color: #F5F5F5;
+  color: #000;
+}
+
+/* Gaya untuk Load More */
+.load-more-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(0deg, #000000 16.35%, rgba(0, 0, 0, 0) 100%);
+  z-index: 5;
+  pointer-events: none;
+}
+
+.load-more-button {
+  font-family: 'Bebas Neue', cursive;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 42px;
+  line-height: 48px;
+  letter-spacing: 0.05em;
+  color: #FFFFFF;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+  pointer-events: all;
+}
+
+.load-more-button:hover {
+  opacity: 0.8;
+}
+
+/* --- Media Queries untuk Responsif --- */
+@media (max-width: 1200px) {
+  .rgc-book-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 992px) {
+  .rgc-book-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .rgc-book-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }

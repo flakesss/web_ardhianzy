@@ -1,0 +1,90 @@
+/* src/components/RelatedArticles.css */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@300;400;600&display=swap');
+
+.related-articles-section {
+  width: 100%;
+  background: #000000;
+  padding: 80px 0;
+  color: #fff;
+  overflow: hidden;
+}
+
+.related-articles-container {
+  max-width: 1275px; /* Atur lebar maksimum */
+  margin: 0 auto;    /* Pusatkan di tengah halaman */
+  padding: 0 20px;  /* Beri sedikit padding dalam */
+}
+
+.related-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 40px;
+  margin-left: 0; /* Tidak lagi memerlukan margin kiri */
+}
+/* ... (gaya .header-bar dan .header-title tetap sama) ... */
+.header-bar { width: 13px; height: 77px; background: #FFFFFF; }
+.header-title { font-family: 'Bebas Neue', cursive; font-size: 64px; line-height: 77px; color: #FFFFFF; margin: 0; }
+
+
+/* Wrapper untuk carousel dan tombol */
+.related-carousel-wrapper {
+  position: relative;
+  /* Hapus padding karena sudah diatur oleh container */
+}
+
+/* ... (Gradasi, viewport, dan track tetap sama) ... */
+.related-carousel-wrapper::before, .related-carousel-wrapper::after { content: ''; position: absolute; top: 0; bottom: 0; width: 50px; z-index: 2; pointer-events: none; }
+.related-carousel-wrapper::before { left: 0; background: linear-gradient(to right, #000 20%, transparent 100%); }
+.related-carousel-wrapper::after { right: 0; background: linear-gradient(to left, #000 20%, transparent 100%); }
+.related-articles-viewport { overflow: hidden; width: 100%; }
+.related-articles-track { display: flex; gap: 30px; transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1); }
+
+
+/* ... (Gaya kartu artikel tetap sama) ... */
+.related-article-card { width: 299px; flex-shrink: 0; text-align: center; display: flex; flex-direction: column; }
+.related-article-image { width: 100%; height: 194px; object-fit: cover; background-blend-mode: luminosity; filter: grayscale(100%); margin-bottom: 15px; }
+.related-article-content { display: flex; flex-direction: column; align-items: center; gap: 8px; flex-grow: 1; }
+.related-article-date { font-family: 'Roboto', sans-serif; font-weight: 300; font-size: 14px; color: #B3B3B3; }
+.related-article-title { font-family: 'Bebas Neue', cursive; font-size: 32px; line-height: 1.1; }
+.related-article-desc { font-family: 'Roboto', sans-serif; font-size: 14px; line-height: 1.4; height: 4.2em; overflow: hidden; margin-bottom: auto; }
+.continue-reading-link { font-family: 'Roboto', sans-serif; font-weight: 600; font-size: 15px; text-decoration: underline; margin-top: 15px; display: flex; align-items: center; gap: 5px; color: #fff; }
+
+
+/* --- PERBAIKAN 2 & 3: BENTUK & POSISI TOMBOL --- */
+.carousel-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  
+  width: 50px;   /* Ukuran diperkecil agar pas */
+  height: 50px;
+  border-radius: 50%; /* Bulat sempurna */
+  
+  background: rgba(177, 177, 177, 0.2);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #F5F5F5;
+  font-size: 2rem;
+  font-weight: lighter;
+  cursor: pointer;
+  z-index: 3;
+  transition: background-color 0.3s;
+  
+  /* Properti kunci untuk bentuk lingkaran yang stabil */
+  box-sizing: border-box; 
+  padding: 0;
+  line-height: 0;
+}
+.carousel-nav:hover {
+  background: rgba(177, 177, 177, 0.4);
+}
+/* Posisikan tombol lebih dekat ke konten */
+.carousel-nav.prev {
+  left: -50px; 
+}
+.carousel-nav.next {
+  right: -50px;
+}
