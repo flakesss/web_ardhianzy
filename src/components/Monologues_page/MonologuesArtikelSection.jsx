@@ -2,9 +2,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './MonologuesArtikelSection.css';
-import { allArticles } from '../../data/articles'; // 1. Impor data terpusat
+import { allArticles } from '../../data/articles';
 
-// 2. Filter artikel untuk hanya menampilkan yang dari kategori "Monologues"
 const monologueArticles = allArticles.filter(article => article.category === "Monologues");
 
 export default function MonologuesArtikelSection() {
@@ -21,7 +20,6 @@ export default function MonologuesArtikelSection() {
         
         <div className="artikel-grid-container">
           <div className={`artikel-grid ${isExpanded ? 'is-expanded' : ''}`}>
-            {/* 3. Gunakan data yang sudah difilter untuk di-map */}
             {monologueArticles.map((article) => (
               <Link to={`/read/${article.id}`} key={article.id} className="artikel-link">
                 <article className="artikel-kartu">
@@ -36,15 +34,19 @@ export default function MonologuesArtikelSection() {
                       <div className="judul-background-efek"></div>
                       <h3 className="kartu-judul">{article.title}</h3>
                     </div>
-                    {/* Pastikan data 'desc' ada di articles.js jika ingin ditampilkan */}
-                    {/* <p className="kartu-deskripsi">{article.desc}</p> */}
+                    
+                    {/* --- PERBAIKAN DI SINI --- */}
+                    {/* Mengambil teks dari paragraf pertama dan memotongnya jadi 100 karakter */}
+                    <p className="kartu-deskripsi">
+                      {article.content[0].text.substring(0, 100)}...
+                    </p>
+
                   </div>
                 </article>
               </Link>
             ))}
           </div>
 
-          {/* Logika Load More bisa disesuaikan berdasarkan jumlah artikel */}
           {!isExpanded && monologueArticles.length > 15 && (
             <div className="load-more-container">
               <button className="load-more-button" onClick={handleLoadMore}>

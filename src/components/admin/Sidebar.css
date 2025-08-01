@@ -1,0 +1,148 @@
+/* src/components/admin/Sidebar.css */
+
+/* --- BAGIAN BARU UNTUK TATA LETAK UTAMA --- */
+.admin-layout {
+  display: flex;
+  position: relative;
+  background-color: #1E1E1E; /* Menyamakan latar belakang utama */
+}
+
+.admin-main-content {
+  flex-grow: 1; /* Konten utama akan mengisi sisa ruang */
+  color: #FFFFFF;
+  padding: 25px 38px;
+  /* KUNCI PERUBAHAN: Memberi margin kiri seukuran lebar sidebar */
+  margin-left: 377px; 
+}
+/* --- AKHIR BAGIAN BARU --- */
+
+
+/* MODIFIKASI: Mengunci posisi sidebar */
+.sidebar {
+  width: 377px;
+  background-color: #000000;
+  color: #F5F5F5;
+  padding: 25px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-shrink: 0;
+  border-right: 0.5px solid #333333;
+  font-family: 'Roboto', sans-serif;
+
+  /* --- KUNCI PERUBAHAN --- */
+  position: fixed; /* Mengunci posisi sidebar relatif terhadap viewport */
+  top: 0;
+  left: 0;
+  height: 100vh; /* Membuat tinggi sidebar selalu 100% dari tinggi layar */
+  z-index: 1000; /* Memastikan sidebar selalu di lapisan paling atas */
+  overflow-y: auto; /* Menambahkan scroll HANYA pada sidebar jika kontennya panjang */
+  box-sizing: border-box; /* PERBAIKAN: Memastikan padding termasuk dalam tinggi total */
+}
+
+.sidebar-header {
+  padding: 0 38px;
+  margin-bottom: 25px;
+}
+
+.sidebar-logo {
+  height: 50px;
+  width: auto;
+}
+
+.divider {
+  height: 0.5px;
+  background-color: #333333;
+  width: 100%;
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 25px 36px;
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.nav-link {
+  color: #F5F5F5;
+  text-decoration: none;
+  padding: 15px 20px;
+  border-radius: 16px;
+  font-weight: 500;
+  font-size: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.nav-link-content {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.nav-link.active {
+  background-color: #F5F5F5;
+  color: #000000;
+}
+.nav-link.active svg {
+  stroke: #000000;
+  fill: #000000;
+}
+
+.nav-link:hover {
+  background-color: #1a1a1a;
+}
+
+.submenu {
+  padding-left: 25px;
+  margin-top: 24px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.submenu-item {
+  color: rgba(245, 245, 245, 0.5);
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 19px;
+  transition: color 0.2s, border-color 0.2s;
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(245, 245, 245, 0.5);
+}
+
+.submenu-item:hover {
+    color: #F5F5F5;
+}
+
+.submenu-item.active {
+  color: #F5F5F5;
+  border-bottom-color: #F5F5F5;
+}
+
+.sidebar-footer {
+    padding: 20px 38px 0;
+}
+
+.sidebar-logout-button {
+  background: none;
+  border: none;
+  color: #F5F5F5;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  cursor: pointer;
+  font-size: 20px;
+  width: 100%;
+  padding: 10px 0;
+  font-weight: 500;
+}

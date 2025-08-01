@@ -2,15 +2,15 @@ import React, { useRef, useState, useEffect } from 'react';
 import './Shops.css';
 
 const shopData = [
-  { img: '/assets/Shop/Rectangle 4514.png', name: 'LOREM', type: 'Merch • Hat', author: 'Ardhianzy', price: 'Rp. 100.000' },
-  { img: '/assets/Shop/Rectangle 4514.png', name: 'LOREM', type: 'Merch • Hat', author: 'Ardhianzy', price: 'Rp. 100.000' },
-  { img: '/assets/Shop/Rectangle 4514.png', name: 'LOREM', type: 'Merch • Hat', author: 'Ardhianzy', price: 'Rp. 100.000' },
-  { img: '/assets/Shop/Rectangle 4514.png', name: 'LOREM', type: 'Merch • Hat', author: 'Ardhianzy', price: 'Rp. 100.000' },
-  { img: '/assets/Shop/Rectangle 4514.png', name: 'LOREM', type: 'Merch • Hat', author: 'Ardhianzy', price: 'Rp. 100.000' },
-  { img: '/assets/Shop/Rectangle 4514.png', name: 'LOREM', type: 'Merch • Hat', author: 'Ardhianzy', price: 'Rp. 100.000' },
-  { img: '/assets/Shop/Rectangle 4514.png', name: 'LOREM', type: 'Merch • Hat', author: 'Ardhianzy', price: 'Rp. 100.000' },
-  { img: '/assets/Shop/Rectangle 4514.png', name: 'LOREM', type: 'Merch • Hat', author: 'Ardhianzy', price: 'Rp. 100.000' },
-  { img: '/assets/Shop/Rectangle 4514.png', name: 'LOREM', type: 'Merch • Hat', author: 'Ardhianzy', price: 'Rp. 100.000' },
+  { img: '/assets/Shop/topi.png', name: 'LOREM', type: 'Merch • Hat', author: 'Ardhianzy', price: 'Rp. 100.000' },
+  { img: '/assets/Shop/topi.png', name: 'LOREM', type: 'Merch • Hat', author: 'Ardhianzy', price: 'Rp. 100.000' },
+  { img: '/assets/Shop/topi.png', name: 'LOREM', type: 'Merch • Hat', author: 'Ardhianzy', price: 'Rp. 100.000' },
+  { img: '/assets/Shop/topi.png', name: 'LOREM', type: 'Merch • Hat', author: 'Ardhianzy', price: 'Rp. 100.000' },
+  { img: '/assets/Shop/topi.png', name: 'LOREM', type: 'Merch • Hat', author: 'Ardhianzy', price: 'Rp. 100.000' },
+  { img: '/assets/Shop/topi.png', name: 'LOREM', type: 'Merch • Hat', author: 'Ardhianzy', price: 'Rp. 100.000' },
+  { img: '  /assets/Shop/topi.png', name: 'LOREM', type: 'Merch • Hat', author: 'Ardhianzy', price: 'Rp. 100.000' },
+  { img: '/assets/Shop/topi.png', name: 'LOREM', type: 'Merch • Hat', author: 'Ardhianzy', price: 'Rp. 100.000' },
+  { img: '/assets/Shop/topi.png', name: 'LOREM', type: 'Merch • Hat', author: 'Ardhianzy', price: 'Rp. 100.000' },
 
 ];
 

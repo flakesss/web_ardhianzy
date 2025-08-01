@@ -1,16 +1,20 @@
 /* src/components/LatestVideos.css */
 
+/* ...DENGAN BLOK INI */
 .latest-videos-section {
-  margin: 4rem 0;
-  padding: 0;  /* container handles padding */
+  background-color: #000 !important; /* <-- TAMBAHKAN !important DI SINI */
+  padding: 4rem 0;
+  margin: 0;
 }
 
 .latest-videos-container {
   max-width: 1400px;
   margin: 0 auto;
   padding: 1.5rem 2rem;  /* mimic Shops container spacing */
-  position: relative;
+
 }
+
+
 
 .latest-videos-header {
   display: flex;

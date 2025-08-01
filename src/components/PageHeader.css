@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
-/* Container untuk seluruh header */
 .page-header-wrapper {
   position: fixed;
   top: 0;
@@ -9,20 +8,37 @@
   z-index: 1000;
 }
 
-/* Header utama dengan logo (seperti Navbar) */
 .page-header {
   width: 100%;
   height: 72px;
   background-color: #000;
   color: #fff;
   display: flex;
-  justify-content: center;
+  justify-content: space-between; /* Mengatur jarak antar kolom */
   align-items: center;
-  padding: 0 1rem;
+  padding: 0 2rem;
   border-bottom: 1px solid #222;
+  box-sizing: border-box;
 }
 
-/* Logo + brand */
+/* --- ATURAN BARU UNTUK LAYOUT TIGA KOLOM --- */
+.page-header__section {
+  flex: 1;
+}
+
+.page-header__center {
+  display: flex;
+  justify-content: center;
+}
+
+.page-header__right {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 16px;
+}
+/* --- AKHIR ATURAN BARU --- */
+
 .page-header__logo {
   display: flex;
   align-items: center;
@@ -47,8 +63,8 @@
   text-decoration: none;
 }
 
-/* Navigation links container (seperti NavbarLinks) */
 .page-header__nav-container {
+  /* ... tidak ada perubahan di sini dan ke bawah ... */
   width: 100%;
   background-color: #ffffff;
   display: flex;
@@ -57,7 +73,6 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Navigation links */
 .page-header__nav .page-header__list {
   display: flex;
   list-style: none;
@@ -89,25 +104,4 @@
 .page-header__nav a.active {
   color: #333;
   font-weight: bold;
-}
-
-/* Media query untuk responsivitas */
-@media (max-width: 1200px) {
-  .page-header__nav a {
-    font-size: 16px;
-  }
-  
-  .page-header__nav li {
-    margin: 0 10px;
-  }
-}
-
-@media (max-width: 960px) {
-  .page-header__nav a {
-    font-size: 14px;
-  }
-  
-  .page-header__nav li {
-    margin: 0 8px;
-  }
 }

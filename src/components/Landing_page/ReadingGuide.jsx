@@ -1,56 +1,49 @@
-// src/components/ReadingGuide.jsx
 import React from 'react';
-import './ReadingGuide.css';
+import './ReadingGuide.css'; // Nama file CSS disamakan kembali
 
-const books = [
+// Data baru untuk para filsuf
+const philosophers = [
   {
-    img: '/assets/reading guide/Ecce Homo.jpeg',
-    title: 'ECCE HOMO',
-    author: 'By Friedrich Nietzsche',
-    excerpt: 'Ecce Homo adalah otobiografi intelektual Friedrich Nietzsche...',
+    img: '/assets/reading guide/Karl Marx - Wikipedia.jpeg', // Ganti dengan path gambar Anda
+    name: 'Karl Marx',
+    bio: 'Karl Heinrich Marx (1818 – 1883) adalah filsuf Jerman, ekonom politik, dan revolusioner yang terkenal sebagai perintis teori historical materialism.',
   },
   {
-    img: '/assets/reading guide/Thus Spoke Zarathustra.jpeg',
-    title: 'THUS SPOKE ZARATHUSTRA',
-    author: 'By Friedrich Nietzsche',
-    excerpt: 'Thus Spoke Zarathustra adalah karya filsafat-sastra Friedrich Nietzsche...',
+    img: '/assets/reading guide/friedrich.jpg', // Ganti dengan path gambar Anda
+    name: 'Friedrich Nietzsche',
+    bio: 'Friedrich Nietzsche (1844 – 1900) adalah filsuf Jerman yang dikenal karena pemikirannya yang radikal tentang moralitas, agama, dan makna hidup.',
   },
   {
-    img: '/assets/reading guide/cc68a255-f8b0-4d15-9798-e0e5ac96320f.jpeg',
-    title: 'BEYOND GOOD AND EVIL',
-    author: 'By Friedrich Nietzsche',
-    excerpt: 'Beyond Good and Evil (1886) adalah karya kunci Friedrich Nietzsche...',
+    img: '/assets/reading guide/Max Scheler (1).jpeg', // Ganti dengan path gambar Anda
+    name: 'Max Scheler',
+    bio: 'Max Scheler (1874 – 1928) adalah filsuf Jerman yang dikenal sebagai salah satu tokoh utama dalam tradisi fenomenologi dan filsafat nilai (axiology).',
   },
   {
-    img: '/assets/reading guide/buku zoom.png',
-    title: 'LOREM IPSUM DOLOR SIT',
-    author: 'By bla bla bla',
-    excerpt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit...',
+    img: '/assets/reading guide/Wilhelm Dilthey (1833 – 1911).jpeg', // Ganti dengan path gambar Anda
+    name: 'Wilhelm Dilthey',
+    bio: 'Wilhelm Dilthey (1833 – 1911) adalah filsuf dan sejarawan Jerman yang dikenal sebagai pelopor hermeneutika modern dan ilmu-ilmu kemanusiaan.',
   },
 ];
 
 export default function ReadingGuide() {
   return (
-    <section id="reading-guide" className="section section-reading">
-      <div className="reading-container">
-        {/* Header */}
-        <div className="reading-header">
-          <h2>Reading Guide</h2>
-          <a href="#" className="reading-more-button">
+    <section id="philosophers-guide" className="section-philosophers">
+      <div className="philosophers-container">
+        <div className="philosophers-header">
+          <h2>Meet The Philosophers</h2>
+          <a href="#" className="philosophers-more-button">
             SEE ALL <span className="arrow">→</span>
           </a>
         </div>
 
-        {/* Books Grid */}
-        <div className="reading-books">
-          {books.map((b, i) => (
-            <div key={i} className="book-card">
-              <div className="book-img">
-                <img src={b.img} alt={b.title} />
+        <div className="philosophers-grid">
+          {philosophers.map((p, i) => (
+            <div key={i} className="philosopher-card">
+              <div className="philosopher-img">
+                <img src={p.img} alt={p.name} />
               </div>
-              <h4 className="book-title">{b.title}</h4>
-              <p className="book-author">{b.author}</p>
-              <p className="book-excerpt">{b.excerpt}</p>
+              <h3 className="philosopher-name">{p.name}</h3>
+              <p className="philosopher-bio">{p.bio}</p>
             </div>
           ))}
         </div>

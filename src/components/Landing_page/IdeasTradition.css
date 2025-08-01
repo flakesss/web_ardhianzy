@@ -1,13 +1,33 @@
 /* src/components/IdeasTradition.css */
 
 /* Container & Header */
+
+/* MODIFIKASI .ideas-container */
 .ideas-container {
+  background-color: transparent; /* Pastikan transparan */
   max-width: 1400px;
   margin: 0 auto;
   padding: 1.5rem 2rem;
   display: flex;
   flex-direction: column;
   align-items: center; /* Center the container content */
+  /* TAMBAHKAN baris ini */
+  position: relative;
+  /* TAMBAHKAN baris ini */
+  z-index: 1;
+}
+
+/* TAMBAHKAN BLOK KODE BARU INI */
+.ideas-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw;
+  height: 100%;
+  background-color: #000;
+  z-index: -1;
 }
 
 .ideas-header {

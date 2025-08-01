@@ -1,0 +1,14 @@
+.user-profile-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.user-profile-icon {
+  width: 40px;  /* Sesuaikan ukuran ikon */
+  height: 40px; /* Sesuaikan ukuran ikon */
+  border-radius: 50%; /* Membuat ikon menjadi bulat */
+  cursor: pointer;
+  object-fit: cover;
+  border: 2px solid #F5F5F5; /* Opsional: beri border */
+}

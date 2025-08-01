@@ -1,43 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
-/* src/components/TimelineOfThought.css */
 .timeline-container {
   width: 100%;
-  min-height: 100vh;
+  height: 100%; /* Diubah agar mengisi wrapper di App.css */
   background-color: #1a1a1a;
   color: #fff;
   font-family: 'Roboto', Arial, sans-serif;
   position: relative;
-  /* Allow slider thumbs to extend beyond container edges */
-  overflow: visible;
-}
-
-.timeline-header {
-  text-align: center;
-  padding: 2rem 0;
-  border-bottom: 1px solid #333;
-  background: linear-gradient(180deg, #1a1a1a 0%, #222 100%);
-}
-
-.timeline-title {
-  font-size: 2.5rem;
-  font-weight: bold;
-  margin: 0 0 0.5rem;
-}
-
-.timeline-subtitle {
-  font-size: 1.1rem;
-  color: #888;
-  margin: 0;
+  overflow: hidden;
 }
 
 .timeline-main-content {
   position: relative;
-  height: calc(100vh - 200px);
+  height: 100%;
   display: flex;
   flex-direction: column;
 }
 
+/* Kontainer utama untuk tombol zoom */
 .zoom-controls {
   position: absolute;
   left: 20px;
@@ -45,248 +25,187 @@
   transform: translateY(-50%);
   display: flex;
   flex-direction: column;
-  gap: 10px;
   z-index: 1000;
+  
+  /* Gaya dari Desain Figma */
+  background: #000000;
+  border: 1px solid #FFFFFF;
+  border-radius: 10px; /* Radius untuk keseluruhan kontainer */
+  overflow: hidden; /* Memastikan tombol di dalam mengikuti radius */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
+/* Gaya untuk setiap tombol */
 .zoom-button {
   width: 40px;
   height: 40px;
+  background: none;
   border: none;
-  background: rgba(255, 255, 255, 0.1);
   color: #fff;
-  font-size: 20px;
-  border-radius: 8px;
   cursor: pointer;
-  transition: all 0.2s;
-  backdrop-filter: blur(5px);
+  transition: background-color 0.2s;
+  
+  display: flex;
+  align-items: center;    
+  justify-content: center; 
+  font-size: 18px;         
+  border-bottom: 1px solid #FFFFFF;
 }
 
+/* Menghilangkan garis pembatas untuk tombol terakhir */
+.zoom-button:last-child {
+  border-bottom: none;
+}
+
+/* Efek saat mouse diarahkan ke tombol */
 .zoom-button:hover {
-  background: rgba(255, 255, 255, 0.2);
-  transform: scale(1.05);
+  background-color: rgba(255, 255, 255, 0.15);
 }
 
 .map-container {
   flex: 1;
   position: relative;
   overflow: hidden;
-  background: radial-gradient(ellipse at center, #2a2a2a 0%, #1a1a1a 100%);
+  background: #000;
 }
 
-.map-content {
+.map-container > .leaflet-container {
   width: 100%;
   height: 100%;
-  position: relative;
-  transition: transform 0.3s ease;
-  transform-origin: center center;
 }
 
-.map-placeholder {
+.year-display {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 36px;
+  line-height: 43px; 
+  color: #ffffff;
+  text-align: center;
+  padding: 5px 20px; 
+  background: #000000; 
+  border: 2px solid #555; 
+  border-radius: 10px; 
+  position: absolute;
+  bottom: 170px; 
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1002;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25); 
+}
+
+.timeline-container-bottom {
+  height: 150px; 
+  background: rgba(40, 40, 40, 0.3);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  position: absolute;
+  bottom: 0;
+  left: 0;
   width: 100%;
-  height: 100%;
+  z-index: 1001;
   display: flex;
   align-items: center;
-  justify-content: center;
-  background-color: #2a2a2a;
-  border: 2px dashed #444;
-  border-radius: 8px;
-}
-
-.map-placeholder-text {
-  text-align: center;
-  color: #666;
-  font-size: 24px;
-  font-weight: bold;
-  user-select: none;
-}
-
-/* Timeline Bottom Section */
-.timeline-container-bottom {
-  height: 120px;
-  background: linear-gradient(to bottom, #2a2a2a, #1a1a1a);
-  border-top: 1px solid #333;
-  position: relative;
-  padding: 30px 0;
-  box-shadow: 0 -2px 10px rgba(0,0,0,0.3);
 }
 
 .timeline-scroll-wrapper {
   width: 100%;
-  height: 100%;
   overflow-x: auto;
   overflow-y: hidden;
   scrollbar-width: none;
   -ms-overflow-style: none;
-  position: relative;
 }
-
-.timeline-scroll-wrapper::-webkit-scrollbar {
-  display: none;
-}
+.timeline-scroll-wrapper::-webkit-scrollbar { display: none; }
 
 .timeline-track {
-  width: 100%; /* Make timeline 5x wider for better spacing */
-  min-width: 2000px;
-  height: 100%;
+  height: 60px;
   position: relative;
-  padding: 0 50px;
+  padding: 0 100px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  background-image: linear-gradient(#888, #888);
+  background-repeat: no-repeat;
+  background-size: 100% 2px;
+  background-position: center;
 }
 
-.timeline-track-line {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  right: 0;
-  height: 8px;
-  background: linear-gradient(to bottom, #555, #333);
-  transform: translateY(-50%);
-  border-radius: 4px;
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
-}
-
-.timeline-track-line::before {
+.timeline-track::before {
   content: '';
   position: absolute;
-  top: 1px;
+  top: 0;
   left: 0;
   right: 0;
-  height: 2px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 2px;
+  bottom: 0;
+  background-image: repeating-linear-gradient(to right, 
+    #888 0, #888 1px, 
+    transparent 1px, transparent 2%);
+  background-size: 100% 10px;
+  background-position: center;
 }
 
-/* Timeline Slider */
-.timeline-slider {
+.year-mark {
   position: absolute;
   top: 50%;
+  transform: translate(-50%, -50%);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.year-mark-line {
+  width: 2px;
+  height: 20px;
+  background: #D9D9D9;
+}
+
+.year-mark-label {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 22px; 
+  color: #FFFFFF;
+  position: absolute;
+  bottom: 0;
+  white-space: nowrap;
+}
+
+.timeline-slider {
+  position: absolute;
+  top: 0;
   left: 0;
   width: 100%;
-  height: 40px;
+  height: 100%;
   -webkit-appearance: none;
   appearance: none;
   background: transparent;
   outline: none;
-  transform: translateY(-50%);
   cursor: pointer;
   z-index: 20;
 }
 
-/* Thumb styling for Webkit browsers */
 .timeline-slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 32px;
-  height: 32px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
-  background: radial-gradient(circle at 35% 35%, #ffffff, #e0e0e0);
-  border: 4px solid #1a1a1a;
-  box-shadow: 
-    0 2px 8px rgba(0, 0, 0, 0.4),
-    inset -2px -2px 4px rgba(0, 0, 0, 0.2),
-    inset 2px 2px 4px rgba(255, 255, 255, 0.8);
+  background: #FFFFFF;
+  border: 10px solid #000000;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   cursor: pointer;
-  transition: all 0.2s ease;
-  position: relative;
+  margin-top: -1px;
 }
 
-/* Thumb styling for Firefox */
 .timeline-slider::-moz-range-thumb {
-  width: 32px;
-  height: 32px;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
-  background: radial-gradient(circle at 35% 35%, #ffffff, #e0e0e0);
-  border: 4px solid #1a1a1a;
-  box-shadow: 
-    0 2px 8px rgba(0, 0, 0, 0.4),
-    inset -2px -2px 4px rgba(0, 0, 0, 0.2),
-    inset 2px 2px 4px rgba(255, 255, 255, 0.8);
+  background: #FFFFFF;
+  border: 10px solid #000000;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   cursor: pointer;
-  transition: all 0.2s ease;
 }
 
-.timeline-slider::-webkit-slider-thumb:hover {
-  transform: scale(1.1);
-  box-shadow: 
-    0 4px 12px rgba(0, 0, 0, 0.5),
-    inset -2px -2px 4px rgba(0, 0, 0, 0.2),
-    inset 2px 2px 4px rgba(255, 255, 255, 0.8);
-}
-
-.timeline-slider::-moz-range-thumb:hover {
-  transform: scale(1.1);
-  box-shadow: 
-    0 4px 12px rgba(0, 0, 0, 0.5),
-    inset -2px -2px 4px rgba(0, 0, 0, 0.2),
-    inset 2px 2px 4px rgba(255, 255, 255, 0.8);
-}
-
-/* Remove duplicate indicator */
-.current-indicator {
-  display: none !important;
-}
-
-/* Year display styling */
-.year-display {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 2.5rem;
-  font-weight: 400;
-  letter-spacing: 2px;
-  color: #ffffff;
-  text-align: center;
-  padding: 10px 30px;
-  background-color: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
-  margin: 0 auto 15px;
-  position: relative;
-  z-index: 30;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-}
-
-/* Year marks on timeline */
-.year-mark {
-  position: absolute;
-  top: 30%;
-  transform: translateX(-50%);
-  user-select: none;
-}
-
-.year-mark-line {
-  width: 1px;
-  height: 15px;
-  background: #444;
-  margin: 0 auto;
-  border-radius: 1px;
-}
-
-.year-mark-label {
-  font-size: 14px;
-  font-family: 'Bebas Neue', sans-serif;
-  color: #999;
-  margin-top: 8px;
-  white-space: nowrap;
-  text-align: center;
-  font-weight: 400;
-  letter-spacing: 1px;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
-}
-
-.year-mark.major .year-mark-line {
-  height: 35px;
-  width: 2px;
-  background: linear-gradient(to bottom, #888, #555);
-}
-
-.year-mark.major .year-mark-label {
-  font-size: 18px;
-  color: #ccc;
-  font-weight: 400;
-}
-
-/* Edge gradient overlays for timeline */
 .timeline-container-bottom::before,
 .timeline-container-bottom::after {
   content: '';
@@ -295,78 +214,71 @@
   bottom: 0;
   width: 100px;
   pointer-events: none;
-  z-index: 30;
+  z-index: 1002;
 }
 
 .timeline-container-bottom::before {
   left: 0;
-  background: linear-gradient(to right, #1a1a1a 0%, transparent 100%);
+  background: linear-gradient(to right, #1a1a1a 30%, transparent 100%);
 }
 
 .timeline-container-bottom::after {
   right: 0;
-  background: linear-gradient(to left, #1a1a1a 0%, transparent 100%);
+  background: linear-gradient(to left, #1a1a1a 30%, transparent 100%);
 }
 
-/* Tambahkan kalau belum ada */
-/* pastikan map container mendapat tinggi */
-.map-container > .leaflet-container {
+.error-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-}
-
-.info {
-  padding: 6px 8px;
-  font: 14px/16px Arial, Helvetica, sans-serif;
-  background: rgba(255,255,255,0.8);
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  border-radius: 5px;
-}
-.info h4 { margin: 0 0 5px; color: #777; }
-
-.legend { line-height: 18px; color: #555; }
-.legend i {
-  width: 18px; height: 18px; float: left;
-  margin-right: 8px; opacity: 0.7;
+  background: rgba(0, 0, 0, 0.7);
+  color: #ffcdd2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  text-align: center;
+  padding: 20px;
+  z-index: 2000;
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .timeline-title {
-    font-size: 2rem;
-  }
-  
-  .timeline-subtitle {
-    font-size: 1rem;
-  }
-  
   .year-display {
     font-size: 1.5rem;
     padding: 6px 16px;
+    bottom: 120px;
   }
   
   .zoom-controls {
     left: 10px;
   }
   
-  .zoom-button {
+  .zoom-button { 
     width: 35px;
     height: 35px;
     font-size: 18px;
   }
   
   .timeline-container-bottom {
-    height: 100px;
-    padding: 20px 0;
+    height: 120px;
   }
   
-  .year-mark.major .year-mark-label {
-    font-size: 14px;
+  .year-mark-label {
+    font-size: 18px;
   }
   
   .timeline-slider::-webkit-slider-thumb,
   .timeline-slider::-moz-range-thumb {
-    width: 28px;
-    height: 28px;
+    width: 32px;
+    height: 32px;
+    border-width: 8px;
+  }
+
+  .timeline-container-bottom::before,
+  .timeline-container-bottom::after {
+    width: 50px;
   }
 }

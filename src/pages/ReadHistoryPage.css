@@ -1,0 +1,206 @@
+/* src/pages/ReadHistoryPage.css */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap');
+
+/* Menggunakan kembali gaya dari ProfilePage untuk konsistensi */
+.history-page {
+  position: relative;
+  background-color: #000;
+  color: #F5F5F5;
+  font-family: 'Roboto', sans-serif;
+  padding: 140px 40px 50px;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Latar belakang dan overlay sama dengan halaman profil */
+.history-background, .history-overlay-right, .history-overlay-bottom {
+  position: absolute;
+  z-index: 1;
+}
+.history-background {
+  top: -3px;
+  left: -75px;
+  width: 662px;
+  height: 1100px;
+  background-image: url('/assets/jack-hunter-1L4E_lsIb9Q-unsplash 1.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.history-overlay-right {
+  top: 0;
+  right: 60%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(to left, rgba(0, 0, 0, 1) 20%, rgba(0, 0, 0, 0) 100%);
+  z-index: 2;
+}
+.history-overlay-bottom {
+  bottom: 18%;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 1) 20%, rgba(0, 0, 0, 0) 100%);
+  z-index: 2;
+}
+.back-button {
+    position: absolute;
+    top: 140px;
+    left: 40px;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 20px;
+    background-color: transparent;
+    border: 1px solid #F5F5F5;
+    border-radius: 30px;
+    color: #F5F5F5;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+.back-button:hover {
+    background-color: rgba(245, 245, 245, 0.1);
+}
+
+/* Kontainer utama untuk konten riwayat */
+.history-content-container {
+  position: relative;
+  z-index: 10;
+  max-width: 1030px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Judul Utama: "Your Library" */
+.main-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 72px;
+  line-height: 86px;
+  text-align: left;
+  color: #F5F5F5;
+  margin-bottom: 40px;
+}
+
+/* Kontainer untuk Tab (Vector 2135) */
+.tabs-container {
+  width: 100%;
+  border-bottom: 1px solid #222222;
+  margin-bottom: 60px;
+  position: relative;
+}
+
+.tab {
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 21px;
+  color: #FFFFFF;
+  padding: 5px 10px 5px 0;
+  cursor: pointer;
+  display: inline-block;
+  position: relative; /* Diperlukan untuk pseudo-element dan positioning */
+  margin-bottom: -1px;
+}
+
+/* Hapus border bawaan dan gunakan pseudo-element */
+.tab.active {
+  border-bottom: none;
+  /* PERUBAHAN: Pindahkan seluruh elemen tab (termasuk teks) ke kiri */
+  left: -45%;
+}
+
+/* Garis bawah untuk tab yang aktif (Vector 2136) */
+.tab.active::after {
+  content: '';
+  position: absolute;
+  /* PERUBAHAN: Posisikan garis relatif terhadap tab yang sudah dipindah */
+  left: 0;
+  bottom: -1px; 
+  width: 159px; /* Lebar sesuai Figma */
+  height: 1px;
+  background-color: #F5F5F5; /* Warna garis putih */
+}
+
+/* Daftar Artikel */
+.articles-list {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+
+.article-item-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  transition: background-color 0.2s ease;
+  border-radius: 8px;
+}
+
+.article-item-link:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* [MODIFIED] Efek hover pada gambar untuk kembali normal */
+.article-item-link:hover .article-image {
+  mix-blend-mode: normal;
+  opacity: 1;
+}
+
+.article-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 30px;
+  padding: 20px 0;
+}
+
+.article-text-content {
+  flex: 1;
+  max-width: 595px;
+}
+
+/* Judul Artikel (diperbarui sesuai Figma) */
+.article-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 42px;
+  line-height: 50px;
+  color: #F5F5F5;
+  margin: 0 0 20px 0;
+  text-align: left;
+}
+
+/* Cuplikan Artikel (diperbarui sesuai Figma) */
+.article-snippet {
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 21px;
+  color: #F5F5F5;
+  text-align: left;
+}
+
+/* Kontainer dan Gambar Artikel */
+.article-image-container {
+  width: 258px;
+  height: 181px;
+  flex-shrink: 0;
+}
+
+.article-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 4px;
+  mix-blend-mode: luminosity;
+  opacity: 0.8;
+  transition: mix-blend-mode 0.3s ease, opacity 0.3s ease;
+}

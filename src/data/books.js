@@ -50,5 +50,4 @@ export const allReadingGuides = [
       { order: 2, bookId: 28 },
     ]
   },
-  // Tambahkan reading path lainnya di sini
 ];

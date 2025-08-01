@@ -10,6 +10,10 @@
   display: flex;
   align-items: center;
   overflow: hidden;
+
+  /* --- [TAMBAHKAN INI] Untuk Efek Luminosity --- */
+  background-color: #2c2c2c; /* Warna dasar untuk di-blend */
+  background-blend-mode: luminosity; /* Mode blend luminosity */
 }
 
 /* Blur effect dengan gradasi */

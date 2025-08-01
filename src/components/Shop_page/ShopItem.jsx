@@ -1,19 +1,13 @@
 // src/components/shop_page/ShopItem.jsx
-import React, { useState } from 'react'; // Impor useState
+import React, { useState } from 'react';
 import './ShopItem.css';
+import ProductDetailPopup from './ProductDetailPopup';
+import { products } from '../../data/products';
 
-// Data dummy produk (tidak berubah)
-const products = [
-  { id: 1, title: 'Lorem Hat', category: 'Merchandise', theme: 'Social', author: 'Ardhianzy', price: 'Rp. 100.000', imageUrl: '/assets/Shop/topi.png' },
-  { id: 2, title: 'Ipsum Cap', category: 'Merchandise', theme: 'Relationship', author: 'Ardhianzy', price: 'Rp. 120.000', imageUrl: '/assets/Shop/topi.png' },
-  { id: 3, title: 'Dolor Beanie', category: 'Merchandise', theme: 'Self-Improvement', author: 'Ardhianzy', price: 'Rp. 95.000', imageUrl: '/assets/Shop/topi.png' },
-  { id: 4, title: 'Sit Amet Book', category: 'Books', theme: 'Social', author: 'John Doe', price: 'Rp. 150.000', imageUrl: '/assets/Shop/topi.png' },
-  { id: 5, title: 'Consectetur E-Book', category: 'E-Books', theme: 'Relationship', author: 'Jane Doe', price: 'Rp. 110.000', imageUrl: '/assets/Shop/topi.png' },
-  { id: 6, title: 'Adipiscing', category: 'Merchandise', theme: 'Social', author: 'Ardhianzy', price: 'Rp. 100.000', imageUrl: '/assets/Shop/topi.png' },
-];
-
-//Komponen Filter
-const FilterSidebar = ({ selectedFilters, setSelectedFilters }) => {
+const FilterSidebar = ({ products, selectedFilters, setSelectedFilters }) => {
+  // ... (Tidak ada perubahan di sini, biarkan sama)
+  const categories = ['All', ...new Set(products.map(product => product.category))];
+  const themes = ['All', ...new Set(products.map(product => product.theme))];
 
   const handleFilterChange = (filterType, value) => {
     setSelectedFilters(prevFilters => ({
@@ -25,16 +19,10 @@ const FilterSidebar = ({ selectedFilters, setSelectedFilters }) => {
   return (
     <aside className="filter-sidebar">
       <h2 className="filter-sidebar__main-title">Filter</h2>
-      {/* Nanti bisa ditambahkan fungsionalitas Sort di sini */}
-      <div className="filter-sidebar__sort-section">
-        <h3 className="filter-sidebar__sub-title">Sort</h3>
-      </div>
-      
-      {/* Filter berdasarkan Produk */}
       <div className="filter-group">
         <h3 className="filter-sidebar__sub-title">Product</h3>
         <ul className="filter-options-list">
-          {['All', 'Books', 'E-Books', 'Merchandise'].map(option => (
+          {categories.map(option => (
             <li key={option}>
               <label className="filter-option">
                 <input 
@@ -51,12 +39,10 @@ const FilterSidebar = ({ selectedFilters, setSelectedFilters }) => {
           ))}
         </ul>
       </div>
-
-      {/* Filter berdasarkan Tema */}
       <div className="filter-group">
         <h3 className="filter-sidebar__sub-title">Theme</h3>
         <ul className="filter-options-list">
-           {['All', 'Social', 'Relationship', 'Self-Improvement'].map(option => (
+           {themes.map(option => (
             <li key={option}>
               <label className="filter-option">
                 <input 
@@ -77,13 +63,12 @@ const FilterSidebar = ({ selectedFilters, setSelectedFilters }) => {
   );
 };
 
-
-//  Komponen Utama 
 export default function ShopItem() {
   const [selectedFilters, setSelectedFilters] = useState({
     product: 'All',
     theme: 'All',
   });
+  const [selectedProduct, setSelectedProduct] = useState(null);
 
   const filteredProducts = products.filter(product => {
     const productMatch = selectedFilters.product === 'All' || product.category === selectedFilters.product;
@@ -91,27 +76,53 @@ export default function ShopItem() {
     return productMatch && themeMatch;
   });
 
+  const handleProductClick = (product) => {
+    setSelectedProduct(product);
+  };
+  
+  const handleClosePopup = () => {
+    setSelectedProduct(null);
+  };
+
   return (
-    <section className="shop-section-wrapper">
-      <FilterSidebar 
-        selectedFilters={selectedFilters}
-        setSelectedFilters={setSelectedFilters}
-      />
-      <div className="etalase-wrapper">
-        <div className="shop-items-grid">
-          {filteredProducts.map((product) => (
-            <div key={product.id} className="product-card">
-              <img src={product.imageUrl} alt={product.title} className="product-card__image" />
-              <div className="product-card__info">
-                <h3 className="product-card__title">{product.title}</h3>
-                <p className="product-card__category">{product.category}</p>
-                <p className="product-card__author">{product.author}</p>
-                <p className="product-card__price">{product.price}</p>
+    // -- 1. Tambahkan wrapper utama --
+    <div className="shop-page-container">
+      <div className="shop-background-gradient"></div>
+      <div className="shop-background-image"></div>
+      <div className="shop-background-asset-left"></div>
+
+      <section className="shop-section-wrapper">
+        <FilterSidebar 
+          products={products}
+          selectedFilters={selectedFilters}
+          setSelectedFilters={setSelectedFilters}
+        />
+        <div className="etalase-wrapper">
+          <div className="shop-items-grid">
+            {filteredProducts.map((product) => (
+              <div 
+                key={product.id} 
+                className="product-card" 
+                onClick={() => handleProductClick(product)}
+              >
+                <img src={product.imageUrl} alt={product.title} className="product-card__image" />
+                <div className="product-card__info">
+                  <h3 className="product-card__title">{product.title}</h3>
+                  <p className="product-card__author">{product.theme}</p>
+                  <p className="product-card__price">{product.price}</p>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      {selectedProduct && (
+        <ProductDetailPopup 
+          product={selectedProduct} 
+          onClose={handleClosePopup} 
+        />
+      )}
+    </div>
   );
 }

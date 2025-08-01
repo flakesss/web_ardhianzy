@@ -1,0 +1,40 @@
+.auth-buttons-container {
+  display: flex;
+  align-items: center;
+  gap: 16px; /* Jarak antar tombol */
+}
+
+.auth-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 44px;
+  padding: 0 25px;
+  box-sizing: border-box;
+  border-radius: 30px;
+  text-decoration: none;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  transition: opacity 0.3s ease;
+  cursor: pointer;
+}
+
+/* Tombol SIGN UP (Hitam dengan border putih) */
+.auth-button--signup {
+  background-color: #000000;
+  color: #F5F5F5;
+  border: 1px solid #F5F5F5;
+}
+
+/* Tombol LOG IN (Putih dengan shadow) */
+.auth-button--login {
+  background-color: #F5F5F5;
+  color: #000000;
+  border: 1px solid #000000;
+  box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.3);
+}
+
+.auth-button:hover {
+  opacity: 0.8;
+}

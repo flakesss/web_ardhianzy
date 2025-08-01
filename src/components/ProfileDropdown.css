@@ -1,0 +1,67 @@
+.profile-dropdown {
+  position: absolute;
+  top: 60px; /* Jarak dari bawah navbar */
+  right: 0;
+  width: 148px;
+  background-color: #000000;
+  border-radius: 8px;
+  border: 1px solid #222;
+  padding: 8px 0;
+  z-index: 1010;
+  font-family: 'Roboto', sans-serif;
+  animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dropdown-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.dropdown-list li a {
+  display: block;
+  padding: 10px 16px;
+  color: #F5F5F5;
+  font-size: 14px;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.dropdown-list li a:hover {
+  background-color: #222;
+}
+
+.dropdown-divider {
+  height: 1px;
+  background-color: #B1B1B1;
+  opacity: 0.5;
+  margin: 8px 0;
+}
+
+.logout-button {
+  display: block;
+  width: 100%;
+  padding: 10px 16px;
+  background: none;
+  border: none;
+  color: #F5F5F5;
+  font-size: 14px;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.logout-button:hover {
+  background-color: #222;
+}

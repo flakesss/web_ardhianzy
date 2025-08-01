@@ -1,4 +1,3 @@
-
 .section-magazine {
   position: relative;
   width: 100%;
@@ -133,6 +132,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  mix-blend-mode: luminosity; /* EFEK LUMINOSITY DITAMBAHKAN DI SINI */
 }
 
 /* konten teks kanan tetap 50 % → otomatis bergeser oleh padding */
@@ -189,6 +189,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  mix-blend-mode: luminosity;
 }
 
 .magazine-card-small-content {

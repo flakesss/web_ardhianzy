@@ -1,0 +1,88 @@
+/* --- Versi Kecil (Lingkaran Berdenyut) --- */
+.philosopher-marker-small div {
+  width: 20px;
+  height: 20px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  box-shadow: 0 0 0 0 rgba(255, 255, 255, 1);
+  animation: pulse 2s infinite;
+  cursor: pointer;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+  }
+}
+
+/* --- Versi Besar (Kartu Detail) - DIKEMBALIKAN --- */
+.philosopher-card-wrapper {
+  box-sizing: border-box;
+  background: #1C1C1C;
+  border-radius: 15px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  font-family: 'Bebas Neue', sans-serif;
+  color: #FFFFFF;
+  overflow: hidden;
+}
+
+.photo-container {
+  margin-bottom: 8px;
+}
+
+.philosopher-photo {
+  width: 140px; /* Lebar foto dikembalikan */
+  height: 140px; /* Tinggi foto dikembalikan */
+  object-fit: cover; /* Gunakan 'cover' untuk mengisi bingkai */
+  border-radius: 10px;
+  border: 1px solid #000000;
+  flex-shrink: 0;
+  mix-blend-mode: luminosity;
+  opacity: 0.85;
+  background-color: #000;
+}
+
+.philosopher-details {
+  text-align: center;
+  line-height: 1;
+  /* Tambahkan cursor pointer untuk menandakan bisa di-klik */
+  cursor: pointer; 
+  padding: 2px 5px;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+.philosopher-details:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.philosopher-years {
+  font-size: 14px;
+  font-weight: 400;
+  opacity: 0.8;
+  margin: 0;
+  pointer-events: none; /* Agar tidak mengganggu deteksi klik di parent */
+}
+
+.philosopher-name {
+  font-size: 20px;
+  font-weight: 400;
+  margin: 2px 0 0 0;
+  pointer-events: none; /* Agar tidak mengganggu deteksi klik di parent */
+}

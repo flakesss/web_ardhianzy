@@ -1,0 +1,358 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
+
+.signup-page {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background: #000000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Roboto', sans-serif;
+}
+
+.signup-background-image {
+  position: absolute;
+  left: 150px;
+  top: 0;
+  transform: translateY(0);
+  width: 700px;
+  height: 100vh;
+  z-index: 1;
+  background-image: url('/assets/jack-hunter-1L4E_lsIb9Q-unsplash 1.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.signup-background-overlay {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 30%;
+  height: 100%;
+  background: linear-gradient(to right, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 100%);
+  z-index: 2;
+}
+
+.signup-background-overlay-right {
+  position: absolute;
+  right: 55rem;
+  top: 0;
+  width: 30%;
+  height: 100%;
+  background: linear-gradient(to left, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 100%);
+  z-index: 2;
+}
+
+.signup-form-container {
+  box-sizing: border-box;
+  position: relative;
+  z-index: 10;
+  width: 474px;
+  background: rgba(225, 225, 225, 0.05);
+  border: 1px solid #F5F5F5;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 30px;
+  padding: 40px 40px 30px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.signup-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-weight: 400;
+  font-size: 32px;
+  color: #F5F5F5;
+  margin: 0;
+  align-self: flex-start;
+}
+
+.signup-subtitle {
+  font-size: 14px;
+  color: #B1B1B1;
+  margin: 8px 0 30px 0;
+  align-self: flex-start;
+}
+
+form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  position: relative;
+  margin-bottom: 35px;
+}
+
+.form-input {
+  width: 100%;
+  background: transparent;
+  border: 1px solid #F5F5F5;
+  border-radius: 30px;
+  color: #F5F5F5;
+  font-size: 16px;
+  padding: 12px 15px;
+  outline: none;
+  transition: border-color 0.2s ease;
+  box-sizing: border-box;
+}
+
+.form-label {
+  position: absolute;
+  left: 15px;
+  top: 13px;
+  font-size: 14px;
+  color: rgba(245, 245, 245, 0.5);
+  pointer-events: none;
+  transition: all 0.2s ease;
+}
+
+/* ...DENGAN BLOK YANG BARU INI */
+.form-input:focus + .form-label,
+.form-input:not(:placeholder-shown) + .form-label {
+  top: -10px;
+  left: 12px;
+  font-size: 12px;
+  color: #FFA4A4;
+  background: #040404;
+  padding: 0 5px;
+}
+
+.form-group.error .form-input {
+  border-color: #FFA4A4;
+}
+
+.form-group.error .form-label {
+  color: #FFA4A4;
+}
+
+.error-message {
+  position: absolute; /* Membuat pesan error "mengambang" */
+  top: 48px; /* Posisi tepat di bawah input field (tinggi 45px + 3px spasi) */
+  left: 0;
+  padding-left: 15px; /* Tetap pertahankan padding kiri */
+  
+  display: flex;
+  align-items: center;
+  color: #FFA4A4;
+  font-size: 11px;
+}
+.error-message::before {
+  content: '⚠️';
+  margin-right: 5px;
+  font-size: 14px;
+}
+
+.birthday-input-container {
+  display: flex;
+  border: 1px solid #F5F5F5;
+  border-radius: 30px;
+  height: 45px;
+  transition: border-color 0.2s ease;
+  position: relative;
+}
+
+.birthday-segment {
+  flex: 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.birthday-segment:not(:last-child) {
+  border-right: 1px solid rgba(245, 245, 245, 0.5);
+}
+
+.birthday-segment select {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  color: #F5F5F5;
+  border: none;
+  -webkit-appearance: none;
+  appearance: none;
+  padding: 1px 5px 0 5px;
+  font-size: 16px;
+  outline: none;
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  text-align-last: center;
+}
+
+.segment-label {
+  position: absolute;
+  left: 15px;
+  top: 13px;
+  font-size: 14px;
+  color: rgba(245, 245, 245, 0.5);
+  pointer-events: none;
+  transition: all 0.2s ease;
+  z-index: 1;
+}
+
+.birthday-segment select:focus + .segment-label,
+.birthday-segment select:valid + .segment-label {
+  top: -10px;
+  left: 12px;
+  font-size: 12px;
+  color: #B1B1B1;
+  background: #040404;
+  padding: 0 5px;
+  z-index: 3;
+}
+
+.birthday-segment::after {
+  content: '';
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0; 
+  height: 0; 
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid #F5F5F5;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.form-group.error .birthday-input-container {
+  border-color: #FFA4A4;
+}
+
+.form-group.error .segment-label,
+.form-group.error .birthday-segment select:focus + .segment-label,
+.form-group.error .birthday-segment select:valid + .segment-label {
+  color: #FFA4A4;
+}
+
+.form-group select.form-input {
+    -webkit-appearance: none;
+    appearance: none;
+    padding: 12px 35px 12px 15px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23F5F5F5' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+}
+
+.form-group select:required:invalid {
+    color: rgba(245, 245, 245, 0.5);
+}
+
+.btn {
+  height: 45px;
+  border-radius: 30px;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 18px;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  box-sizing: border-box;
+}
+
+.btn:hover {
+  opacity: 0.8;
+}
+
+.btn-primary {
+  background: transparent;
+  border: 1px solid #F5F5F5;
+  color: #F5F5F5;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #B1B1B1;
+  margin: 24px 0;
+  font-size: 14px;
+}
+
+.divider::before,
+.divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid rgba(177, 177, 177, 0.3);
+}
+
+.divider span {
+  padding: 0 16px;
+}
+
+.btn-google {
+  background: #F5F5F5;
+  color: #000000;
+  border: none;
+}
+
+.btn-google img {
+  width: 24px;
+  height: 24px;
+}
+
+.signin-link {
+  font-size: 14px;
+  text-align: center;
+  color: #B1B1B1;
+  margin-top: 30px;
+}
+
+.signin-link a {
+  color: #F5F5F5;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.birthday-segment select option,
+.form-group select.form-input option {
+  background: rgba(255, 255, 255, 1);
+  color: #000000;
+}
+
+
+/* Tambahkan kode ini di bagian paling bawah SignUpPage.css */
+
+/* Style untuk ikon show/hide password */
+.password-toggle-icon {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #F5F5F5;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 500;
+  -webkit-user-select: none; /* Mencegah teks ter-highlight saat diklik */
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Beri padding kanan pada input password agar teks tidak tertimpa ikon */
+.form-input[type="password"] + .password-toggle-icon,
+.form-input[type="text"] + .password-toggle-icon {
+  right: 20px;
+}
+.form-group input[type="password"],
+.form-group input[type="text"].form-input {
+    padding-right: 60px;
+}
+
+
+/* Warna biru untuk state aktif (contoh: email valid) */
+.form-group.active .form-input {
+  border-color: #4B7DFD;
+}
+.form-group.active .form-label {
+  color: #4B7DFD;
+}

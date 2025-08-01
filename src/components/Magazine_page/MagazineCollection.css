@@ -1,183 +1,207 @@
-/* --------------------------------------------
-   1. IMPORT & ROOT
----------------------------------------------*/
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@300;400&display=swap');
 
+/* --- 1. MAIN CONTAINER & TITLE --- */
 .magazine-collection {
   width: 100%;
   background: #000;
-  padding: 4rem 0 0;
+  padding: 4rem 2rem;
   overflow: hidden;
 }
 
-/* --------------------------------------------
-   2. SECTION TITLE
----------------------------------------------*/
-.magazine-collection__title {
+.magazine-collection__list-container {
+  max-width: 1307px;
+  margin: 0 auto;
+  position: relative; /* Diperlukan agar tombol load-more bisa diposisikan di dalamnya */
+  padding-bottom: 120px; /* Beri ruang di bawah untuk tombol load more */
+}
+
+.magazine-collection__main-title {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 5rem;
-  color: #fff;
+  font-weight: 400;
+  font-size: 68px;
+  color: #FFFFFF;
+  margin-bottom: 4rem;
   text-align: left;
-  margin: 0 0 3rem 3rem;
-  letter-spacing: 2px;
 }
 
-/* --------------------------------------------
-   3. CONTAINER
----------------------------------------------*/
-.magazine-collection__articles {
-  /* Tinggi 4.5 baris × 420px = 1890px */
-  max-height: 1890px;
-  overflow: hidden;
-  transition: max-height 0.5s ease;
+.magazine-collection__list {
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
 }
 
-/* (kelas tambahan kalau sudah full expand – bukan wajib, karena kita pakai inline style) */
-.magazine-collection__articles.expanded {
-  max-height: none;
-}
-/* --------------------------------------------
-   4. INDIVIDUAL ARTICLE
----------------------------------------------*/
+
+/* --- 2. ARTICLE ROW CONTAINER --- */
 .magazine-collection__article {
   display: flex;
+  position: relative;
+  height: 425px;
   align-items: center;
-  min-height: 420px;
-  position: relative;       /*  ⬅️  diperlukan utk ::before gradient  */
-  overflow: hidden;
 }
 
-/* --- Alternating layout --- */
-.magazine-collection__article:nth-child(odd)  { flex-direction: row; }
-.magazine-collection__article:nth-child(even) { flex-direction: row-reverse; }
 
-/* --- GRADIENT OVERLAY (hitam → transparan) --- */
-.magazine-collection__article::before {
+/* --- 3. IMAGE STYLING --- */
+.magazine-collection__image-container {
+  height: 100%;
+  width: 60%;
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+}
+
+.magazine-collection__image-container::after {
   content: '';
   position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 60%;               /* lebar overlay; bisa disesuaikan */
-  pointer-events: none;
-  background: linear-gradient(to left, #000 0%, rgba(0,0,0,0) 100%);
-  z-index: 1;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.38);
+  border-radius: 20px;
 }
 
-/* ubah arah gradient utk baris genap */
-.magazine-collection__article:nth-child(even)::before {
-  right: 0;
-  background: linear-gradient(to right, #000 0%, rgba(0,0,0,0) 100%);
-}
-
-/* --------------------------------------------
-   5. IMAGE
----------------------------------------------*/
-.magazine-collection__image-wrapper {
-  right: 3rem;
-  width: 80%;               /* ➜ “melebar ke kanan” */
-  height: 420px;
-  position: relative;
-  overflow: hidden;
-}
-.magazine-collection__article:nth-child(even) .magazine-collection__image-wrapper {
-  left: 3rem;   /* gunakan left bukan right */
-  right: auto;
-}
 .magazine-collection__image {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: grayscale(100%);
+  background-blend-mode: luminosity;
+  filter: grayscale(1);
+  border-radius: 20px;
 }
 
 
-
-/* --------------------------------------------
-   6. CONTENT
----------------------------------------------*/
-.magazine-collection__content {
-  width: 40%;
-  padding: 3rem 4rem;
-  color: #fff;
-  text-align: left !important;   /* teks selalu rata kiri */
-  position: relative;
-  z-index: 2;                    /* di atas gradient */
+/* --- 4. CONTENT STYLING (KARTU TEKS) --- */
+.magazine-collection__content-container {
+  position: absolute;
+  width: 65%;
+  height: 60%;
+  padding: 2rem 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #FFFFFF;
+  top: 50%;
+  transform: translateY(-50%);
+  border-radius: 20px;
 }
 
+
+/* --- 5. ALTERNATING LAYOUT (GANJIL & GENAP) --- */
+.magazine-collection__article:nth-child(odd) {
+  justify-content: flex-start;
+}
+
+.magazine-collection__article:nth-child(odd) .magazine-collection__content-container {
+  right: 0;
+  align-items: flex-start;
+  text-align: left;
+  background: linear-gradient(to left, #171717 75.85%, rgba(23, 23, 23, 0) 99.96%);
+}
+
+.magazine-collection__article:nth-child(even) {
+  justify-content: flex-end;
+}
+
+.magazine-collection__article:nth-child(even) .magazine-collection__content-container {
+  left: 0;
+  align-items: flex-start;
+  text-align: left;
+  background: linear-gradient(to right, #171717 75.85%, rgba(23, 23, 23, 0) 99.96%);
+}
+
+
+/* --- 6. TYPOGRAPHY (SESUAI SPECS FIGMA) --- */
 .magazine-collection__article-title {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 2.5rem;
-  margin-bottom: .5rem;
-  letter-spacing: 2px;
+  font-weight: 400;
+  font-size: 42px;
   line-height: 1.1;
+  color: #FFFFFF;
+  margin: 0 0 0.5rem 0;
+  text-shadow: 0px 4px 50px rgba(0, 0, 0, 0.25);
 }
 
-.magazine-collection__author {
-  font-size: 1rem;
-  color: #888;
-  margin-bottom: 1.5rem;
+.magazine-collection__article-author {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 24px;
+  color: #FFFFFF;
+  margin: 0 0 1rem 0;
 }
 
-.magazine-collection__description {
-  font-size: 1.1rem;
-  line-height: 1.6;
-  color: #ccc;
-  max-width: 500px;
+.magazine-collection__article-description {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  text-align: justify;
+  color: #FFFFFF;
 }
 
-/* --------------------------------------------
-   7. LOAD-MORE BUTTON
----------------------------------------------*/
-.magazine-collection__load-more {
+
+
+/* --- GAYA BARU: UNTUK LOAD MORE --- */
+.magazine-collection__load-more-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
   width: 100%;
-  height: 120px;
+  height: 150px; /* Tinggi gradasi */
   display: flex;
-  align-items: center;
   justify-content: center;
-  cursor: pointer;
+  align-items: flex-end; /* Tombol di bagian bawah gradasi */
+  background: linear-gradient(0deg, #000000 16.35%, rgba(0, 0, 0, 0) 100%);
+  z-index: 5;
+  pointer-events: none; /* Biarkan klik "tembus" kecuali ke tombol */
+  padding-bottom: 2rem;
+}
+
+.magazine-collection__load-more-button {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 42px;
+  letter-spacing: 0.05em;
+  color: #FFFFFF;
+  background: none;
   border: none;
-  overflow: hidden;
-  background: linear-gradient(to bottom,
-    rgba(255,255,255,0)   0%,
-    rgba(255,255,255,0.05) 20%,
-    rgba(255,255,255,0.10) 50%,
-    rgba(255,255,255,0.05) 80%,
-    #000 100%);
-  transition: background .3s ease;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+  pointer-events: all; /* Hanya tombol yang bisa di-klik */
 }
 
-.magazine-collection__load-more:hover {
-  background: linear-gradient(to bottom,
-    rgba(255,255,255,0)   0%,
-    rgba(255,255,255,0.10) 20%,
-    rgba(255,255,255,0.15) 50%,
-    rgba(255,255,255,0.10) 80%,
-    #000 100%);
+.magazine-collection__load-more-button:hover {
+  opacity: 0.8;
 }
 
-.magazine-collection__load-more-text {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 1.5rem;
-  color: #fff;
-  letter-spacing: 3px;
-  text-transform: uppercase;
+
+
+/* --- 7. RESPONSIVE DESIGN --- */
+@media (max-width: 1350px) {
+  .magazine-collection__list-container {
+    padding: 0 2rem;
+  }
 }
 
-/* --------------------------------------------
-   8. RESPONSIVE BREAKPOINTS
----------------------------------------------*/
 @media (max-width: 968px) {
-  .magazine-collection__title       { font-size: 2.5rem; margin-left: 1rem; }
-  .magazine-collection__article     { flex-direction: column !important; min-height: auto; }
-  .magazine-collection__article::before { display: none; }     /* hilangkan overlay di mobile supaya ringan */
-  .magazine-collection__image-wrapper { width: 100%; height: 300px; }
-  .magazine-collection__content     { width: 100%; padding: 2rem; }
-  .magazine-collection__article-title { font-size: 2rem; }
-}
+  .magazine-collection__article {
+    flex-direction: column;
+    height: auto;
+  }
 
-@media (max-width: 640px) {
-  .magazine-collection__title         { font-size: 2rem; }
-  .magazine-collection__content       { padding: 1.5rem; }
-  .magazine-collection__article-title { font-size: 1.75rem; }
-  .magazine-collection__description   { font-size: 1rem; }
+  .magazine-collection__image-container,
+  .magazine-collection__content-container {
+    position: static;
+    width: 100%;
+    transform: none;
+  }
+
+  .magazine-collection__image-container {
+    height: 300px;
+  }
+  
+  .magazine-collection__content-container {
+     background: #171717;
+     border-radius: 20px;
+     padding: 2rem;
+     margin-top: -2rem;
+     position: relative;
+     z-index: 2;
+  }
 }

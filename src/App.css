@@ -4,6 +4,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@200&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
+/* PENTING: Menambahkan background-color #000 ke html untuk memastikan seluruh halaman berwarna hitam */
+html, body {
+  background-color: #000;
+}
+
 #root {
   width: 100%;
   margin: 0;
@@ -13,9 +18,8 @@
 
 body {
   margin: 0;
-  padding:0;
+  padding: 0;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  background-color: #000;
   color: #fff;
   overflow-x: hidden;
 }
@@ -32,46 +36,78 @@ body {
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: 1rem;
+  padding: 0; /* Padding dihapus agar background komponen bisa full-width */
   box-sizing: border-box;
+  background-color: #000;
 }
 
-/* Section pertama (welcome) perlu ruang bawah tambahan untuk navbar links */
 .section1 {
-  padding-bottom: 70px; /* Sesuaikan dengan tinggi navbar-links */
-  margin-top: 72px; /* Beri ruang untuk navbar utama */
+  margin-top: 72px; /* Memberi ruang untuk navbar utama */
+  padding: 0; /* Hapus padding agar konten bisa full-width */
 }
 
-/* Offset untuk konten section lainnya agar tidak tertutup navbar */
 .section:not(.section1) {
   padding-top: 120px; /* Memberi ruang untuk navbar + navbar links saat sticky */
   scroll-margin-top: 130px; /* Untuk smooth scroll dengan anchor links */
 }
 
-/* Background berbeda untuk masing-masing section */
-.section1 { background-color: #0a0a0a; }
-.section2 { background-color: #000000; }
-.section3 { background-color: #000000; }
-.section4 { background-color: #151515; }
-.section5 { background-color: #1d1d1d; }
-.section6 { background-color: #212121; }
-.section7 { background-color: #252525; }
-.section8 { background-color: #1f1f1f; }
-.section9 { background-color: #242424; }
-.section10 { background-color: #2a2a2a; }
-.section11 { background-color: #2d2d2d; }
-.section12 { background-color: #222222; }
-.section13 { background-color: #202020; }
+/* Background berbeda untuk masing-masing section (TELAH DIPERBARUI) */
+.section1,
+.section2,
+.section3,
+.section4,
+.section5,
+.section6,
+.section7,
+.section8,
+.section9,
+.section10,
+.section11,
+.section12,
+.section13, 
+
 
 h2 {
   font-size: 2.5rem;
   margin-bottom: 1.5rem;
 }
 
-/* Tambahkan smooth scroll untuk navigasi */
 html {
   scroll-behavior: smooth;
 }
+
+
+.main-content-container {
+  display: flex;
+  width: 100%;
+  height: calc(100vh - 72px); /* Tinggi viewport dikurangi tinggi navbar */
+  position: relative;
+}
+
+.biography-panel {
+  flex: 0 0 700px; /* Lebar panel biografi 540px dan tidak akan membesar/mengecil */
+  height: 100%;
+  box-shadow: 5px 0px 15px rgba(0, 0, 0, 0.3); /* Bayangan untuk pemisah */
+  z-index: 20; /* Pastikan di atas elemen peta lainnya */
+  animation: slideIn 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.map-wrapper {
+  flex: 1; /* Peta akan mengisi sisa ruang yang tersedia */
+  height: 100%;
+  background-color: #000000; /* Diubah dari #0a0a0a menjadi hitam */
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* ========== SISA CSS LAMA ANDA ========== */
 
 /* Media queries untuk responsivitas */
 @media (max-width: 1440px) {
@@ -163,11 +199,5 @@ html {
 @media (max-width: 1280px) {
   .section-highlight .highlight-text {
     margin-left: -50rem;
-  }
-}
-
-@media (max-width: 1024px) {
-  .section-highlight .highlight-text {
-    margin-left: -40rem;
   }
 }

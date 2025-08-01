@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
-/* Variabel untuk ukuran logo */
 :root {
   --logo-width: 40px;
   --logo-height: auto;
@@ -15,39 +14,88 @@
   background-color: #000;
   color: #fff;
   display: flex;
-  justify-content: center;
+  justify-content: space-between; /* Mengatur jarak antar kolom */
   align-items: center;
-  padding: 0 1rem;
+  padding: 0 2rem;
   z-index: 1000;
   border-bottom: 1px solid #222;
+  box-sizing: border-box;
 }
 
-/* Logo + brand sebagai Link */
+/* --- ATURAN BARU UNTUK LAYOUT TIGA KOLOM --- */
+.navbar-section {
+  flex: 1; /* Membuat setiap kolom punya lebar yang fleksibel */
+}
+
+.navbar-center {
+  display: flex;
+  justify-content: center; /* Memastikan logo benar-benar di tengah kolomnya */
+}
+
+.navbar-right {
+  display: flex;
+  justify-content: flex-end; /* Mendorong tombol ke ujung kanan kolomnya */
+  align-items: center;
+  gap: 16px;
+}
+/* --- AKHIR ATURAN BARU --- */
+
 .navbar .navbar-logo {
   display: flex;
   align-items: center;
-  /* pastikan teks link berwarna putih */
   color: #fff;
   text-decoration: none;
 }
 
-/* Gambar logo */
 .logo-image {
   width: var(--logo-width);
   height: var(--logo-height);
   margin-right: 0.5rem;
 }
 
-/* Nama brand */
 .brand-name {
   font-family: 'Bebas Neue', sans-serif;
   font-size: 48px;
   letter-spacing: 1px;
-  /* override default link color */
   color: #fff;
 }
 
-/* Optional: hilangkan garis bawah saat hover */
 .navbar .navbar-logo:hover {
   text-decoration: none;
 }
+
+/* --- STYLE UNTUK TOMBOL (PINDAHAN DARI AUTHBUTTONS.CSS) --- */
+.auth-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 44px;
+  padding: 0 25px;
+  box-sizing: border-box;
+  border-radius: 30px;
+  text-decoration: none;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  transition: opacity 0.3s ease;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.auth-button--signup {
+  background-color: #000000;
+  color: #F5F5F5;
+  border: 1px solid #F5F5F5;
+}
+
+.auth-button--login {
+  background-color: #F5F5F5;
+  color: #000000;
+  border: 1px solid #000000;
+  box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.3);
+}
+
+.auth-button:hover {
+  opacity: 0.8;
+}
+/* --- AKHIR STYLE TOMBOL --- */

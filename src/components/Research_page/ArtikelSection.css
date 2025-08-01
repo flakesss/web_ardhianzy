@@ -36,10 +36,9 @@
   flex-direction: column;
   gap: 60px;
   
-  /* KUNCI: Batasi tinggi container untuk menampilkan 3.25 artikel */
-  max-height: 1350px; /* (Tinggi 3 item + 2 gap + sedikit item ke-4) */
-  overflow: hidden; /* Sembunyikan sisa artikel */
-  transition: max-height 0.7s ease-in-out; /* Animasi saat diperluas */
+  max-height: 1350px; 
+  overflow: hidden; 
+  transition: max-height 0.7s ease-in-out; 
 }
 
 .artikel-list.is-expanded {

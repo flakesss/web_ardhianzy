@@ -8,6 +8,7 @@ import {
 } from 'react-router-dom';
 import './App.css';
 
+// ... (import komponen-komponen lain yang sudah ada)
 import Navbar from './components/Navbar';
 import NavbarLinks from './components/NavbarLinks';
 import PageHeader from './components/PageHeader';
@@ -23,7 +24,6 @@ import Shops from './components/Landing_page/Shops';
 import LatestVideos from './components/Landing_page/LatestVideos';
 import Community from './components/Landing_page/Community';
 import Footer from './components/Footer';
-
 import MagazinePage from './pages/MagazinePage';
 import ShopPage from './pages/ShopPage';
 import ResearchPage from './pages/ResearchPage';
@@ -34,48 +34,121 @@ import ReadingGuidePage from './pages/ReadingGuidePage';
 import ReadPage from './pages/ReadPage';
 import GuidePage from './pages/GuidePage';
 import TimelineOfThought from './components/Landing_page/TimelineOfThought';
+import BiographyView from './components/BiographyView';
+import philosophers from './data/philosophersData.js';
+import SignUpPage from './pages/SignUpPage';
+import LoginPage from './pages/LoginPage';
+import ProfilePage from './pages/ProfilePage';
+import ReadHistoryPage from './pages/ReadHistoryPage';
+
+import AdminLoginPage from './pages/admin/AdminLoginPage';
+import AdminLayout from './components/admin/AdminLayout';
+import AdminDashboardPage from './pages/admin/AdminDashboardPage';
+import ProtectedRoute from './components/admin/ProtectedRoute';
+import AdminArticlePage from './pages/admin/AdminArticlePage';
+import AdminAddArticlePage from './pages/admin/AdminAddArticlePage';
+import AdminAddItemPage from './pages/admin/AdminAddItemPage';
+import AdminListItemPage from './pages/admin/AdminListItemPage';
+import AdminAnalyticsPage from './pages/admin/AdminAnalyticsPage'; 
+
 
 function AppContent() {
   const location = useLocation();
   const isHome = location.pathname === '/';
+  
+  const isAuthPage = location.pathname.startsWith('/admin') || 
+                     location.pathname === '/login' || 
+                     location.pathname === '/signup';
 
-  // hitung bottom dari section1 (hanya untuk home)
-  const [section1Bottom, setSection1Bottom] = useState(0);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isAdminLoggedIn, setIsAdminLoggedIn] = useState(false);
+
   useEffect(() => {
-    if (isHome) {
-      const sect = document.getElementById('section1');
-      if (sect) {
-        setSection1Bottom(sect.offsetTop + sect.offsetHeight);
-      }
-    }
-  }, [isHome]);
+    const adminStatus = localStorage.getItem('isAdminLoggedIn') === 'true';
+    setIsAdminLoggedIn(adminStatus);
+  }, []);
 
+
+  const [selectedPhilosopher, setSelectedPhilosopher] = useState(null);
+
+  const handleMarkerClick = (philosopherId) => {
+    const foundPhilosopher = philosophers.find(p => p.id === philosopherId);
+    setSelectedPhilosopher(foundPhilosopher);
+  };
+
+  const handleCloseBiography = () => {
+    setSelectedPhilosopher(null);
+  };
+
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+    alert('You have been logged out.');
+  };
+  
+  if (isAuthPage) {
+    return (
+      <Routes>
+        <Route path="/login" element={<LoginPage setIsLoggedIn={setIsLoggedIn} />} />
+        <Route path="/signup" element={<SignUpPage />} />
+        <Route path="/admin/login" element={<AdminLoginPage setIsAdminLoggedIn={setIsAdminLoggedIn} />} />
+        <Route 
+          path="/admin/*" 
+          element={
+            <ProtectedRoute isAdminLoggedIn={isAdminLoggedIn}>
+              <AdminLayout setIsAdminLoggedIn={setIsAdminLoggedIn}>
+                <Routes>
+                   <Route path="dashboard" element={<AdminDashboardPage />} />
+                   {/* Rute Admin */}
+                   <Route path="articles/list" element={<AdminArticlePage />} />
+                   <Route path="articles/add" element={<AdminAddArticlePage />} />
+                   <Route path="shop/list" element={<AdminListItemPage />} />
+                   <Route path="shop/add" element={<AdminAddItemPage />} />
+                   {/* DIUBAH: Semua rute analytics mengarah ke satu halaman */}
+                   <Route path="analytics" element={<AdminAnalyticsPage />} />
+                </Routes>
+              </AdminLayout>
+            </ProtectedRoute>
+          } 
+        />
+      </Routes>
+    );
+  }
+
+  // Render layout normal untuk user biasa
   return (
     <div className="app">
       {isHome ? (
         <>
-          {/* Landing header */}
-          <Navbar />
+          <Navbar isLoggedIn={isLoggedIn} handleLogout={handleLogout} />
           <section id="section1" className="section section1">
-            <h2>Welcome to ARDHIANZY</h2>
+            <div className="main-content-container">
+              {selectedPhilosopher && (
+                <div className="biography-panel">
+                  <BiographyView 
+                    philosopher={selectedPhilosopher} 
+                    onClose={handleCloseBiography} 
+                  />
+                </div>
+              )}
+              <div className="map-wrapper">
+                <TimelineOfThought 
+                  philosophers={philosophers}
+                  onMarkerClick={handleMarkerClick}
+                />
+              </div>
+            </div>
           </section>
-          <NavbarLinks topOffset={section1Bottom} />
+          <NavbarLinks />
         </>
       ) : (
-        /* Header khusus untuk page non-landing */
-        <PageHeader />
+        <PageHeader isLoggedIn={isLoggedIn} handleLogout={handleLogout} />
       )}
 
-      {/* Konten utama */}
       <div className={isHome ? '' : 'page-content'}>
         <Routes>
-          <Route
-            path="/"
-            element={
+          <Route path="/" element={
               <>
-
                 <Highlight />
-                <TimelineOfThought/>
                 <MagazinePreview />
                 <Research />
                 <Course />
@@ -98,9 +171,10 @@ function AppContent() {
           <Route path="/ReadingGuide" element={<ReadingGuidePage />} />
           <Route path="/read/:articleId" element={<ReadPage />} />
           <Route path="/guide/:guideId" element={<GuidePage />} /> 
+          <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/read-history" element={<ReadHistoryPage />} />
         </Routes>
       </div>
-
       <Footer />
     </div>
   );

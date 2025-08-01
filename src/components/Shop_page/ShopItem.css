@@ -1,11 +1,41 @@
 /* src/components/shop_page/ShopItem.css */
 
+/* --- Container Utama untuk Halaman --- */
+.shop-page-container {
+  position: relative; /* Penting: Sebagai acuan untuk posisi absolut child */
+  overflow: hidden;   /* Opsional: Mencegah aset keluar dari container jika terlalu besar */
+}
+
+/* --- Aset Latar Belakang Kiri Bawah --- */
+.shop-background-asset-left {
+  position: absolute;
+  bottom: 0;
+  left: 0; /* Biarkan ini sebagai titik acuan awal di pojok kiri */
+  width: 5000px;
+  height: 1400px;
+  background-image: url('/assets/aset untuk background di shop item33.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: left bottom;
+  z-index:0 ;
+
+  /* --- TAMBAHKAN BARIS INI UNTUK MENGGESER --- */
+  /* Geser elemen ini 500px ke kiri. Anda bisa ganti nilainya sesuai selera. */
+  transform: translateX(0px);
+  transform: translateY(100px);
+}
+
 /* --- Layout Utama: Filter + Etalase --- */
 .shop-section-wrapper {
   display: grid;
-  grid-template-columns: 250px 1fr; /* Kolom filter 250px, etalase mengisi sisa ruang */
+  grid-template-columns: 250px 1fr;
   gap: 3rem;
-  padding: 0 2rem; /* Padding untuk keseluruhan section */
+  padding: 0 2rem;
+  
+  /* --- TAMBAHKAN BARIS INI --- */
+  min-height: calc(200vh - 220px);
+  position: relative;
+  z-index: 2; /* 100% tinggi layar dikurangi estimasi tinggi navbar & footer */
 }
 
 /* --- Styling untuk Sidebar Filter --- */
@@ -97,6 +127,8 @@
 /* --- Styling untuk setiap kartu produk --- */
 .product-card {
   text-align: center;
+  cursor: pointer; /* <-- TAMBAHKAN INI */
+  transition: transform 0.2s ease-in-out;
 }
 
 .product-card__image {

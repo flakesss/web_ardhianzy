@@ -1,8 +1,28 @@
-/* Container & Header */
+/* Monologues.css */
+
+/* MODIFIKASI .monologues-container */
 .monologues-container {
+  background-color: transparent; /* Pastikan transparan */
   max-width: 1400px;
   margin: 0 auto;
   padding: 2rem 4rem;
+  /* TAMBAHKAN baris ini */
+  position: relative;
+  /* TAMBAHKAN baris ini */
+  z-index: 1;
+}
+
+/* TAMBAHKAN BLOK KODE BARU INI */
+.monologues-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw;
+  height: 100%;
+  background-color: #000;
+  z-index: -1;
 }
 
 .monologues-header {

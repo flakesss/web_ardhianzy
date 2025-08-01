@@ -1,10 +1,28 @@
-/* src/components/Shops.css */
+/* Shops.css */
 
 .shops-container {
+  /* Pastikan background asli dihapus atau transparan */
+  background-color: transparent; 
   max-width: 1400px;
   margin: 0 auto;
   padding: 1.5rem 2rem;
-  position: relative;
+  /* TAMBAHKAN baris ini untuk menjadi anchor positioning */
+  position: relative; 
+  /* TAMBAHKAN baris ini agar konten tetap di atas background virtual */
+  z-index: 1;
+}
+
+/* TAMBAHKAN BLOK KODE BARU INI */
+.shops-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%; /* Posisikan di tengah horizontal kontainer */
+  transform: translateX(-50%); /* Geser ke kiri sejauh setengah lebarnya sendiri */
+  width: 100vw; /* Lebar 100% dari viewport/layar */
+  height: 100%; /* Tinggi 100% dari .shops-container */
+  background-color: #000; /* Warna latar belakang hitam solid */
+  z-index: -1; /* Letakkan di belakang konten .shops-container */
 }
 
 .shops-header {
