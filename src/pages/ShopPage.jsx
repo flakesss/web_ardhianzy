@@ -1,10 +1,10 @@
 // src/pages/ShopPage.jsx
-import React from 'react';
-import './ShopPage.css';
+import React from "react";
+import "./ShopPage.css";
 
 // 1. Impor komponen yang ingin ditampilkan
-import ShopTitle from '../components/shop_page/ShopTitle';
-import ShopItem from '../components/Shop_page/ShopItem';
+import ShopTitle from "../components/Shop_page/ShopTitle";
+import ShopItem from "../components/Shop_page/ShopItem";
 
 export default function ShopPage() {
   return (
