@@ -43,7 +43,13 @@ const Research = () => (
         </a>
       </div>
 
-      <div className="research-content">
+      <div className="research-content" onScroll={(e) => {
+        const el = e.currentTarget;
+        const cardWidth = 249 + 16; // width + gap
+        const idx = Math.round(el.scrollLeft / cardWidth);
+        const dots = document.querySelectorAll('.research-dot');
+        dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+      }}>
         {researchData.map((item, i) => (
           <div key={i} className="research-card">
             <div className="research-card-img">
@@ -56,6 +62,11 @@ const Research = () => (
               Read research <span className="arrow">→</span>
             </a>
           </div>
+        ))}
+      </div>
+      <div className="research-dots" aria-hidden>
+        {researchData.map((_, i) => (
+          <span key={i} className={`research-dot ${i===0 ? 'active' : ''}`}></span>
         ))}
       </div>
     </div>

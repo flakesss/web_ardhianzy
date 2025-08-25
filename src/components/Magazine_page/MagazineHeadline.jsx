@@ -9,6 +9,8 @@ const MagazineHeadline = () => (
     </section>
 
     <section className="magazine-content-section">
+      <img src="/assets/Group 5203.svg" alt="Decoration" className="magazine-decoration-left" />
+      <img src="/assets/Group 5202.svg" alt="Decoration" className="magazine-decoration-right" />
       <div className="magazine-content-section__grid">
         <div className="magazine-content-section__image-container">
           <img 

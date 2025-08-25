@@ -173,35 +173,108 @@
 
 
 /* --- 7. RESPONSIVE DESIGN --- */
-@media (max-width: 1350px) {
+
+/* Tablet: tetap layout desktop, expand agar tidak sempit */
+@media (max-width: 968px) {
+  .magazine-collection__main-title {
+    font-size: 42px;
+    margin-bottom: 2rem;
+  }
+  .magazine-collection {
+    padding: 3rem 1rem;
+  }
   .magazine-collection__list-container {
-    padding: 0 2rem;
+    max-width: 96vw;
+  }
+  .magazine-collection__list {
+    gap: 3rem;
+    align-items: center; /* DIUBAH: Kembali ke 'center' untuk menengahkan card */
+  }
+  .magazine-collection__article {
+    /* DIHAPUS: 'width: 100%;' dihapus agar lebar kembali otomatis */
+    height: clamp(320px, 52vw, 425px);
+  }
+  .magazine-collection__image-container {
+    width: 62%;
+  }
+  .magazine-collection__content-container {
+    width: 66%;
+    padding: 1.5rem 2rem;
   }
 }
 
-@media (max-width: 968px) {
-  .magazine-collection__article {
-    flex-direction: column;
-    height: auto;
+/* Mobile compact card sesuai Figma */
+@media (max-width: 640px) {
+  .magazine-collection__list {
+    gap: 2rem;
   }
-
-  .magazine-collection__image-container,
+  .magazine-collection__article {
+    flex-direction: row;
+    justify-content: flex-start;
+    height: auto;
+    width: 100%;
+    max-width: 374px;
+    margin: 0 auto;
+    align-items: center;
+    gap: 12px;
+  }
+  .magazine-collection__image-container {
+    position: static;
+    transform: none;
+    width: 120px;
+    height: 157px;
+    margin: 0;
+    flex-shrink: 0;
+    border-radius: 0;
+  }
+  .magazine-collection__image {
+    border-radius: 0;
+  }
   .magazine-collection__content-container {
     position: static;
-    width: 100%;
     transform: none;
+    width: auto;
+    flex: 1;
+    min-width: 0;
+    height: auto;
+    background: none;
+    padding: 0;
+    margin: 0;
+    z-index: 1;
+    align-items: flex-start;
   }
+  .magazine-collection__article:nth-child(odd) .magazine-collection__content-container,
+  .magazine-collection__article:nth-child(even) .magazine-collection__content-container {
+    background: none;
+  }
+  .magazine-collection__image-container::after {
+    display: none;
+  }
+  .magazine-collection__article-title {
+    font-size: 28px;
+    line-height: 1.1;
+    margin-bottom: 4px;
+  }
+  .magazine-collection__article-author {
+    font-size: 12px;
+    line-height: 1.2;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .magazine-collection__article-description {
+    font-size: 12px;
+    line-height: 1.4;
+    text-align: left;
+  }
+}
 
-  .magazine-collection__image-container {
-    height: 300px;
-  }
-  
-  .magazine-collection__content-container {
-     background: #171717;
-     border-radius: 20px;
-     padding: 2rem;
-     margin-top: -2rem;
-     position: relative;
-     z-index: 2;
-  }
+@media (max-width: 420px) {
+    /* Sedikit penyesuaian untuk layar yang sangat kecil */
+    .magazine-collection {
+        padding: 3rem 1rem;
+    }
+
+    .magazine-collection__article {
+        max-width: 100%; /* Gunakan lebar penuh */
+    }
 }

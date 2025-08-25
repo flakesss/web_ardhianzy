@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import './Monologues.css';
 
 const monoData = [
@@ -23,6 +23,18 @@ const monoData = [
 ];
 
 export default function Monologues () {
+  const trackRef = useRef(null);
+
+  useEffect(() => {
+    const el = trackRef.current;
+    if (!el) return;
+    // Paksa ke awal setelah layout siap
+    const id = requestAnimationFrame(() => {
+      el.scrollLeft = 0;
+    });
+    return () => cancelAnimationFrame(id);
+  }, []);
+
   return (
     <section id="monologues" className="section section-monologues">
       <div className="monologues-container">
@@ -33,7 +45,18 @@ export default function Monologues () {
           </a>
         </div>
 
-        <div className="monologues-content">
+        <div
+          className="monologues-content"
+          ref={trackRef}
+          onScroll={(e) => {
+            const el = e.currentTarget;
+            const gap = 24; // sync with CSS gap
+            const cardWidth = 314 + gap; // lebar kartu total
+            const idx = Math.round(el.scrollLeft / cardWidth);
+            const dots = document.querySelectorAll('.monologues-dot');
+            dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+          }}
+        >
           {monoData.map((item, i) => (
             <div key={i} className="monologue-card">
               <div className="monologue-img">
@@ -63,6 +86,11 @@ export default function Monologues () {
             <p className="monologue-author featured-author">By bla bla bla</p>
             <p className="monologue-price">Rp. 50.000</p>
           </div>
+        </div>
+        <div className="monologues-dots" aria-hidden>
+          {monoData.map((_, i) => (
+            <span key={i} className={`monologues-dot ${i===0 ? 'active' : ''}`}></span>
+          ))}
         </div>
       </div>
     </section>

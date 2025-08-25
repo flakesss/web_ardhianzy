@@ -4,7 +4,7 @@ import './ShopItem.css';
 import ProductDetailPopup from './ProductDetailPopup';
 import { products } from '../../data/products';
 
-const FilterSidebar = ({ products, selectedFilters, setSelectedFilters }) => {
+const FilterSidebar = ({ products, selectedFilters, setSelectedFilters, isOpen, onClose }) => {
   // ... (Tidak ada perubahan di sini, biarkan sama)
   const categories = ['All', ...new Set(products.map(product => product.category))];
   const themes = ['All', ...new Set(products.map(product => product.theme))];
@@ -17,8 +17,12 @@ const FilterSidebar = ({ products, selectedFilters, setSelectedFilters }) => {
   };
 
   return (
-    <aside className="filter-sidebar">
-      <h2 className="filter-sidebar__main-title">Filter</h2>
+    <aside className={`filter-sidebar ${isOpen ? 'is-open' : ''}`}>
+      <div className="filter-sidebar__header">
+        <button className="filter-sidebar__back" onClick={onClose} aria-label="Back">← Back</button>
+        <h2 className="filter-sidebar__main-title">Filter</h2>
+        <button className="filter-sidebar__close" onClick={onClose} aria-label="Close filters">×</button>
+      </div>
       <div className="filter-group">
         <h3 className="filter-sidebar__sub-title">Product</h3>
         <ul className="filter-options-list">
@@ -69,6 +73,7 @@ export default function ShopItem() {
     theme: 'All',
   });
   const [selectedProduct, setSelectedProduct] = useState(null);
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
 
   const filteredProducts = products.filter(product => {
     const productMatch = selectedFilters.product === 'All' || product.category === selectedFilters.product;
@@ -92,10 +97,23 @@ export default function ShopItem() {
       <div className="shop-background-asset-left"></div>
 
       <section className="shop-section-wrapper">
+        <div className="shop-mobile-toolbar">
+          <button className="filter-toggle-btn" aria-expanded={isFilterOpen} onClick={() => setIsFilterOpen(v => !v)}>
+            Filter
+          </button>
+        </div>
+        {/* Backdrop untuk menutup filter saat klik di luar (mobile) */}
+        <div
+          className={`filter-backdrop ${isFilterOpen ? 'is-open' : ''}`}
+          onClick={() => setIsFilterOpen(false)}
+          aria-hidden={!isFilterOpen}
+        />
         <FilterSidebar 
           products={products}
           selectedFilters={selectedFilters}
           setSelectedFilters={setSelectedFilters}
+          isOpen={isFilterOpen}
+          onClose={() => setIsFilterOpen(false)}
         />
         <div className="etalase-wrapper">
           <div className="shop-items-grid">

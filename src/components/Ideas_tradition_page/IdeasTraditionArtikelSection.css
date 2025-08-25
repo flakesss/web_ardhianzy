@@ -137,4 +137,29 @@
   .it-kartu-judul {
     font-size: 38px;
   }
+  
+  /* On mobile, show all articles by default and hide the load more button */
+  .it-artikel-grid {
+    max-height: none;
+    overflow: visible;
+  }
+  .load-more-container {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .it-artikel-grid {
+    gap: 50px;
+  }
+  .it-kartu-gambar {
+    height: 320px;
+  }
+  .it-kartu-judul {
+    font-size: 32px;
+  }
+  .it-kartu-tanggal {
+    font-size: 14px;
+    margin-bottom: -18px;
+  }
 }

@@ -4,11 +4,13 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  useLocation
+  useLocation,
+  Outlet, // Import Outlet untuk membuat Layout Route
+  Navigate // Import Navigate untuk redirect
 } from 'react-router-dom';
 import './App.css';
 
-// ... (import komponen-komponen lain yang sudah ada)
+// --- Import Komponen Halaman Publik ---
 import Navbar from './components/Navbar';
 import NavbarLinks from './components/NavbarLinks';
 import PageHeader from './components/PageHeader';
@@ -36,11 +38,13 @@ import GuidePage from './pages/GuidePage';
 import TimelineOfThought from './components/Landing_page/TimelineOfThought';
 import BiographyView from './components/BiographyView';
 import philosophers from './data/philosophersData.js';
-import SignUpPage from './pages/SignUpPage';
-import LoginPage from './pages/LoginPage';
-import ProfilePage from './pages/ProfilePage';
-import ReadHistoryPage from './pages/ReadHistoryPage';
+// --- HAPUS: Import halaman terkait user ---
+// import SignUpPage from './pages/SignUpPage';
+// import LoginPage from './pages/LoginPage';
+// import ProfilePage from './pages/ProfilePage';
+// import ReadHistoryPage from './pages/ReadHistoryPage';
 
+// --- Import Komponen Halaman Admin ---
 import AdminLoginPage from './pages/admin/AdminLoginPage';
 import AdminLayout from './components/admin/AdminLayout';
 import AdminDashboardPage from './pages/admin/AdminDashboardPage';
@@ -49,137 +53,132 @@ import AdminArticlePage from './pages/admin/AdminArticlePage';
 import AdminAddArticlePage from './pages/admin/AdminAddArticlePage';
 import AdminAddItemPage from './pages/admin/AdminAddItemPage';
 import AdminListItemPage from './pages/admin/AdminListItemPage';
-import AdminAnalyticsPage from './pages/admin/AdminAnalyticsPage'; 
+import AdminAnalyticsPage from './pages/admin/AdminAnalyticsPage';
+
+// =================================================================
+// PERBAIKAN: Komponen "PublicLayout" disederhanakan.
+// Prop isLoggedIn dan handleLogout dihapus karena tidak lagi diperlukan.
+// =================================================================
+function PublicLayout() {
+    const location = useLocation();
+    const isHome = location.pathname === '/';
+
+    // State untuk Timeline (tidak berubah)
+    const [selectedPhilosopher, setSelectedPhilosopher] = useState(null);
+    const handleMarkerClick = (philosopherId) => {
+        const foundPhilosopher = philosophers.find(p => p.id === philosopherId);
+        setSelectedPhilosopher(foundPhilosopher);
+    };
+    const handleCloseBiography = () => setSelectedPhilosopher(null);
+
+    return (
+        <div className="app">
+            {isHome ? (
+                <>
+                    {/* Props isLoggedIn dan handleLogout dihapus */}
+                    <Navbar />
+                    <section id="section1" className="section section1">
+                        <div className="main-content-container">
+                            {selectedPhilosopher && (
+                                <div className="biography-panel">
+                                    <BiographyView philosopher={selectedPhilosopher} onClose={handleCloseBiography} />
+                                </div>
+                            )}
+                            <div className="map-wrapper">
+                                <TimelineOfThought philosophers={philosophers} onMarkerClick={handleMarkerClick} />
+                            </div>
+                        </div>
+                    </section>
+                    <NavbarLinks />
+                </>
+            ) : (
+                // Props isLoggedIn dan handleLogout dihapus
+                <PageHeader />
+            )}
+
+            <main className={isHome ? '' : 'page-content'}>
+                <Outlet />
+            </main>
+
+            <Footer />
+        </div>
+    );
+}
 
 
+// =================================================================
+// PERBAIKAN: Menyederhanakan AppContent
+// State dan fungsi yang berhubungan dengan login user (isLoggedIn, handleLogout) dihapus.
+// =================================================================
 function AppContent() {
-  const location = useLocation();
-  const isHome = location.pathname === '/';
-  
-  const isAuthPage = location.pathname.startsWith('/admin') || 
-                     location.pathname === '/login' || 
-                     location.pathname === '/signup';
-
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  // State login untuk user biasa dihapus
   const [isAdminLoggedIn, setIsAdminLoggedIn] = useState(false);
 
   useEffect(() => {
+    // Hanya cek status login admin
     const adminStatus = localStorage.getItem('isAdminLoggedIn') === 'true';
     setIsAdminLoggedIn(adminStatus);
   }, []);
 
+  // Fungsi handleLogout untuk user biasa dihapus
 
-  const [selectedPhilosopher, setSelectedPhilosopher] = useState(null);
-
-  const handleMarkerClick = (philosopherId) => {
-    const foundPhilosopher = philosophers.find(p => p.id === philosopherId);
-    setSelectedPhilosopher(foundPhilosopher);
-  };
-
-  const handleCloseBiography = () => {
-    setSelectedPhilosopher(null);
-  };
-
-  const handleLogout = () => {
-    setIsLoggedIn(false);
-    alert('You have been logged out.');
-  };
-  
-  if (isAuthPage) {
-    return (
-      <Routes>
-        <Route path="/login" element={<LoginPage setIsLoggedIn={setIsLoggedIn} />} />
-        <Route path="/signup" element={<SignUpPage />} />
-        <Route path="/admin/login" element={<AdminLoginPage setIsAdminLoggedIn={setIsAdminLoggedIn} />} />
-        <Route 
-          path="/admin/*" 
-          element={
-            <ProtectedRoute isAdminLoggedIn={isAdminLoggedIn}>
-              <AdminLayout setIsAdminLoggedIn={setIsAdminLoggedIn}>
-                <Routes>
-                   <Route path="dashboard" element={<AdminDashboardPage />} />
-                   {/* Rute Admin */}
-                   <Route path="articles/list" element={<AdminArticlePage />} />
-                   <Route path="articles/add" element={<AdminAddArticlePage />} />
-                   <Route path="shop/list" element={<AdminListItemPage />} />
-                   <Route path="shop/add" element={<AdminAddItemPage />} />
-                   {/* DIUBAH: Semua rute analytics mengarah ke satu halaman */}
-                   <Route path="analytics" element={<AdminAnalyticsPage />} />
-                </Routes>
-              </AdminLayout>
-            </ProtectedRoute>
-          } 
-        />
-      </Routes>
-    );
-  }
-
-  // Render layout normal untuk user biasa
   return (
-    <div className="app">
-      {isHome ? (
-        <>
-          <Navbar isLoggedIn={isLoggedIn} handleLogout={handleLogout} />
-          <section id="section1" className="section section1">
-            <div className="main-content-container">
-              {selectedPhilosopher && (
-                <div className="biography-panel">
-                  <BiographyView 
-                    philosopher={selectedPhilosopher} 
-                    onClose={handleCloseBiography} 
-                  />
-                </div>
-              )}
-              <div className="map-wrapper">
-                <TimelineOfThought 
-                  philosophers={philosophers}
-                  onMarkerClick={handleMarkerClick}
-                />
-              </div>
-            </div>
-          </section>
-          <NavbarLinks />
-        </>
-      ) : (
-        <PageHeader isLoggedIn={isLoggedIn} handleLogout={handleLogout} />
-      )}
+    <Routes>
+      {/* HAPUS: Rute untuk /login dan /signup */}
+      <Route path="/admin/login" element={<AdminLoginPage setIsAdminLoggedIn={setIsAdminLoggedIn} />} />
 
-      <div className={isHome ? '' : 'page-content'}>
-        <Routes>
-          <Route path="/" element={
-              <>
-                <Highlight />
-                <MagazinePreview />
-                <Research />
-                <Course />
-                <Monologues />
-                <ReadingGuide />
-                <IdeasTradition />
-                <PopCultureReview />
-                <Shops />
-                <LatestVideos />
-                <Community />
-              </>
-            }
-          />
-          <Route path="/magazine" element={<MagazinePage />} />
-          <Route path="/shop" element={<ShopPage />} />
-          <Route path="/research" element={<ResearchPage />} />
-          <Route path="/monologues" element={<MonologuesPage/>}/>
-          <Route path="/IdeasTradition" element={<IdeasTraditionPage />}/>
-          <Route path="/PopCultureReview" element={<PopCultureReviewPage />}/>
-          <Route path="/ReadingGuide" element={<ReadingGuidePage />} />
-          <Route path="/read/:articleId" element={<ReadPage />} />
-          <Route path="/guide/:guideId" element={<GuidePage />} /> 
-          <Route path="/profile" element={<ProfilePage />} />
-          <Route path="/read-history" element={<ReadHistoryPage />} />
-        </Routes>
-      </div>
-      <Footer />
-    </div>
+      {/* Rute untuk Admin (menggunakan AdminLayout) - Tidak ada perubahan */}
+      <Route
+        path="/admin"
+        element={
+          <ProtectedRoute isAdminLoggedIn={isAdminLoggedIn}>
+            <AdminLayout setIsAdminLoggedIn={setIsAdminLoggedIn} />
+          </ProtectedRoute>
+        }
+      >
+        <Route index element={<Navigate to="analytics" replace />} />
+        <Route path="dashboard" element={<AdminDashboardPage />} />
+        <Route path="analytics" element={<AdminAnalyticsPage />} />
+        <Route path="articles/list" element={<AdminArticlePage />} />
+        <Route path="articles/add" element={<AdminAddArticlePage />} />
+        <Route path="shop/list" element={<AdminListItemPage />} />
+        <Route path="shop/add" element={<AdminAddItemPage />} />
+      </Route>
+
+      {/* PERBAIKAN: Rute Halaman Publik tidak lagi mengirimkan props login */}
+      <Route path="/" element={<PublicLayout />}>
+        <Route index element={
+            <>
+              <Highlight />
+              <MagazinePreview />
+              <Research />
+              <Course />
+              <Monologues />
+              <ReadingGuide />
+              <IdeasTradition />
+              <PopCultureReview />
+              <Shops />
+              <LatestVideos />
+              <Community />
+            </>
+          }
+        />
+        <Route path="magazine" element={<MagazinePage />} />
+        <Route path="shop" element={<ShopPage />} />
+        <Route path="research" element={<ResearchPage />} />
+        <Route path="monologues" element={<MonologuesPage/>}/>
+        <Route path="IdeasTradition" element={<IdeasTraditionPage />}/>
+        <Route path="PopCultureReview" element={<PopCultureReviewPage />}/>
+        <Route path="ReadingGuide" element={<ReadingGuidePage />} />
+        <Route path="read/:articleId" element={<ReadPage />} />
+        <Route path="guide/:guideId" element={<GuidePage />} />
+        {/* HAPUS: Rute untuk /profile dan /read-history */}
+      </Route>
+    </Routes>
   );
 }
 
+// Komponen App utama tetap sederhana
 export default function App() {
   return (
     <Router>

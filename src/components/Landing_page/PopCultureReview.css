@@ -188,7 +188,29 @@
 }
 
 @media (max-width: 768px) {
+  .pop-header { flex-direction: column; gap: 12px; text-align: center; }
+  .pop-more-button { display: none; }
+
+  /* Horizontal scroll ramping seperti IdeasTradition */
   .pop-content {
-    grid-template-columns: 1fr;
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 240px;
+    gap: 16px;
+    overflow-x: auto;
+    padding: 0 16px 10px;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
   }
+  .pop-content::-webkit-scrollbar { display: none; }
+  .pop-card { scroll-snap-align: start; border-radius: 16px; }
+
+  /* Tipografi kecil untuk mobile */
+  .pop-card-content h3 { font-size: 1.25rem; }
+  .pop-card-content p { font-size: 0.8rem; }
+  .view-link { font-size: 0.85rem; }
+
+  .pop-card.featured { width: 240px; }
+  .pop-card.featured img { height: auto; }
 }

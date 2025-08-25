@@ -15,12 +15,14 @@ const ArrowDownIcon = () => (
 );
 
 
-export default function AdminHeader() {
+// PERUBAHAN: Menerima props 'title' dan 'subtitle'
+export default function AdminHeader({ title, subtitle }) {
   return (
     <header className="admin-header">
       <div className="header-welcome">
-        <h1>Welcome back, Admin</h1>
-        <p>here's what happened to your website during today</p>
+        {/* Menampilkan judul dan subtitle dari props, atau nilai default jika tidak ada */}
+        <h1>{title || "Welcome back, Admin"}</h1>
+        <p>{subtitle || "here's what happened to your website during today"}</p>
       </div>
       <div className="header-actions">
         <div className="search-bar">

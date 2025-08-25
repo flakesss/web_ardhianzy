@@ -3,9 +3,15 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 0;
+  /* Berikan padding horizontal agar konten header tidak menempel ke tepi */
+  padding: 20px 38px;
   color: #FFFFFF;
   font-family: 'Roboto', sans-serif;
+  
+  /* PERUBAHAN UTAMA: Tambahkan latar belakang dan garis bawah */
+  background-color: #000000; /* Samakan dengan latar belakang utama */
+  border-bottom: 0.5px solid #333333; /* Garis pemisah tipis */
+  flex-shrink: 0; /* Mencegah header menyusut */
 }
 
 .header-welcome h1 {

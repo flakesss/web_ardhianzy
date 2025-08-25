@@ -148,3 +148,77 @@ blockquote::after {
 .read-load-more-button:hover {
   opacity: 0.8;
 }
+
+/* --- Responsive Design for ReadPage --- */
+
+@media (max-width: 768px) {
+  .read-page {
+    padding-top: 80px; /* Reduced top padding */
+    padding-bottom: 40px;
+  }
+
+  .article-container {
+    padding: 0 15px;
+  }
+
+  .back-button {
+    position: static; /* Remove absolute positioning */
+    font-size: 16px;
+    margin-bottom: 20px;
+    text-align: left;
+    width: 100%;
+  }
+
+  .back-button .arrow {
+    font-size: 20px;
+  }
+
+  .article-header {
+    margin-bottom: 30px;
+  }
+
+  .article-main-title {
+    font-size: 48px; /* Drastically reduce font size for mobile */
+  }
+
+  .article-meta {
+    font-size: 14px;
+    gap: 10px;
+  }
+
+  .meta-separator {
+    width: 5px;
+    height: 5px;
+  }
+
+  .article-hero-image {
+    height: 250px; /* Adjust hero image height */
+    margin-bottom: 40px;
+  }
+
+  .article-content {
+    font-size: 18px; /* Better reading font size for mobile */
+    line-height: 1.6;
+  }
+
+  .subheading {
+    font-size: 24px;
+  }
+
+  blockquote {
+    font-size: 16px;
+    padding: 0 30px;
+  }
+  
+  blockquote::before, blockquote::after {
+    font-size: 64px;
+  }
+
+  blockquote::after {
+    bottom: -20px;
+  }
+
+  .read-load-more-button {
+    font-size: 28px;
+  }
+}

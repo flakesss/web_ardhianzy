@@ -1,23 +1,32 @@
 /* src/components/admin/Sidebar.css */
 
-/* --- BAGIAN BARU UNTUK TATA LETAK UTAMA --- */
+/* --- BAGIAN TATA LETAK UTAMA --- */
 .admin-layout {
   display: flex;
   position: relative;
-  background-color: #1E1E1E; /* Menyamakan latar belakang utama */
+  background-color: #000000; 
 }
 
 .admin-main-content {
-  flex-grow: 1; /* Konten utama akan mengisi sisa ruang */
+  flex-grow: 1; 
   color: #FFFFFF;
-  padding: 25px 38px;
-  /* KUNCI PERUBAHAN: Memberi margin kiri seukuran lebar sidebar */
   margin-left: 377px; 
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  /* PERBAIKAN: Paksa konten untuk mulai dari atas */
+  justify-content: flex-start; 
 }
-/* --- AKHIR BAGIAN BARU --- */
+
+.admin-page-content {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding: 25px 38px;
+}
+/* --- AKHIR BAGIAN TATA LETAK UTAMA --- */
 
 
-/* MODIFIKASI: Mengunci posisi sidebar */
+/* --- SISA KODE TETAP SAMA --- */
 .sidebar {
   width: 377px;
   background-color: #000000;
@@ -29,15 +38,13 @@
   flex-shrink: 0;
   border-right: 0.5px solid #333333;
   font-family: 'Roboto', sans-serif;
-
-  /* --- KUNCI PERUBAHAN --- */
-  position: fixed; /* Mengunci posisi sidebar relatif terhadap viewport */
+  position: fixed; 
   top: 0;
   left: 0;
-  height: 100vh; /* Membuat tinggi sidebar selalu 100% dari tinggi layar */
-  z-index: 1000; /* Memastikan sidebar selalu di lapisan paling atas */
-  overflow-y: auto; /* Menambahkan scroll HANYA pada sidebar jika kontennya panjang */
-  box-sizing: border-box; /* PERBAIKAN: Memastikan padding termasuk dalam tinggi total */
+  height: 100vh; 
+  z-index: 1000; 
+  overflow-y: auto; 
+  box-sizing: border-box; 
 }
 
 .sidebar-header {

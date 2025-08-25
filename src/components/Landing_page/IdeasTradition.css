@@ -213,3 +213,33 @@
     height: 350px;
   }
 }
+
+/* Mobile tweaks */
+@media (max-width: 768px) {
+  .ideas-header { flex-direction: column; gap: 12px; text-align: center; }
+  .ideas-more-button { display: none; }
+
+  /* Horizontal scroll: lebih ramping */
+  .ideas-content {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 240px; /* lebih ramping di mobile */
+    gap: 16px;
+    overflow-x: auto;
+    padding: 0 16px 10px;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+  .ideas-content::-webkit-scrollbar { display: none; }
+  .ideas-card { scroll-snap-align: start; border-radius: 16px; }
+
+  /* Tipografi lebih kecil */
+  .ideas-card-content h3 { font-size: 1.25rem; }
+  .ideas-card-content p { font-size: 0.8rem; }
+  .view-link { font-size: 0.85rem; }
+
+  /* Featured ikut ukuran kartu mobile */
+  .ideas-card.featured { width: 240px; }
+  .ideas-card.featured img { height: auto; }
+}

@@ -1,10 +1,10 @@
 // src/components/PageHeader.jsx
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import './PageHeader.css';
-import UserProfile from './UserProfile'; // Import UserProfile
 
-export default function PageHeader({ isLoggedIn, handleLogout }) {
+export default function PageHeader() {
+  const [open, setOpen] = useState(false);
   return (
     <div className="page-header-wrapper">
       {/* Header utama dengan struktur tiga kolom */}
@@ -24,24 +24,13 @@ export default function PageHeader({ isLoggedIn, handleLogout }) {
             </Link>
         </div>
 
-        {/* Kolom Kanan (Tombol atau Profil) */}
+        {/* Kolom Kanan (sekarang kosong) */}
         <div className="page-header__section page-header__right">
-            {isLoggedIn ? (
-              <UserProfile handleLogout={handleLogout} />
-            ) : (
-              <>
-                <Link to="/signup" className="auth-button auth-button--signup">
-                    SIGN UP
-                </Link>
-                <Link to="/login" className="auth-button auth-button--login">
-                    LOG IN
-                </Link>
-              </>
-            )}
+           <button className="ph-menu-toggle" aria-expanded={open} onClick={() => setOpen(v => !v)}>MENU</button>
         </div>
       </header>
 
-      {/* Navigation links */}
+      {/* Navigation links for Desktop */}
       <div className="page-header__nav-container">
         <nav className="page-header__nav">
             <ul className="page-header__list">
@@ -56,6 +45,33 @@ export default function PageHeader({ isLoggedIn, handleLogout }) {
                 <li><NavLink to="/community">COMMUNITY</NavLink></li>
             </ul>
         </nav>
+      </div>
+
+      {/* Mobile Drawer Overlay - Strukturnya diubah agar mirip Navbar */}
+      <div
+        id="ph-mobile-overlay"
+        className={`ph-mobile-overlay ${open ? 'open' : ''}`}
+        role="dialog"
+        aria-modal="true"
+      >
+        <div className="ph-mobile-backdrop" onClick={() => setOpen(false)} />
+        <aside className="ph-mobile-drawer">
+          <div className="ph-mobile-header">
+            <span className="ph-mobile-title">Navigation</span>
+            <button className="ph-mobile-close" aria-label="Close menu" onClick={() => setOpen(false)}>×</button>
+          </div>
+          <ul className="ph-mobile-links">
+            <li><NavLink to="/magazine" onClick={() => setOpen(false)}>MAGAZINE</NavLink></li>
+            <li><NavLink to="/research" onClick={() => setOpen(false)}>RESEARCH</NavLink></li>
+            <li><NavLink to="/course" onClick={() => setOpen(false)}>COURSE</NavLink></li>
+            <li><NavLink to="/monologues" onClick={() => setOpen(false)}>MONOLOGUES</NavLink></li>
+            <li><NavLink to="/ReadingGuide" onClick={() => setOpen(false)}>READING GUIDE</NavLink></li>
+            <li><NavLink to="/ideastradition" onClick={() => setOpen(false)}>IDEAS & TRADITION</NavLink></li>
+            <li><NavLink to="/PopCultureReview" onClick={() => setOpen(false)}>POP-CULTURE REVIEW</NavLink></li>
+            <li><NavLink to="/shop" onClick={() => setOpen(false)}>SHOPS</NavLink></li>
+            <li><NavLink to="/community" onClick={() => setOpen(false)}>COMMUNITY</NavLink></li>
+          </ul>
+        </aside>
       </div>
     </div>
   );

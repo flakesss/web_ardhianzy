@@ -1,5 +1,5 @@
 // src/components/Course.jsx
-import React, { useState } from 'react';
+import React, { useMemo, useState, useEffect } from 'react';
 import './Course.css';
 
 const courseData = [
@@ -31,29 +31,16 @@ const courseData = [
   },
 ];
 
-function CourseCard({ img, mainTitle, subTitle, date, excerpt }) {
-  const [expanded, setExpanded] = useState(false);
-  const maxChars = 30;
-  const isLong = mainTitle.length > maxChars;
-  const displayTitle = !expanded && isLong
-    ? mainTitle.slice(0, maxChars).trim()
-    : mainTitle;
+function CourseCard({ img, displayTitle, subTitle, date, excerpt }) {
 
   return (
     <div className="course-card">
       <div className="course-card-img">
-        <img src={img} alt={mainTitle} />
+        <img src={img} alt={displayTitle} />
         <div className="play-icon" />
       </div>
       <h3 className="course-card-title">
         {displayTitle}
-        {isLong && !expanded && (
-          <button
-            className="expand-title-btn"
-            onClick={() => setExpanded(true)}
-            aria-label="Show full title"
-          >…</button>
-        )}
       </h3>
       <p className="course-card-subtitle">{subTitle}</p>
       <p className="course-card-date">{date}</p>
@@ -63,6 +50,31 @@ function CourseCard({ img, mainTitle, subTitle, date, excerpt }) {
 }
 
 export default function Course() {
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const update = () => setIsMobile(window.innerWidth <= 768);
+    update();
+    window.addEventListener('resize', update);
+    return () => window.removeEventListener('resize', update);
+  }, []);
+
+  const countWords = (t) => t.trim().split(/\s+/).filter(Boolean).length;
+  const truncateByWords = (t, maxWords) => {
+    const words = t.trim().split(/\s+/);
+    if (words.length <= maxWords) return t;
+    return words.slice(0, maxWords).join(' ') + '…';
+  };
+
+  // Truncate excerpt by sentences (max 4 sentences on mobile)
+  const splitSentences = (text) => (text.match(/[^.!?]+[.!?]*/g) || [text]).map(s => s.trim()).filter(Boolean);
+  const truncateToSentences = (text, limit) => {
+    const parts = splitSentences(text);
+    if (parts.length <= limit) return text;
+    return parts.slice(0, limit).join(' ').trim() + '…';
+  };
+
+  const titleWordLimit = useMemo(() => countWords(courseData[0].mainTitle), []);
+
   return (
     <section id="course" className="section section-course">
       <div className="course-container">
@@ -79,9 +91,45 @@ export default function Course() {
           today
         </p>
 
-        <div className="course-content">
-          {courseData.map((item, i) => (
-            <CourseCard key={i} {...item} />
+        <div
+          className="course-content"
+          onScroll={(e) => {
+            const el = e.currentTarget;
+            const cardWidth = 260 + 16;
+            const idx = Math.round(el.scrollLeft / cardWidth);
+            const dots = document.querySelectorAll('.course-dot');
+            dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+          }}
+        >
+          {courseData.map((item, i) => {
+            // Title truncation: prefer sentence cap (4 sentences) on mobile, fallback to word cap
+            let displayTitle = item.mainTitle;
+            if (isMobile) {
+              const titleBySentences = truncateToSentences(item.mainTitle, 4);
+              if (titleBySentences !== item.mainTitle) {
+                displayTitle = titleBySentences;
+              } else {
+                displayTitle = truncateByWords(item.mainTitle, titleWordLimit);
+              }
+            }
+            const displayExcerpt = isMobile
+              ? truncateToSentences(item.excerpt, 4)
+              : item.excerpt;
+            return (
+              <CourseCard
+                key={i}
+                img={item.img}
+                displayTitle={displayTitle}
+                subTitle={item.subTitle}
+                date={item.date}
+                excerpt={displayExcerpt}
+              />
+            );
+          })}
+        </div>
+        <div className="course-dots" aria-hidden>
+          {courseData.map((_, i) => (
+            <span key={i} className={`course-dot ${i===0 ? 'active' : ''}`}></span>
           ))}
         </div>
       </div>

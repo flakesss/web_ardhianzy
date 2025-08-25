@@ -27,7 +27,9 @@ export default function MonologuesHighlightSection() {
 
       <section className="article-slider-container">
         <div className="article-slider-wrapper">
-          <button className="slider-nav prev" onClick={handlePrev} aria-label="Previous article">&#8249;</button>
+          <button className="slider-nav prev" onClick={handlePrev} aria-label="Previous article">
+            <img src="/assets/icon/arrow kiri.svg" alt="Previous" />
+          </button>
           <div className="article-slider-viewport">
             <div className="article-slider" style={{ '--current-index': currentIndex }}>
               {articles.map((article, idx) => (
@@ -41,7 +43,9 @@ export default function MonologuesHighlightSection() {
               ))}
             </div>
           </div>
-          <button className="slider-nav next" onClick={handleNext} aria-label="Next article">&#8250;</button>
+          <button className="slider-nav next" onClick={handleNext} aria-label="Next article">
+            <img src="/assets/icon/arrow kanan.svg" alt="Next" />
+          </button>
         </div>
       </section>
     </div>

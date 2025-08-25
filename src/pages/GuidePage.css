@@ -152,3 +152,67 @@
     grid-template-columns: 1fr; /* Ubah jadi 1 kolom */
   }
 }
+
+@media (max-width: 768px) {
+  .guide-page {
+    padding: 120px 0 40px 0;
+  }
+  .guide-page .guide-container {
+    padding: 20px;
+    background: none;
+  }
+  .guide-page .author-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .guide-page .author-photo {
+    width: 120px;
+    height: 150px;
+  }
+  .guide-page .list-books-title {
+    font-size: 36px;
+  }
+  .guide-page .book-path-item {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .guide-page .path-book-cover {
+    width: 100px;
+    margin-bottom: 15px;
+  }
+  .guide-page .path-book-title {
+    font-size: 28px;
+  }
+  .guide-page .path-book-description {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .guide-page {
+    padding-top: 100px;
+  }
+  .guide-page .guide-container {
+    padding: 15px;
+  }
+  .guide-page .author-name {
+    font-size: 18px;
+  }
+   .guide-page .author-bio {
+    font-size: 14px;
+  }
+  .guide-page .list-books-title {
+    font-size: 32px;
+  }
+  .guide-page .warning-text h3 {
+    font-size: 18px;
+  }
+  .guide-page .warning-text p {
+    font-size: 13px;
+  }
+  .guide-page .path-book-title {
+    font-size: 24px;
+  }
+}

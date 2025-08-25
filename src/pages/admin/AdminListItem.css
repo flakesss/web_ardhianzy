@@ -1,0 +1,224 @@
+/* src/pages/admin/AdminListItem.css */
+
+.list-item-page {
+    font-family: 'Roboto', sans-serif;
+    color: #FFFFFF;
+    position: relative;
+    padding-bottom: 80px;
+}
+
+.list-item-actions {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #F5F5F5;
+    padding-bottom: 30px;
+}
+
+.action-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: transparent;
+    border: 1px solid #F5F5F5;
+    border-radius: 30px;
+    color: #FFFFFF;
+    font-size: 20px;
+    padding: 12px 25px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.action-btn:hover {
+    background-color: rgba(245, 245, 245, 0.1);
+}
+
+.action-btn.save-btn {
+    background-color: #F5F5F5;
+    color: #000000;
+    margin-left: auto;
+}
+
+.action-btn.save-btn:hover {
+    background-color: #e0e0e0;
+}
+
+.items-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.shop-item {
+    border: 1px solid #F5F5F5;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.shop-item.selected {
+    padding: 30px;
+}
+
+.shop-item-header {
+    padding: 15px 30px;
+    cursor: pointer;
+}
+
+.shop-item.selected .shop-item-header {
+    padding: 0 0 15px 0;
+}
+
+
+.shop-item::before {
+    content: '';
+    position: absolute;
+    left: -30px; /* Posisi sesuai desain */
+    top: 0;
+    width: 30px;
+    height: 100%;
+    background-color: transparent;
+    transition: background-color 0.2s;
+}
+
+.shop-item.selected::before {
+    background-color: #F5F5F5;
+}
+
+.shop-item-title {
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.item-form-container {
+    display: flex;
+    gap: 30px;
+}
+
+.item-form-details {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-field {
+    border-bottom: 1px solid #222222;
+    padding-bottom: 20px;
+}
+
+.form-field label {
+    display: block;
+    font-size: 16px;
+    color: #B1B1B1;
+    margin-bottom: 12px;
+}
+
+.form-field input[type="text"],
+.form-field textarea {
+    background: none;
+    border: none;
+    color: #F5F5F5;
+    font-size: 20px;
+    width: 100%;
+    outline: none;
+}
+
+.form-field textarea {
+    resize: vertical;
+}
+
+.radio-group {
+    display: flex;
+    gap: 40px;
+}
+
+.radio-option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.radio-option input[type="radio"] {
+    /* Custom radio button styling */
+    appearance: none;
+    -webkit-appearance: none;
+    width: 19px;
+    height: 19px;
+    border: 1px solid #F5F5F5;
+    border-radius: 50%;
+    outline: none;
+    cursor: pointer;
+    position: relative;
+}
+
+.radio-option input[type="radio"]:checked::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background-color: #F5F5F5;
+    transform: translate(-50%, -50%);
+}
+
+
+.radio-option label {
+    margin-bottom: 0;
+    font-size: 20px;
+    color: #F5F5F5;
+}
+
+.item-form-image {
+    width: 257px;
+    height: 364px;
+    position: relative;
+    flex-shrink: 0;
+}
+
+.item-form-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.edit-image-btn {
+    position: absolute;
+    top: 15px;
+    right: -15px;
+    width: 63px;
+    height: 63px;
+    background: #222222;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.add-fab {
+    position: fixed;
+    bottom: 40px;
+    right: 100px;
+    width: 58px;
+    height: 58px;
+    background-color: transparent;
+    border: 1px solid #B1B1B1;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.add-fab:hover {
+    background-color: rgba(177, 177, 177, 0.2);
+}
+
+.add-fab svg path {
+    stroke: #B1B1B1;
+}

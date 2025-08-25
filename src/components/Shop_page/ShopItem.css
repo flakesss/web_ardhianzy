@@ -1,3 +1,13 @@
+.filter-sidebar__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.filter-sidebar__back {
+  display: none;
+}
 /* src/components/shop_page/ShopItem.css */
 
 /* --- Container Utama untuk Halaman --- */
@@ -5,6 +15,8 @@
   position: relative; /* Penting: Sebagai acuan untuk posisi absolut child */
   overflow: hidden;   /* Opsional: Mencegah aset keluar dari container jika terlalu besar */
 }
+
+.filter-backdrop { display: none; }
 
 /* --- Aset Latar Belakang Kiri Bawah --- */
 .shop-background-asset-left {
@@ -21,7 +33,6 @@
 
   /* --- TAMBAHKAN BARIS INI UNTUK MENGGESER --- */
   /* Geser elemen ini 500px ke kiri. Anda bisa ganti nilainya sesuai selera. */
-  transform: translateX(0px);
   transform: translateY(100px);
 }
 
@@ -45,6 +56,10 @@
   font-size: 24px;
   color: #E1E1E1;
   margin-bottom: 2rem;
+}
+
+.filter-sidebar__close {
+  display: none;
 }
 
 .filter-sidebar__sub-title {
@@ -80,6 +95,10 @@
   align-items: center;
   gap: 0.75rem; /* Jarak antara radio button dan teks */
   cursor: pointer;
+}
+
+.shop-mobile-toolbar {
+  display: none;
 }
 
 /* Menyembunyikan radio button asli */
@@ -120,7 +139,7 @@
 .shop-items-grid {
   display: grid;
   /* Membuat kolom yang responsif: minimal 240px, dan akan mengisi ruang yang tersedia */
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: 2.5rem 1.5rem; /* Jarak vertikal dan horizontal antar kartu */
 }
 
@@ -177,12 +196,126 @@
 }
 
 /* --- Media Query untuk Tampilan Mobile --- */
-@media (max-width: 820px) {
+/* Tablet */
+@media (max-width: 1024px) {
   .shop-section-wrapper {
-    grid-template-columns: 1fr; /* Ubah jadi 1 kolom */
+    grid-template-columns: 220px 1fr;
+    gap: 2rem;
+  }
+  .shop-items-grid { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
+  .product-card__title { font-size: 28px; }
+  .product-card__price { font-size: 16px; }
+}
+
+/* Mobile besar */
+@media (max-width: 820px) {
+  /* Geser aset background lebih ke bawah agar tidak terlalu naik di mobile */
+  .shop-background-asset-left {
+    bottom: -500px;
+    transform: none;
+  }
+  .shop-mobile-toolbar {
+    display: flex;
+    justify-content: flex-end;
+    /* PERUBAHAN: Atur margin bawah untuk jarak yang pas ke etalase */
+    margin-bottom: 1.5rem;
+  }
+  .filter-toggle-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #111;
+    color: #fff;
+    border: 1px solid #2a2a2a;
+    border-radius: 8px;
+    padding: 0 10px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 14px;
+    letter-spacing: 0.25px;
+    height: 32px;
+    line-height: 1;
   }
 
-  .etalase-title {
-    margin-top: 2rem; /* Beri jarak dari filter di atasnya */
+  .shop-section-wrapper {
+    grid-template-columns: 1fr; /* Ubah jadi 1 kolom */
+    gap: 0; /* Hapus gap antar grid item */
+    padding: 0 1rem; /* kurangi padding agar konten memenuhi lebar */
+    min-height: auto; /* PERUBAHAN: Reset min-height untuk mobile */
   }
+  .filter-sidebar { 
+    display: none;
+    order: 2;
+    position: fixed;
+    inset: 0 0 0 35%;
+    background: rgba(0,0,0,0.9);
+    backdrop-filter: blur(6px);
+    padding: 1rem 1.25rem;
+    z-index: 1001;
+    transform: translateX(100%);
+    transition: transform 0.25s ease;
+    overflow-y: auto;
+  }
+  .filter-sidebar.is-open {
+    display: block;
+    transform: translateX(0);
+  }
+  .filter-backdrop {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 1000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+  }
+  .filter-backdrop.is-open {
+    display: block;
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .filter-sidebar__close {
+    display: inline-block;
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 22px;
+    line-height: 1;
+    padding: 4px;
+    position: absolute;
+    top: 8px;
+    right: 10px;
+  }
+  .filter-sidebar__back {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: transparent;
+    color: #fff;
+    border: 1px solid #2a2a2a;
+    border-radius: 10px;
+    padding: 4px 8px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 13px;
+  }
+  .etalase-wrapper { order: 1; }
+
+  .etalase-title {
+    /* Reset margin atas karena jarak sudah diatur oleh toolbar */
+    margin-top: 0; 
+    /* Pastikan ada jarak ke bawah */
+    margin-bottom: 2rem; 
+  }
+  .shop-items-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; padding: 0 0.25rem; }
+  .product-card__title { font-size: 24px; }
+  .product-card__author { font-size: 12px; }
+  .product-card__price { font-size: 16px; }
+}
+
+/* Mobile kecil */
+@media (max-width: 520px) {
+  .shop-section-wrapper { padding: 0 0.75rem; }
+  .shop-items-grid { grid-template-columns: 1fr; gap: 1rem; }
+  .product-card__title { font-size: 22px; }
+  .product-card__price { font-size: 15px; }
 }

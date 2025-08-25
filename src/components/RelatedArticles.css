@@ -88,3 +88,71 @@
 .carousel-nav.next {
   right: -50px;
 }
+
+/* --- Responsive Design for RelatedArticles --- */
+
+@media (max-width: 768px) {
+  .related-articles-section {
+    padding: 40px 0;
+  }
+
+  .related-articles-container {
+    padding: 0 15px;
+  }
+
+  .related-header {
+    gap: 15px;
+    margin-bottom: 30px;
+  }
+
+  .header-bar {
+    width: 10px;
+    height: 50px;
+  }
+
+  .header-title {
+    font-size: 48px;
+    line-height: 1;
+  }
+
+  .related-carousel-wrapper {
+    margin: 0 -15px; /* Extend wrapper to screen edges */
+    position: relative;
+    padding: 0;
+  }
+
+  /* Make the track horizontally scrollable on mobile */
+  .related-articles-viewport {
+    overflow-x: auto; /* Enable horizontal scroll */
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    scrollbar-width: none; /* Hide scrollbar for Firefox */
+    scroll-snap-type: x mandatory; /* Enable snapping */
+    scroll-padding: 0 40px; /* Add padding to the scroll-snap area */
+  }
+
+  .related-articles-viewport::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for Chrome, Safari, Opera */
+  }
+
+  .related-articles-track {
+    transition: none; /* Disable JS transition */
+    transform: none !important; /* Override JS transform */
+    padding: 0 15px; /* Add padding inside the scrollable area */
+  }
+
+  .related-article-card {
+    width: 250px; /* Make cards slightly smaller */
+    scroll-snap-align: start; /* Each card is a snap point */
+  }
+
+  /* Hide carousel navigation buttons on mobile */
+  .carousel-nav {
+    display: none !important; /* Force hiding the buttons */
+  }
+  
+  /* Hide gradient overlays on mobile */
+  .related-carousel-wrapper::before,
+  .related-carousel-wrapper::after {
+    display: none;
+  }
+}

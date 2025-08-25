@@ -48,7 +48,7 @@ export default function IdeasTradition() {
           </a>
         </div>
 
-        {/* Grid */}
+        {/* Grid (desktop + tablet) */}
         <div className="ideas-content">
           {ideas.map((item, i) => (
             <div key={i} className="ideas-card">
@@ -77,6 +77,8 @@ export default function IdeasTradition() {
             </div>
           </div>
         </div>
+
+        {/* Mobile layout: nonaktif, kembali ke grid horizontal ramping */}
       </div>
     </section>
   );

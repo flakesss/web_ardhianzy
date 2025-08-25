@@ -42,6 +42,9 @@
   padding: 20px 0;
   background-color: #000;
   overflow: hidden; /* Tetap hidden untuk memotong ujung terluar */
+  /* Variabel untuk ukuran kartu dan jarak antar kartu */
+  --card-width: 1029px;
+  --card-gap: 30px;
 }
 
 /* KUNCI EFEK GRADASI DI UJUNG: Tambahkan pseudo-elemen di sini */
@@ -92,12 +95,12 @@
   height: 100%; /* Pastikan slider mengisi tinggi viewport */
   position: relative;
   /* Geser ke kiri agar kartu pertama terpusat */
-  transform: translateX(calc(50% - (1029px / 2) - (var(--current-index) * (1029px + 30px))));
+  transform: translateX(calc(50% - (var(--card-width) / 2) - (var(--current-index) * (var(--card-width) + var(--card-gap)))));
 }
 
 .article-card {
   flex-shrink: 0;
-  width: 1029px;
+  width: var(--card-width);
   height: 417px;
   position: relative;
   overflow: hidden;
@@ -206,36 +209,111 @@
   right: 40px;
 }
 
+.research-highlight-wrapper .article-slider-container::before,
+.research-highlight-wrapper .article-slider-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 10%;
+  max-width: 150px;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.research-highlight-wrapper .article-slider-container::before {
+  left: 0;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.85) 0%, transparent 80%);
+}
+
+.research-highlight-wrapper .article-slider-container::after {
+  right: 0;
+  background: linear-gradient(to left, rgba(0, 0, 0, 0.85) 0%, transparent 80%);
+}
+
+.research-highlight-wrapper .slider-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  box-sizing: border-box;
+  background-color: rgba(177, 177, 177, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.research-highlight-wrapper .slider-nav img {
+  width: 30%;
+  height: auto;
+}
+
+.research-highlight-wrapper .slider-nav:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+  transform: translateY(-50%) scale(1.05);
+}
+
+.research-highlight-wrapper .slider-nav.prev { left: 40px; }
+.research-highlight-wrapper .slider-nav.next { right: 40px; }
+
 /* RESPONSIVE STYLES */
 @media (max-width: 1200px) {
-  .article-slider {
-     left: calc(50% - (90vw / 2));
-  }
-  .article-card {
-    width: 90vw;
-    height: 350px;
-  }
+  /* Kartu dan transform mengikuti lebar viewport */
+  .article-slider-container { --card-width: 90vw; }
+  .article-slider { left: 0; }
+  .article-card { width: var(--card-width); height: 350px; }
+  .highlight-title { font-size: 4rem; }
+  .highlight-section { height: 50vh; }
 }
 
 @media (max-width: 768px) {
   .article-slider-container {
-    padding: 40px 0;
+    padding: 30px 0;
+    --card-width: 85vw; /* Make cards a bit smaller than viewport */
+    --card-gap: 15px;
   }
-   .article-slider {
-     left: calc(50% - (95vw / 2));
+  .article-slider-viewport {
+    overflow-x: auto; /* Enable horizontal scroll */
+    scroll-snap-type: x mandatory; /* Enable snapping */
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    scrollbar-width: none; /* Hide scrollbar */
+  }
+  .article-slider-viewport::-webkit-scrollbar {
+    display: none;
+  }
+  .article-slider {
+    /* Reset transform logic for simple scroll */
+    transform: none !important; 
+    justify-content: flex-start;
+    /* Add padding to the start and end */
+    padding: 0 var(--card-gap);
   }
   .article-card {
-    width: 95vw;
-    height: 300px;
+    scroll-snap-align: center; /* Snap cards to the center */
+    transform: none; /* Remove scaling effect */
+    opacity: 1; /* Make all cards fully visible */
+    height: 320px;
   }
-  .slider-nav {
-    width: 45px;
-    height: 45px;
-    font-size: 1.2rem;
+  .article-card.is-active, .article-card:hover {
+    transform: none; /* Disable hover/active scaling */
   }
-  .slider-nav.prev { left: 10px; }
-  .slider-nav.next { right: 10px; }
+
+  /* Hide arrows and side gradients on mobile */
+  .slider-nav,
+  .article-slider-container::before,
+  .article-slider-container::after {
+    display: none;
+  }
+
   .article-overlay { padding: 20px 25px; }
-  .article-title { font-size: 2.5rem; margin-bottom: 8px; }
+  .article-title { font-size: 2.2rem; margin-bottom: 8px; }
   .article-description { font-size: 0.9rem; }
+  .highlight-title { font-size: 3rem; }
+  .highlight-section { height: 40vh; }
 }

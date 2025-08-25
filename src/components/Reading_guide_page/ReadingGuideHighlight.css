@@ -208,3 +208,65 @@
 .decorative-asset.right {
   right: -499px; /* Posisikan di kanan */
 }
+
+/* --- RESPONSIVE ADJUSTMENTS --- */
+@media (max-width: 1200px) {
+  .reading-guide-highlight-wrapper .highlight-section { height: 50vh; }
+  .reading-guide-highlight-wrapper .highlight-title { font-size: 4rem; }
+  .book-slider-section { max-width: 100%; padding: 0 20px; }
+  .book-slider-viewport { max-width: 94vw; }
+  .book-slide { gap: 24px; }
+  .book-cover { width: 240px; height: auto; }
+  .book-title { font-size: 40px; }
+  .book-description { font-size: 18px; }
+  .book-slider-nav { width: 52px; height: 52px; font-size: 1.4rem; }
+}
+
+@media (max-width: 768px) {
+  .reading-guide-highlight-wrapper .highlight-section { height: 40vh; }
+  .reading-guide-highlight-wrapper .highlight-title { font-size: 2.8rem; }
+  .book-slider-area { padding: 30px 15px; }
+  .book-slider-section { margin-bottom: 20px; }
+  .book-slider-viewport { max-width: 100%; }
+  .book-slide {
+    padding: 15px;
+    gap: 15px;
+    border-radius: 12px;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .book-cover {
+    width: 60vw;
+    max-width: 200px;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+  }
+  .book-details { width: 100%; align-items: center;}
+  .book-title { font-size: 28px; text-align: center; }
+  .book-author { font-size: 14px; text-align: center; }
+  .separator { margin: 12px 0; }
+  .book-description { font-size: 15px; text-align: center; }
+  .explore-button { align-self: center; font-size: 15px; padding: 10px 16px; }
+  .book-slider-nav { 
+    width: 38px; 
+    height: 38px; 
+    font-size: 1.1rem; 
+    top: 35%; /* Adjust position relative to the image */
+  }
+  .book-slider-nav.prev { left: 5px; }
+  .book-slider-nav.next { right: 5px; }
+  .slide-indicators { gap: 8px; }
+  .indicator-dot { width: 8px; height: 8px; }
+  .decorative-asset { display: none; }
+}
+
+@media (max-width: 480px) {
+  .reading-guide-highlight-wrapper .highlight-section { height: 35vh; }
+  .reading-guide-highlight-wrapper .highlight-title { font-size: 2.2rem; }
+  .book-title { font-size: 24px; }
+  .book-description { font-size: 14px; }
+  .book-slider-nav { width: 32px; height: 32px; }
+  .book-author { font-size: 12px; }
+}

@@ -48,6 +48,10 @@
   margin: 0;
 }
 
+.magazine-subtitle {
+  display: none;
+}
+
 .magazine-more-button {
   display: flex;
   align-items: center;
@@ -79,6 +83,11 @@
   align-items: start;
   position: relative;
   z-index: 2;
+}
+
+/* wrapper untuk small cards agar bisa horizontal scroll di mobile jika perlu */
+.magazine-small-list {
+  display: contents; /* default: ikut grid desktop */
 }
 
 /* ────────────────────────────────────────────────
@@ -229,15 +238,119 @@
 }
 
 @media (max-width: 768px) {
-  .magazine-header     { flex-direction: column; align-items: flex-start; gap: 20px; }
-  .magazine-content    { grid-template-columns: 1fr; gap: 1.5rem; }
+  .magazine-header     { flex-direction: column; align-items: center; text-align: center; gap: 8px; }
 
-  .magazine-card-large {
-    flex-direction: column;
-    border-radius: 0 0 24px 24px;
+  /* Track horizontal: semua kartu (big+small) menjadi satu baris scroll */
+  .magazine-content {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 249px;
+    gap: 24px; /* tambah jarak antar kartu */
+    overflow-x: auto;
+    padding: 4px 0 12px;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none; /* Firefox */
   }
-  .magazine-card-large-img,
-  .magazine-card-large-content { width: 100%; }
-  .magazine-card-large-img     { min-height: 320px; }
-  .magazine-card-large-content { padding: 32px 24px; }
+  .magazine-content::-webkit-scrollbar { display: none; } /* WebKit */
+  .magazine-content > * { scroll-snap-align: start; }
+  .magazine-small-list { display: contents; }
+
+  /* Big card → bentuk kartu mobile */
+  .magazine-card-large {
+    display: flex;
+    flex-direction: column;
+    width: 249px;
+    background: transparent;
+    border-radius: 0;
+    padding-left: 0;
+  }
+  .magazine-card-large::before { content: none; }
+  .magazine-card-large-img { width: 100%; margin-right: 0; aspect-ratio: 249 / 241; min-height: auto; }
+  .magazine-card-large-img img { mix-blend-mode: luminosity; }
+  .magazine-card-large-content { width: 100%; padding: 0; color: #fff; display: block; text-align: center; }
+
+  /* Small card → bentuk kartu mobile */
+  .magazine-card-small { background: transparent; color: #fff; border-radius: 0; padding: 0; width: 249px; }
+  .magazine-card-small-img { width: 100%; aspect-ratio: 249 / 241; margin-bottom: 8px; }
+  .magazine-card-small-img img { mix-blend-mode: luminosity; }
+  .magazine-card-small-content { text-align: center; padding: 0; display: block; }
+
+  /* Typography mengikuti spesifikasi */
+  .magazine-card-large-content h3,
+  .magazine-card-small-content h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 32px; /* lebih kecil agar rapi pada variasi asset */
+    line-height: 38px;
+    font-weight: 400;
+    color: #FFFFFF;
+    margin: 6px 0 6px;
+    text-align: center;
+  }
+  .magazine-card-large-content .excerpt,
+  .magazine-card-small-content .excerpt {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    color: #FFFFFF;
+    text-align: center;
+    margin: 0 0 8px;
+  }
+  .magazine-card-large-content .author,
+  .magazine-card-small-content .author {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 16px;
+    color: #FFFFFF;
+    text-align: center;
+    margin: 4px 0 0;
+  }
+
+  /* Judul center + hide button */
+  .magazine-header h2 { font-size: 2.4rem; }
+  .magazine-subtitle {
+    display: block;
+    font-family: 'Roboto', serif;
+    font-style: italic;
+    color: rgba(255,255,255,0.8);
+    font-size: 0.95rem;
+  }
+  .magazine-more-button { display: none; }
+
+  .magazine-card-large-content .read-more { display: none; }
+
+  /* Dots pagination */
+  .magazine-dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-top: 8px;
+  }
+  .magazine-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.45);
+    transition: transform 0.2s ease, background 0.2s ease;
+  }
+  .magazine-dot.active {
+    width: 10px;
+    height: 10px;
+    background: #fff;
+  }
+}
+
+/* Pastikan ukuran judul big card identik dengan small card pada rentang mobile luas */
+@media (max-width: 900px) {
+  .magazine-card-large-content h3 { font-size: 32px; line-height: 38px; font-weight: 400; }
+}
+
+@media (max-width: 480px) {
+  .magazine-container { padding: 0 20px; }
+  .magazine-header h2 { font-size: 2.2rem; }
+  .magazine-card-large-content h3,
+  .magazine-card-small-content h3 { font-size: 36px; line-height: 43px; }
 }

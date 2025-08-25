@@ -1,175 +1,298 @@
 /* General Body Styles */
 body {
-  background-color: #1E1E1E; /* Dark background for the whole page */
+  background-color: #1E1E1E;
   color: #FFFFFF;
   font-family: 'Roboto', sans-serif;
   margin: 0;
   padding: 0;
 }
 
-/* Admin Header Container */
-.admin-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 40px;
-  background-color: #000000; /* Black header background */
-  border-bottom: 1px solid #333;
-}
-
-.header-left {
-  flex-grow: 1;
-}
-
-.header-center {
-  display: flex;
-  justify-content: center;
-  flex-grow: 2;
-}
-
-.header-right {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-/* Welcome Text */
-.header-title {
-  font-weight: 500;
-  font-size: 36px;
-  line-height: 42px;
-  color: #FFFFFF;
-  margin: 0;
-}
-
-.header-subtitle {
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 19px;
-  color: #B1B1B1;
-  margin: 5px 0 0;
-}
-
-/* Search Bar */
-.search-container {
-  display: flex;
-  align-items: center;
-  padding: 7px 15px;
-  gap: 9px;
-  border: 1px solid #FFFCFC;
-  border-radius: 30px;
-  width: 257px;
-}
-
-.search-icon {
-  width: 14px;
-  height: 14px;
-  fill: none;
-  stroke: #FFFFFF;
-}
-
-.search-input {
-  background: none;
-  border: none;
-  color: rgba(255, 255, 255, 0.7);
-  font-family: 'Roboto', sans-serif;
-  font-size: 12px;
-  width: 100%;
-}
-
-.search-input::placeholder {
-  color: rgba(255, 255, 255, 0.5);
-}
-
-.search-input:focus {
-  outline: none;
-}
-
-
-/* User Info Section */
-.user-info {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.user-avatar {
-  width: 20px;
-  height: 20px;
-  background-color: #D9D9D9;
-  border-radius: 50%;
-}
-
-.user-name {
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 19px;
-  color: #FFFFFF;
-}
-
-.dropdown-icon {
-  width: 19px;
-  height: 19px;
-  cursor: pointer;
-}
-
 /* Main Content Sections */
-.admin-dashboard-content {
-    padding: 20px 40px;
-}
-
 .admin-section {
-  background-color: #2a2a2a;
-  padding: 20px;
+  background-color: transparent;
+  padding: 0;
   border-radius: 8px;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
 }
 
-.admin-section h2 {
-    margin-top: 0;
-    border-bottom: 1px solid #444;
-    padding-bottom: 10px;
-}
-
-.admin-section h3 {
-  margin-top: 0;
-  color: #E0E0E0;
+.section-title {
+    font-family: 'Roboto';
+    font-weight: 500;
+    font-size: 36px;
+    color: #FFFFFF;
+    margin-bottom: 30px;
 }
 
 .admin-section p {
     color: #B1B1B1;
 }
 
-/* Table Styles */
-.admin-table-container {
-  overflow-x: auto;
+/* --- Gaya Web Performance Section --- */
+.web-performance-cards {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: flex-start;
 }
 
-.admin-table {
+.visitors-card {
+    background-color: #222222;
+    border-radius: 30px;
+    padding: 26px;
+    width: 478px;
+    height: 180px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 15px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.visitors-card-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.visitors-card-header span {
+    font-weight: 700;
+    font-size: 18px;
+    color: #F5F5F5;
+}
+
+.visitors-card-main-number {
+    font-weight: 700;
+    font-size: 30px;
+    color: #F5F5F5;
+    margin: 0;
+    line-height: 1;
+}
+
+.visitors-card-footer {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: #F5F5F5;
+    margin-top: auto;
+}
+
+.visitors-card-footer .percentage {
+    font-weight: 700;
+}
+
+/* --- Gaya Newcomers Section --- */
+.newcomers-container {
+  background: #222222;
+  border-radius: 30px;
+  padding: 25px 35px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.newcomers-header, .top-picks-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.newcomers-header h4, .top-picks-header h4 {
+  font-weight: 400;
+  font-size: 18px;
+  color: #F5F5F5;
+  margin: 0;
+}
+
+.filter-sort-button {
+  background: none;
+  border: none;
+  color: #F5F5F5;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.newcomers-table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 15px;
 }
 
-.admin-table th,
-.admin-table td {
-  padding: 12px 15px;
+.newcomers-table th, .newcomers-table td {
   text-align: left;
-  border-bottom: 1px solid #444;
+  padding: 18px 0;
+  border-bottom: 0.5px solid #B1B1B1;
+  color: #F5F5F5;
+  font-size: 15px;
 }
 
-.admin-table th {
-  background-color: #333;
-  color: #FFFFFF;
-  font-weight: 500;
+.newcomers-table th {
+  color: #B1B1B1;
+  font-weight: 400;
+  font-size: 14px;
+  padding-bottom: 10px;
 }
 
-.admin-table tbody tr {
-  background-color: #2a2a2a;
+.newcomers-table tr:last-child td {
+  border-bottom: none;
 }
 
-.admin-table tbody tr:hover {
-  background-color: #383838;
+.profile-cell {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.profile-avatar {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background-color: #F5F5F5; /* Fallback color */
+}
+
+.profile-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-name {
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.profile-age {
+  font-weight: 400;
+  font-size: 12px;
+}
+
+.newcomers-footer, .top-picks-footer {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.view-more-link {
+  font-family: 'Roboto';
+  font-weight: 400;
+  font-size: 15px;
+  text-decoration-line: underline;
+  color: #F5F5F5;
+}
+
+/* --- Gaya Article Analytics Section --- */
+.article-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    background: #222222;
+    border-radius: 30px;
+    margin-bottom: 40px;
+}
+
+.article-stat-card {
+    box-sizing: border-box;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    border-right: 1px solid #B1B1B1;
+}
+
+.article-stat-card:last-child {
+    border-right: none;
+}
+
+.stat-card-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 18px;
+    font-weight: 400;
+    color: #F5F5F5;
+}
+
+.stat-card-value {
+    font-size: 30px;
+    font-weight: 700;
+    color: #F5F5F5;
+    margin: 0;
+}
+
+.stat-card-footer {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: #F5F5F5;
+}
+
+.stat-card-footer .percentage {
+    font-weight: 700;
+}
+
+.top-picks-container {
+    background: #222222;
+    border-radius: 30px;
+    padding: 25px 35px;
+}
+
+.top-picks-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.top-picks-table th, .top-picks-table td {
+    padding: 18px 0;
+    border-bottom: 0.5px solid #B1B1B1;
+    font-size: 15px;
+    color: #F5F5F5;
+    text-align: left;
+}
+
+.top-picks-table th {
+    font-weight: 400;
+    font-size: 14px;
+    color: #B1B1B1;
+}
+
+.top-picks-table tr:last-child td {
+    border-bottom: none;
+}
+
+.top-picks-title {
+    max-width: 150px; 
+}
+
+.status-popular {
+    background: #E1E1E1;
+    color: #000000;
+    padding: 5px 15px;
+    border-radius: 30px;
+    font-size: 12px;
+    font-weight: 400;
+}
+
+/* --- GAYA BARU: Shop Analytics Section --- */
+.shop-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    background: #222222;
+    border-radius: 30px;
+    margin-bottom: 40px;
+}
+
+.shop-stat-card {
+    box-sizing: border-box;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    border-right: 1px solid #B1B1B1;
+}
+
+.shop-stat-card:last-child {
+    border-right: none;
 }
 
 /* Placeholder for Charts */

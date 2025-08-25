@@ -115,21 +115,24 @@
 }
 
 @media (max-width: 640px) {
-  .philosophers-header {
-    flex-direction: column;
-    gap: 1.5rem;
-    margin-bottom: 3rem;
-  }
+  .philosophers-header { flex-direction: column; gap: 12px; text-align: center; }
+  .philosophers-more-button { display: none; }
 
+  /* Jadikan horizontal scroll seperti section lain */
   .philosophers-grid {
-    grid-template-columns: 1fr;
-    gap: 3rem 0;
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 220px;
+    gap: 16px;
+    overflow-x: auto;
+    padding-bottom: 10px;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
   }
-
-  /* Ganti pemisah vertikal menjadi horizontal di mobile */
-  .philosopher-card:not(:first-child) {
-    border-left: none;
-    border-top: 1px solid rgba(255, 255, 255, 0.3);
-    padding-top: 3rem;
-  }
+  .philosophers-grid::-webkit-scrollbar { display: none; }
+  .philosopher-card { scroll-snap-align: start; border: none !important; padding-top: 0; }
+  .philosopher-img img { width: 140px; height: 196px; }
+  .philosopher-name { font-size: 24px; }
+  .philosopher-bio { font-size: 12px; max-width: 200px; }
 }

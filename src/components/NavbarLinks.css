@@ -27,6 +27,8 @@
   justify-content: center;
   max-width: 1439px;
   width: 100%;
+  overflow-x: auto; /* Hindari pecah layout di mobile */
+  -webkit-overflow-scrolling: touch;
 }
 
 .navbar-links li {
@@ -66,4 +68,16 @@
   .navbar-links li {
     margin: 0 8px;
   }
+  .navbar-links-container.sticky { top: 60px; }
+}
+
+@media (max-width: 600px) {
+  .navbar-links a { font-size: 13px; }
+  .navbar-links li { margin: 0 6px; }
+  .navbar-links-container.sticky { top: 56px; }
+}
+
+/* Sembunyikan seluruh bar NavbarLinks pada layar small (menu pindah ke Navbar) */
+@media (max-width: 1024px) {
+  .navbar-links-container { display: none; }
 }

@@ -176,10 +176,39 @@
 }
 
 @media (max-width: 768px) {
+  .monologues-container { padding: 0 20px; }
+  .monologues-header { flex-direction: column; align-items: center; text-align: center; gap: 8px; }
+  .monologues-more-button { display: none; }
+
+  /* Horizontal scroll list — seragam seperti Magazine */
   .monologues-content {
-    grid-template-columns: 1fr;
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 314px; /* lebar kartu total sesuai desain */
+    gap: 24px;
+    overflow-x: auto;
+    padding: 0 20px 10px; /* beri padding kiri/kanan */
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    /* hilangkan scroll-padding untuk menghindari offset snap */
+    scrollbar-width: none;
   }
-  .monologue-card.featured::before {
-    display: none;
-  }
+  .monologues-content::-webkit-scrollbar { display: none; }
+  .monologue-card { scroll-snap-align: start; width: 314px; margin: 0; }
+  .monologue-card:first-child { scroll-margin-left: 20px; }
+
+  /* Seragamkan ukuran gambar & tipografi ala Magazine mobile */
+  .monologue-img { width: 249px; height: auto; aspect-ratio: 249 / 334; margin: 0 auto 8px; }
+  .monologue-img img { mix-blend-mode: luminosity; }
+  .featured-img { width: 249px; height: auto; aspect-ratio: 249 / 334; margin: 0 auto 8px; }
+  .monologue-title { font-size: 36px; line-height: 43px; margin: 6px 0 6px; text-align: center; }
+  .monologue-excerpt { font-size: 14px; line-height: 16px; text-align: center; opacity: 1; }
+  .monologue-author { font-size: 14px; font-style: normal; font-weight: 600; text-align: center; opacity: 1; }
+}
+
+/* Dots pagination */
+@media (max-width: 768px) {
+  .monologues-dots { display: flex; justify-content: center; gap: 8px; margin-top: 8px; }
+  .monologues-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.45); }
+  .monologues-dot.active { width: 10px; height: 10px; background: #fff; }
 }

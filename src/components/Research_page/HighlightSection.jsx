@@ -32,7 +32,7 @@ export default function HighlightSection() {
   };
 
   return (
-    <>
+    <div className="research-highlight-wrapper">
       <section className="highlight-section">
         <div className="highlight-overlay" />
         <h1 className="highlight-title">RESEARCH</h1>
@@ -45,7 +45,7 @@ export default function HighlightSection() {
             onClick={handlePrev} 
             aria-label="Previous article"
           >
-            &#8249;
+            <img src="/assets/icon/arrow kiri.svg" alt="Previous" />
           </button>
 
           <div className="article-slider-viewport">
@@ -83,10 +83,10 @@ export default function HighlightSection() {
             onClick={handleNext} 
             aria-label="Next article"
           >
-            &#8250;
+            <img src="/assets/icon/arrow kanan.svg" alt="Next" />
           </button>
         </div>
       </section>
-    </>
+    </div>
   );
 }

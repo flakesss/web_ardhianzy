@@ -107,7 +107,7 @@
 
 @media (max-width: 768px) {
   .section-highlight { height: 400px; }
-  .highlight-content { padding-left: 100px; }
+  .highlight-content { margin-left: 0; max-width: 100%; padding-left: 24px; padding-right: 24px; }
   .highlight-text .pretitle { font-size: 2rem; }
   .highlight-text .title { font-size: 2.5rem; }
   .highlight-text .date { font-size: 1.1rem; }
@@ -115,7 +115,7 @@
 
 @media (max-width: 480px) {
   .section-highlight { height: 350px; }
-  .highlight-content { padding-left: 60px; }
+  .highlight-content { margin-left: 0; padding-left: 16px; padding-right: 16px; max-width: 100%; }
   .highlight-text .pretitle { font-size: 1.5rem; }
   .highlight-text .title { font-size: 2rem; letter-spacing: 1px; }
   .highlight-text .date { font-size: 1rem; }

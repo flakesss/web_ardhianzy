@@ -178,3 +178,92 @@
   font-size: 15px;
   margin: 0;
 }
+
+/* --- Responsive Full-Screen Mobile View --- */
+
+@media (max-width: 768px) {
+  .biography-card {
+    position: fixed; /* Take over the full screen */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9999; /* Ensure it's on top of everything */
+    padding-top: 60px; /* Adjust for header height */
+    padding-bottom: 60px; /* Add space at the bottom */
+    overflow-y: scroll; /* Allow scrolling within the page */
+    background: #000; /* Explicitly set background */
+    box-sizing: border-box; /* Include padding in height calculation */
+  }
+
+  .close-button {
+    position: fixed; /* Keep it fixed on the screen */
+    top: 75px; /* Position below the 60px header + 15px padding */
+    right: 15px;
+    font-size: 32px;
+    z-index: 10001; /* Above the card */
+  }
+
+  .bio-header {
+    flex-direction: column;
+    padding: 20px 15px;
+    gap: 20px;
+  }
+
+  .bio-header-background {
+    height: 200px;
+  }
+
+  .bio-portrait {
+    width: 180px;
+    height: 240px;
+    margin: 0 auto;
+  }
+
+  .bio-header-content h1 {
+    font-size: 36px;
+  }
+
+  .diagram-container {
+    max-width: 220px;
+  }
+
+  .bio-body {
+    padding: 20px 25px;
+  }
+
+  .bio-dates {
+    font-size: 28px;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .bio-places {
+    justify-content: center;
+    text-align: center;
+    gap: 20px;
+    font-size: 11px;
+    flex-wrap: wrap;
+  }
+  
+  .bio-section h2 {
+    font-size: 20px;
+  }
+
+  .bio-section p {
+    font-size: 13px;
+  }
+
+  .books-gallery {
+    justify-content: center;
+    gap: 15px;
+  }
+
+  .book-item {
+    width: 100px;
+  }
+
+  .book-item img {
+    height: 148px;
+  }
+}

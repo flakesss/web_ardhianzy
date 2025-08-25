@@ -51,13 +51,16 @@
   grid-template-columns: 1fr 1fr;
   gap: 4rem;
   align-items: center;
+  justify-content: center;
+  justify-items: center;
 }
 
 .magazine-content-section__image-container {
   position: relative;
   width: 470px;
   height: 600px;
-  left: 2rem;
+  left: 0;
+  margin: 0;
   background-color: #111;
   overflow: hidden;
 }
@@ -66,11 +69,14 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
   filter: grayscale(100%);
 }
 
 .magazine-content-section__article {
   padding: 2rem;
+  max-width: 470px;
+  margin: 0 auto;
 }
 
 .magazine-content-section__article-title {
@@ -100,16 +106,55 @@
   font-style: italic;
 }
 
+.magazine-decoration-left,
+.magazine-decoration-right {
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.magazine-decoration-left {
+  left: 2rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.magazine-decoration-right {
+  right: 2rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
 @media (max-width: 968px) {
+  .magazine-title-section {
+    height: 40vh;
+  }
+  .magazine-title-header {
+    font-size: 4rem;
+  }
   .magazine-content-section__grid {
     grid-template-columns: 1fr;
     gap: 2rem;
+    justify-items: center; /* Center items on the grid */
   }
   
   .magazine-content-section__image-container {
-    height: 400px;
-    left: 0;
     width: 100%;
+    max-width: 470px; /* Limit image width */
+    height: auto;
+    margin: 0;
+  }
+  
+  .magazine-content-section__image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+  
+  .magazine-content-section__article {
+    max-width: 100%;
+    padding: 0;
+    text-align: center;
   }
   
   .magazine-content-section__article-title {
@@ -119,22 +164,44 @@
   .magazine-content-section__description {
     font-size: 1.1rem;
   }
+
+  .magazine-decoration-left,
+  .magazine-decoration-right {
+    display: none;
+  }
 }
 
 @media (max-width: 640px) {
+  .magazine-title-section {
+    height: 35vh;
+  }
+  .magazine-title-header {
+    font-size: 3rem;
+  }
   .magazine-content-section {
-    padding: 3rem 1rem;
+    padding: 2rem 1rem;
+  }
+  
+  .magazine-content-section__grid {
+    gap: 1.5rem;
   }
   
   .magazine-content-section__article {
-    padding: 1rem 0;
+    padding: 0;
   }
   
   .magazine-content-section__article-title {
     font-size: 2rem;
+    margin-bottom: 0.75rem;
   }
   
   .magazine-content-section__description {
     font-size: 1rem;
+    margin-bottom: 1.5rem;
+    text-align: justify;
+  }
+
+  .magazine-content-section__author {
+    margin-bottom: 1rem;
   }
 }

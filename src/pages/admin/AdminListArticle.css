@@ -1,0 +1,132 @@
+/* src/pages/admin/AdminListArticle.css */
+
+.list-article-page {
+    font-family: 'Roboto', sans-serif;
+    color: #FFFFFF;
+    padding-bottom: 80px; /* Memberi ruang untuk floating button */
+    position: relative;
+}
+
+.list-article-actions {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #F5F5F5;
+    padding-bottom: 30px;
+}
+
+.action-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: transparent;
+    border: 1px solid #F5F5F5;
+    border-radius: 30px;
+    color: #FFFFFF;
+    font-size: 20px;
+    padding: 12px 25px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.action-btn:hover {
+    background-color: rgba(245, 245, 245, 0.1);
+}
+
+.action-btn.save-btn {
+    background-color: #F5F5F5;
+    color: #000000;
+    margin-left: auto; /* Mendorong tombol Save ke kanan */
+}
+
+.action-btn.save-btn:hover {
+    background-color: #e0e0e0;
+}
+
+.list-article-container {
+    margin-top: 30px;
+}
+
+.list-article-title {
+    font-weight: 400;
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+.articles-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.article-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: transparent;
+    border: 1px solid #F5F5F5;
+    padding: 33px 20px;
+    cursor: pointer;
+    position: relative;
+    transition: border-color 0.2s;
+}
+
+.article-item.selected {
+    border-color: #FFFFFF; /* Border lebih tebal atau warna berbeda saat dipilih */
+}
+
+.article-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 30px;
+    height: 100%;
+    background-color: transparent;
+    transition: background-color 0.2s;
+}
+
+.article-item.selected::before {
+    background-color: #F5F5F5;
+}
+
+.article-item-content {
+    font-size: 20px;
+    color: #B1B1B1;
+}
+
+.article-item.selected .article-item-content {
+    color: #F5F5F5;
+}
+
+.delete-article-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.add-fab {
+    position: fixed;
+    bottom: 40px;
+    right: 100px; /* Disesuaikan agar pas di dalam area konten */
+    width: 58px;
+    height: 58px;
+    background-color: transparent;
+    border: 1px solid #B1B1B1;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.add-fab:hover {
+    background-color: rgba(177, 177, 177, 0.2);
+}
+
+.add-fab svg path {
+    stroke: #B1B1B1;
+}

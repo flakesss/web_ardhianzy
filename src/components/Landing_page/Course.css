@@ -19,7 +19,6 @@
   top: -3rem;           /* Tarik ke atas sejauh margin-top */
   bottom: -3rem;        /* Dorong ke bawah sejauh margin-bottom */
   
-  /* Penuhi lebarnya */
   left: 0;
   right: 0;
 }
@@ -196,12 +195,39 @@
     flex-direction: column;
     gap: 1rem;
   }
-  .course-more-button {
-    position: static;
-    transform: none;
-    margin-top: 1rem;
-  }
+  .course-more-button { display: none; }
   .course-header h2 {
     font-size: 2.5rem;
   }
+}
+
+@media (max-width: 600px) {
+  .course-container { padding: 1rem; }
+  /* akan ditimpa oleh layout horizontal di breakpoints lebih ketat jika perlu */
+  .course-card-img { height: 180px; }
+  .course-header h2 { font-size: 2.2rem; }
+}
+
+/* Layout horizontal khusus mobile */
+@media (max-width: 768px) {
+  .course-content {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 260px;
+    gap: 16px;
+    overflow-x: auto;
+    padding-bottom: 10px;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+  .course-content::-webkit-scrollbar { display: none; }
+  .course-card { scroll-snap-align: start; }
+}
+
+/* Dots pagination - mobile */
+@media (max-width: 768px) {
+  .course-dots { display: flex; justify-content: center; gap: 8px; margin-top: 8px; }
+  .course-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.45); }
+  .course-dot.active { width: 10px; height: 10px; background: #fff; }
 }

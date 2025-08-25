@@ -45,12 +45,21 @@
 
 .research-card {
   text-align: left;
-  padding-left: 2rem;
+  padding-left: 12px; /* konsisten: beri jarak dari garis pemisah */
   position: relative;
 }
 
-.research-card:not(:first-child) {
-  border-left: 1px solid #444;
+/* Garis pemisah konsisten untuk desktop & mobile (pakai style mobile) */
+/* Desktop-only separator */
+@media (min-width: 769px) {
+  .research-card:not(:first-child)::before {
+    content: '';
+    position: absolute;
+    left: -12px;
+    top: 8px;
+    bottom: 8px;
+    border-left: 1px solid rgba(255,255,255,0.6);
+  }
 }
 
 .research-card-img {
@@ -107,7 +116,40 @@
 }
 
 @media (max-width: 768px) {
-  .research-header { flex-direction: column; align-items: flex-start; }
-  .research-content { grid-template-columns: 1fr; }
-  .research-card { padding-left: 0; border: none; }
+  .research-header { flex-direction: column; align-items: center; text-align: center; gap: 8px; }
+  .research-content {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 249px;
+    gap: 24px; /* tambah jarak antar kartu */
+    overflow-x: auto;
+    padding-bottom: 10px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .research-content::-webkit-scrollbar { display: none; }
+  .research-card { position: relative; width: 249px; padding-left: 12px; border: none; scroll-snap-align: start; text-align: left; }
+  .research-more-button { display: none; }
+
+  .research-card-img { width: 249px; height: 175px; border-radius: 20px; overflow: hidden; }
+  .research-card-img img { width: 100%; height: 100%; object-fit: cover; mix-blend-mode: luminosity; }
+
+  .research-card-title { font-family: 'Bebas Neue', sans-serif; font-size: 32px; line-height: 38px; margin: 10px 0 6px; color: #fff; }
+  .research-card-date { font-family: 'Roboto', sans-serif; font-weight: 300; font-size: 14px; line-height: 16px; color: #B3B3B3; margin: 0 0 8px; }
+  .research-card-excerpt { font-family: 'Roboto', sans-serif; font-weight: 400; font-size: 14px; line-height: 16px; color: #fff; text-align: justify; margin: 0 0 8px; display: -webkit-box; -webkit-line-clamp: 4; line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
+  .research-card-link { font-family: 'Roboto', sans-serif; font-weight: 600; font-size: 16px; line-height: 19px; text-align: center; text-decoration: underline; color: #fff; display: block; }
+}
+
+@media (max-width: 600px) {
+  .research-container { padding: 1.25rem; }
+  .research-card-img { width: 100%; height: 180px; }
+  .research-header h2 { font-size: 2.2rem; text-align: center; }
+}
+
+/* Dots pagination - mobile */
+@media (max-width: 768px) {
+  .research-dots { display: flex; justify-content: center; gap: 8px; margin-top: 8px; }
+  .research-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.45); }
+  .research-dot.active { width: 10px; height: 10px; background: #fff; }
 }

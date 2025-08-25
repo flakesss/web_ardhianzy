@@ -1,3 +1,4 @@
+
 /* Shops.css */
 
 .shops-container {
@@ -62,12 +63,16 @@
 
 /* hidden scrollbar, no actual overflow bar */
 .shops-list {
-   display: flex;
-  overflow-x: hidden;
+  display: flex;
+  overflow-x: auto;
   scroll-behavior: smooth;
-  gap: var(--shop-gap, 75px);      /* default gap = 1px; override via --shop-gap */
-  cursor: grab;    /* IE 10+ */
+  gap: var(--shop-gap, 24px);
+  cursor: grab;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding: 0 16px 10px;
 }
+.shops-list::-webkit-scrollbar { display: none; }
 
 .shops-list:active {
   cursor: grabbing;
@@ -136,26 +141,7 @@
 
 /* 2. 按钮强制去掉内边距，保证宽高一致 */
 .shops-prev,
-.shops-next {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 48px;
-  height: 48px;
-  padding: 0;              /* 去掉默认 padding */
-  border: none;
-  border-radius: 50%;      
-  background: rgba(0, 0, 0, 0.6);
-  color: #fff;
-  font-size: 1.5rem;       /* 如果 2rem 导致溢出，可以调小一点 */
-  line-height: 48px;       /* 让箭头垂直居中 */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-sizing: content-box; /* 宽高不算 padding/border */
-  z-index: 2;
-  cursor: pointer;
-}
+.shops-next { display: none; }
 .shops-prev { left: -24px; }   
 .shops-next { right: -24px; }
 
@@ -171,14 +157,13 @@
 
 /* responsive tweaks */
 @media (max-width: 768px) {
-  .shops-list-wrapper {
-    overflow: hidden;
-  }
+  .shops-header { flex-direction: column; gap: 12px; text-align: center; }
+  .shops-more { display: none; }
   .shops-next {
     width: 48px;
     height: 48px;
   }
   .shop-card {
-    width: 200px;
+    width: 180px;
   }
 }

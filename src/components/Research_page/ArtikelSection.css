@@ -14,7 +14,7 @@
   padding: 0 20px;
 }
 
-.section-title {
+.artikel-section .section-title {
   font-family: 'Bebas Neue', cursive;
   font-style: normal;
   font-weight: 400;
@@ -164,19 +164,29 @@
 }
 
 @media (max-width: 768px) {
-  .section-title {
-    font-size: 36px;
-  }
-  
-  .artikel-judul {
-    font-size: 48px;
-  }
+  .artikel-section .section-title { font-size: 36px; }
+  .artikel-list { gap: 40px; }
+  .artikel-item { gap: 16px; }
+  .artikel-gambar { width: 100%; height: auto; }
+  .artikel-konten { padding-top: 10px; }
+  .artikel-judul { font-size: 48px; }
+  .artikel-deskripsi { font-size: 18px; }
+  .artikel-tanggal { font-size: 20px; }
+}
 
-  .artikel-deskripsi {
-    font-size: 18px;
-  }
+/* Tablet landscape dan layar menengah */
+@media (max-width: 992px) and (min-width: 769px) {
+  .artikel-section .container { padding: 0 24px; }
+  .artikel-item { gap: 20px; }
+  .artikel-gambar { width: 100%; height: auto; }
+  .artikel-konten { max-width: 90%; }
+}
 
-  .artikel-tanggal {
-    font-size: 20px;
-  }
+/* Extra small */
+@media (max-width: 480px) {
+  .artikel-section .section-title { font-size: 30px; }
+  .artikel-judul { font-size: 38px; }
+  .artikel-deskripsi { font-size: 16px; }
+  .artikel-tanggal { font-size: 18px; }
+  .artikel-list { gap: 30px; }
 }
